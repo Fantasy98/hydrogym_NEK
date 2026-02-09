@@ -18,9 +18,9 @@ import pandas as pd
 from .configs import Config
 from pathlib import Path
 from mpi4py import MPI
-from .lib.lglnodes import lglnodes
-from .lib.nek_utils import (remove_sch)
-from .lib.reward_logger import RewardLogger, SimpleRewardLogger
+from .nek_lib.lglnodes import lglnodes
+from .nek_lib.nek_utils import (remove_sch)
+from .nek_lib.reward_logger import RewardLogger, SimpleRewardLogger
 def env():
     """
     The env function often wraps the environment in wrappers by default.

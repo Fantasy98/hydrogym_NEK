@@ -11,7 +11,7 @@ from typing import List
 from omegaconf import OmegaConf
 
 from hydrogym.nek import Config
-from hydrogym.nek.lib.nek_utils import NEK_INIT
+from hydrogym.nek.nek_lib.nek_utils import NEK_INIT
 
 
 def parse_omegaconf(conf_file: str, overrides: List[str]):
