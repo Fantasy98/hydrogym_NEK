@@ -43,17 +43,27 @@ def main():
   else:
     conf.runner.rewrite_input_files = True
 
+  # -- Create run root dir --
+  if not os.path.exists(conf.logging.save_dir):
+    os.makedirs(conf.logging.save_dir, exist_ok=True)
+  print(f"[NEK] RUN ROOT DIR: {conf.logging.save_dir}", flush=True)
+
+  # -- Create case run folder --
   run_folder = f"{conf.logging.save_dir}/{conf.logging.run_name}"
   if not os.path.exists(run_folder):
     os.makedirs(run_folder, exist_ok=True)
+  print(f"[NEK] CASE RUN FOLDER: {run_folder}", flush=True)
 
+  # -- Create rank run folder --
   if not conf.runner.evaluation:
     rank_folder = f"{run_folder}/train"
   else:
     rank_folder = f"{run_folder}/env_{conf.runner.rank:03d}"
   if not os.path.exists(rank_folder):
     os.makedirs(rank_folder, exist_ok=True)
+  print(f"[NEK] RANK RUN FOLDER: {rank_folder}", flush=True)
 
+  # -- Initialize Nek --
   initializer = NEK_INIT(
       nek=conf.simulation,
       drl=conf.runner,

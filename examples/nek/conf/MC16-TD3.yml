@@ -47,8 +47,8 @@ simulation:
     CASENAME : "phill"
     exeName : 'nek5000'
     # Update paths for your local case/restart data.
-    compile_path   : "../envs/cases/mini_channel"
-    restart_folder : "../data/restarts/rs6_mini_Channel"
+    compile_path   : "../../hydrogym/nek/envs/mini_channel"
+    restart_folder : "./data/restarts/rs6_mini_Channel"
     #------------------------------------------
     TOTCTRL : 220
     nproc   : 10         

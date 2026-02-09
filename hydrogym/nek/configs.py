@@ -119,7 +119,6 @@ class Simulation:
     Nx:int                  = 4
     Ny:int                  = 16
     Nz:int                  = 4          # No. Spectral Elements    
-    
     tmax:float             = 1400
     #--------------------------
     # .par file 
@@ -175,7 +174,7 @@ class Logging:
     run_name: int = int(time.time())
     group: Optional[str] = None
     notes: Optional[str] = None
-    save_dir: str = '../runs'
+    save_dir: str = './runs'
 
 
 @dataclass

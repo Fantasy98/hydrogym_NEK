@@ -133,3 +133,7 @@ dmypy.json
 .pyre/
 
 .DS_store
+
+
+# Nek5000 development 
+/third_party/KTH_DRL_Framework/

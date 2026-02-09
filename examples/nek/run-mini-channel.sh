@@ -8,6 +8,8 @@
 
 ORIG_ARGS=("$@")
 set --
+# -- Load environment --
+# If the setup is in the part of the container this should not be needed.
 source ~/.bashrc.openmpi_ucx
 source ~/.bashrc.miniforge
 set -- "${ORIG_ARGS[@]}"
@@ -22,7 +24,7 @@ mkdir -p ${LOG_DIR}
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Default values
+# -- Default values --
 CONFIG_NAME="MC16-TD3.yml"
 MODE="blowing"
 STEPS=100
@@ -48,8 +50,21 @@ while [[ $# -gt 1 ]]; do
     esac
 done
 
+# -- Initialize run folder --
 CONFIG_PATH="${SCRIPT_DIR}/conf/${CONFIG_NAME}"
 
+# Go to the compile folder and compile the case.
+COMPILE_PATH=$(grep -ri 'compile_path' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+COMPILE_PATH=$(echo "${COMPILE_PATH}" | sed 's/"//g')
+echo "COMPILE_PATH: ${COMPILE_PATH}"
+cd "${COMPILE_PATH}"
+bash compile_script --clean
+bash compile_script --all
+echo "Compiled the case."
+cd "${SCRIPT_DIR}" # Go back to the script directory.
+
+
+# -- Initialize run folder --
 mpirun -n 1 python "${SCRIPT_DIR}/nek_initial.py" "${CONFIG_PATH}" \
   > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
 

@@ -592,12 +592,12 @@ class parallel_env(ParallelEnv):
         iy    [int] number of y indices 
         iz    [int] number of z indices 
         """
-        agent_name = f"jet_np{nid:05d}_"+\
-                        f"gid{gllid:05d}_"+\
+        agent_name = f"jet_np{nid:08d}_"+\
+                        f"gid{gllid:08d}_"+\
                         f"iface{iface}_"+\
-                        f"ix{ix:05d}_"+\
-                        f"iy{iy:05d}_"+\
-                        f"iz{iz:05d}" 
+                        f"ix{ix:08d}_"+\
+                        f"iy{iy:08d}_"+\
+                        f"iz{iz:08d}" 
         return agent_name 
     
 
