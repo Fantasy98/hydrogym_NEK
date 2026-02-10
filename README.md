@@ -14,6 +14,8 @@
 
 # About this Package
 
+__IMPORTANT NOTE: This is a deviation of the main package with NEK5000 development. So the entire firedrake is not available and it is NOT guaranted to work for any purpose.__ 
+
 __IMPORTANT NOTE: This package is still ahead of an official public release, so consider anything here as an early beta. In other words, we're not guaranteeing any of this is working or correct yet. Use at your own risk__
 
 HydroGym is an open-source library of challenge problems in data-driven modeling and control of fluid dynamics.
