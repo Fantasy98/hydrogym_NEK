@@ -1,0 +1,11 @@
+stable-baselines3==1.7.0
+pettingzoo==1.19.0
+supersuit==3.5.0
+gym==0.24.1
+omegaconf==2.1.0
+scipy
+matplotlib
+numpy==1.22.4
+tensorboard
+pandas
+pyyaml
