@@ -21,8 +21,10 @@ set --
 #     echo "Warning: /home/firedrake/bin/activate not found; continuing."
 # fi
 
-source /home/firedrake/.bashrc.openmpi_ucx
-source /home/firedrake/firedrake/bin/activate
+# source /home/firedrake/.bashrc.openmpi_ucx
+# source /home/firedrake/firedrake/bin/activate
+source ~/.bashrc.miniforge
+source ~/.bashrc.openmpi_ucx
 
 #source ~/.bashrc.miniforge
 set -- "${ORIG_ARGS[@]}"
@@ -70,21 +72,21 @@ done
 CONFIG_PATH="${SCRIPT_DIR}/conf/${CONFIG_NAME}"
 
 # # Go to the compile folder and compile the case.
-# COMPILE_PATH=$(grep -ri 'compile_path' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
-# COMPILE_PATH=$(echo "${COMPILE_PATH}" | sed 's/"//g')
-# if [[ "${COMPILE_PATH}" != /* ]]; then
-#     COMPILE_PATH="${SCRIPT_DIR}/${COMPILE_PATH}"
-# fi
-# echo "COMPILE_PATH: ${COMPILE_PATH}"
-# if [[ ! -d "${COMPILE_PATH}" ]]; then
-#     echo "Error: compile_path does not exist: ${COMPILE_PATH}"
-#     exit 1
-# fi
-# cd "${COMPILE_PATH}"
-# bash compile_script --clean
-# bash compile_script --all
-# echo "Compiled the case."
-# cd "${SCRIPT_DIR}" # Go back to the script directory.
+COMPILE_PATH=$(grep -ri 'compile_path' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+COMPILE_PATH=$(echo "${COMPILE_PATH}" | sed 's/"//g')
+if [[ "${COMPILE_PATH}" != /* ]]; then
+    COMPILE_PATH="${SCRIPT_DIR}/${COMPILE_PATH}"
+fi
+echo "COMPILE_PATH: ${COMPILE_PATH}"
+if [[ ! -d "${COMPILE_PATH}" ]]; then
+    echo "Error: compile_path does not exist: ${COMPILE_PATH}"
+    exit 1
+fi
+cd "${COMPILE_PATH}"
+bash compile_script --clean
+bash compile_script --all
+echo "Compiled the case."
+cd "${SCRIPT_DIR}" # Go back to the script directory.
 
 
 # -- Initialize run folder --
@@ -110,6 +112,7 @@ if [[ -z "${RUN_PATH}" || ! -d "${RUN_PATH}" ]]; then
 fi
 
 mpirun -n 1 python3 "${SCRIPT_DIR}/nek_marl_wrapper_demo.py" --config "${CONFIG_PATH}" :\
- -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" > "${LOG_DIR}/log.run.${CONFIG_NAME}" 2>&1
+ -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
+# mpirun --allow-run-as-root -np 4 bash -lc 'echo "rank=$OMPI_COMM_WORLD_RANK size=$OMPI_COMM_WORLD_SIZE"'
 
-# mpirun -n 4 python3 mpi_split_test.py
+# mpirun --allow-run-as-root -n 4 python3 ${SCRIPT_DIR}/mpi_split_test.py

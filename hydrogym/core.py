@@ -1,5 +1,5 @@
 import abc
-from typing import Any, Callable, Iterable, Tuple, TypeVar, Union
+from typing import Any, Callable, Iterable, List, Optional, Tuple, TypeVar, Union
 
 import gym
 import numpy as np
@@ -173,7 +173,7 @@ class PDEBase(metaclass=abc.ABCMeta):
     for i, u in enumerate(self.enlist(act)):
       self.actuators[i].state = u
 
-  def advance_time(self, dt: float, act: list[float] = None) -> list[float]:
+  def advance_time(self, dt: float, act: Optional[List[float]] = None) -> List[float]:
     """Update the current controls state. May involve integrating
         a dynamics model rather than directly setting the controls state.
         Here, if actual control is `u` and input is `v`, effectively

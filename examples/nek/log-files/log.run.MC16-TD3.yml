@@ -9,11 +9,11 @@ Traceback (most recent call last):
     main()
   File "/workspace/examples/nek/nek_marl_wrapper_demo.py", line 34, in main
     env = NekMARLGymWrapper(
-  File "/workspace/hydrogym/nek/wrapper.py", line 79, in __init__
+  File "/home/firedrake/nek_hgym/hydrogym/nek/wrapper.py", line 75, in __init__
     self.sub_comm = mpi_split(comm_world)
-  File "/workspace/hydrogym/nek/wrapper.py", line 34, in mpi_split
-    raise RuntimeError(
-RuntimeError: MPI world size must be >= 2 to create the Nek inter-communicator. Launch with MPMD, e.g. `mpirun -n 1 python ... : -n N ./nek5000`, so rank 0 can connect to the Nek worker ranks.
+  File "/home/firedrake/nek_hgym/hydrogym/nek/wrapper.py", line 34, in mpi_split
+    raise RuntimeError("Requires at least 2 processes (1 Master + 1 Worker)")
+RuntimeError: Requires at least 2 processes (1 Master + 1 Worker)
 WARNING! There are options you set that were not used!
 WARNING! could be spelling mistake, etc!
 There is one unused database option. It is:
@@ -26,6 +26,6 @@ a non-zero exit code. Per user-direction, the job has been aborted.
 mpirun detected that one or more processes exited with non-zero status, thus causing
 the job to be terminated. The first process to do so was:
 
-  Process name: [[37602,1],0]
+  Process name: [[58151,1],0]
   Exit code:    1
 --------------------------------------------------------------------------

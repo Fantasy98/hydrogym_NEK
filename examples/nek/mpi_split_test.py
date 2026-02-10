@@ -7,6 +7,16 @@ def main() -> None:
     rank = comm.Get_rank()
     size = comm.Get_size()
 
+    # Require at least 2 processes for a meaningful split test
+    if size < 2:
+        if rank == 0:
+            print(
+                f"ERROR: This test requires at least 2 MPI processes, but only {size} process(es) detected.\n"
+                f"Run with: mpirun -n 4 python3 {__file__}",
+                flush=True,
+            )
+        return
+
     color = rank % 2
     split_comm = comm.Split(color=color, key=rank)
 
