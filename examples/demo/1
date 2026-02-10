@@ -1,0 +1,24 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/home/firedrake/firedrake/lib/python3.10/site-packages/pytools/__init__.py:2484: UserWarning: unable to find git revision
+  warn("unable to find git revision")
+Traceback (most recent call last):
+  File "/workspace/examples/demo/run-transient.py", line 10, in <module>
+    flow = hgym.Cylinder(
+  File "/home/firedrake/nek_hgym/hydrogym/firedrake/flow.py", line 75, in __init__
+    super().__init__(**config)
+  File "/home/firedrake/nek_hgym/hydrogym/core.py", line 49, in __init__
+    self.mesh = self.load_mesh(name=config.get("mesh", self.DEFAULT_MESH))
+  File "/home/firedrake/nek_hgym/hydrogym/firedrake/flow.py", line 78, in load_mesh
+    return fd.Mesh(f"{self.MESH_DIR}/{name}.msh", name="mesh")
+  File "petsc4py/PETSc/Log.pyx", line 188, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "petsc4py/PETSc/Log.pyx", line 189, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "/home/firedrake/firedrake/src/firedrake/firedrake/mesh.py", line 2712, in Mesh
+    plex = _from_gmsh(meshfile, user_comm)
+  File "petsc4py/PETSc/Log.pyx", line 188, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "petsc4py/PETSc/Log.pyx", line 189, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "/home/firedrake/firedrake/src/firedrake/firedrake/mesh.py", line 314, in _from_gmsh
+    assert header == b'$MeshFormat'
+AssertionError

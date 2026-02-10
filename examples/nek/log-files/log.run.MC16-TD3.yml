@@ -1,14 +1,31 @@
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
-bash: line 5: ./nek5000: No such file or directory
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/home/firedrake/firedrake/lib/python3.10/site-packages/pytools/__init__.py:2484: UserWarning: unable to find git revision
+  warn("unable to find git revision")
+Traceback (most recent call last):
+  File "/workspace/examples/nek/nek_marl_wrapper_demo.py", line 65, in <module>
+    main()
+  File "/workspace/examples/nek/nek_marl_wrapper_demo.py", line 34, in main
+    env = NekMARLGymWrapper(
+  File "/workspace/hydrogym/nek/wrapper.py", line 79, in __init__
+    self.sub_comm = mpi_split(comm_world)
+  File "/workspace/hydrogym/nek/wrapper.py", line 34, in mpi_split
+    raise RuntimeError(
+RuntimeError: MPI world size must be >= 2 to create the Nek inter-communicator. Launch with MPMD, e.g. `mpirun -n 1 python ... : -n N ./nek5000`, so rank 0 can connect to the Nek worker ranks.
+WARNING! There are options you set that were not used!
+WARNING! could be spelling mistake, etc!
+There is one unused database option. It is:
+Option left: name:--config value: /workspace/examples/nek/conf/MC16-TD3.yml source: command line
 --------------------------------------------------------------------------
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 --------------------------------------------------------------------------
-bash: line 5: ./nek5000: No such file or directory
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[37602,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+import os
 from functools import partial
 from typing import Callable, Iterable, NamedTuple
 
@@ -75,7 +76,35 @@ class FlowConfig(PDEBase):
     super().__init__(**config)
 
   def load_mesh(self, name: str) -> ufl.Mesh:
-    return fd.Mesh(f"{self.MESH_DIR}/{name}.msh", name="mesh")
+    mesh_path = name
+    if not mesh_path.endswith(".msh"):
+      mesh_path = f"{mesh_path}.msh"
+
+    if not os.path.isabs(mesh_path):
+      override_dir = os.environ.get("HYDROGYM_MESH_DIR")
+      if override_dir:
+        override_path = os.path.join(override_dir, os.path.basename(mesh_path))
+        if os.path.exists(override_path):
+          mesh_path = override_path
+        else:
+          mesh_path = os.path.join(self.MESH_DIR, mesh_path)
+      else:
+        mesh_path = os.path.join(self.MESH_DIR, mesh_path)
+
+    try:
+      with open(mesh_path, "rb") as mesh_file:
+        header = mesh_file.readline().strip()
+    except FileNotFoundError:
+      raise FileNotFoundError(f"Mesh file not found: {mesh_path}") from None
+
+    if header != b"$MeshFormat":
+      raise ValueError(
+          "Mesh file does not look like a Gmsh v2 mesh. "
+          "If this is a git-lfs pointer or a placeholder file, run `git lfs pull` "
+          "or set HYDROGYM_MESH_DIR to a directory containing valid .msh files."
+      )
+
+    return fd.Mesh(mesh_path, name="mesh")
 
   def save_checkpoint(self, filename: str, write_mesh=True, idx=None):
     with fd.CheckpointFile(filename, "w") as chk:

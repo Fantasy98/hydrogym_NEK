@@ -1,25 +1,46 @@
-Warning: Gym version v0.24.1 has a number of critical issues with `gym.make` such that the `reset` and `step` functions are called before returning the environment. It is recommend to downgrading to v0.23.1 or upgrading to v0.25.1
-Additionally, Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
 Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
 See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
-Traceback (most recent call last):
-  File "/home/yuninw/codes/drl/hydrogym_dev/examples/nek/nek_initial.py", line 13, in <module>
-    from hydrogym.nek import Config
-  File "/home/yuninw/codes/drl/hydrogym_dev/hydrogym/__init__.py", line 1, in <module>
-    from . import distributed, firedrake, nek
-  File "/home/yuninw/codes/drl/hydrogym_dev/hydrogym/firedrake/__init__.py", line 3, in <module>
-    from .actuator import DampedActuator
-  File "/home/yuninw/codes/drl/hydrogym_dev/hydrogym/firedrake/actuator.py", line 1, in <module>
-    import firedrake as fd
-ModuleNotFoundError: No module named 'firedrake'
---------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-mpirun detected that one or more processes exited with non-zero status, thus causing
-the job to be terminated. The first process to do so was:
+/home/firedrake/firedrake/lib/python3.10/site-packages/pytools/__init__.py:2484: UserWarning: unable to find git revision
+  warn("unable to find git revision")
+[NEK] RUN ROOT DIR: ./runs
+[NEK] CASE RUN FOLDER: ./runs/1998
+[NEK] RANK RUN FOLDER: ./runs/1998/train
 
-  Process name: [[12412,1],0]
-  Exit code:    1
---------------------------------------------------------------------------
+--------------------------------------------------------
+███╗   ██╗███████╗██╗  ██╗    ██████╗ ██████╗ ██╗     
+████╗  ██║██╔════╝██║ ██╔╝    ██╔══██╗██╔══██╗██║     
+██╔██╗ ██║█████╗  █████╔╝     ██║  ██║██████╔╝██║     
+██║╚██╗██║██╔══╝  ██╔═██╗     ██║  ██║██╔══██╗██║     
+██║ ╚████║███████╗██║  ██╗    ██████╔╝██║  ██║███████╗
+            NEK5000 Reinforcement Learning
+                    HydroGym-dev
+                    Yuning Wang
+--------------------------------------------------------
+
+
+Allocated 1152 points
+Written 1152 points to the file
+[IO] REMOVE EXIST: ./runs/1998/train/nek5000
+[IO] ./runs/1998/train/nek5000 COPIED
+[IO] REMOVE EXIST: ./runs/1998/train/phill.re2
+[IO] ./runs/1998/train/phill.re2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/train/phill.ma2
+[IO] ./runs/1998/train/phill.ma2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/train/phill.usr
+[IO] ./runs/1998/train/phill.usr COPIED
+[IO] REMOVE EXIST: ./runs/1998/train/int_pos
+[IO] ./runs/1998/train/int_pos COPIED
+[IO] ./runs/1998/train/SIZE EXIST
+[IO] SESSION NAME WRITTEN
+[IO] Writting .par file:
+./runs/1998/train/phill.par
+[IO] WRITTEN .par file: ./runs/1998/train/phill.par
+[INIT] 6 FILE!
+[INIT] File Exists no need to copy!
+[NEK] RUN PATH: ./runs/1998/train
+WARNING! There are options you set that were not used!
+WARNING! could be spelling mistake, etc!
+There is one unused database option. It is:
+Option left: name:--config value: /workspace/examples/nek/conf/MC16-TD3.yml source: command line

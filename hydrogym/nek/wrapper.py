@@ -31,7 +31,11 @@ def mpi_split(comm_world: MPI.Comm) -> MPI.Comm:
   mpi_rank = comm_world.Get_rank()
   mpi_size = comm_world.Get_size()
   if mpi_size < 2:
-    raise RuntimeError("Requires at least 2 processes (1 Master + 1 Worker)")
+    raise RuntimeError(
+        "MPI world size must be >= 2 to create the Nek inter-communicator. "
+        "Launch with MPMD, e.g. `mpirun -n 1 python ... : -n N ./nek5000`, "
+        "so rank 0 can connect to the Nek worker ranks."
+    )
   if mpi_rank == 0:
     color = 0
   else:

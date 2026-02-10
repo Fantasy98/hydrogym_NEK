@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
 """
 Demo for Nek MARL HydroGym wrapper.
 Run with mpiexec as usual, e.g.:
-  mpiexec -np 2 python nek_marl_wrapper_demo.py --config /path/to/conf.yml --mode blowing
+  mpiexec -np 2 python3 nek_marl_wrapper_demo.py --config /path/to/conf.yml --mode blowing
 """
 
 import argparse

@@ -25,7 +25,7 @@ def parse_omegaconf(conf_file: str, overrides: List[str]):
 
 def main():
   parser = argparse.ArgumentParser()
-  parser.add_argument("conf_file", type=Path, help="YAML configuration")
+  parser.add_argument("--config", type=Path, help="YAML configuration")
   parser.add_argument(
       "overrides",
       type=str,
@@ -34,7 +34,7 @@ def main():
   )
   args = parser.parse_args()
 
-  conf = parse_omegaconf(str(args.conf_file), args.overrides)
+  conf = parse_omegaconf(str(args.config), args.overrides)
 
   # Set run name if restarting from a known agent.
   if conf.runner.agent_run_name != 0:

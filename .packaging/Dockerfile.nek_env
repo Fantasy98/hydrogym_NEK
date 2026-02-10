@@ -3,12 +3,30 @@
 #   https://github.com/firedrakeproject/firedrake/blob/master/docker/Dockerfile.vanilla
 #   https://github.com/firedrakeproject/firedrake/blob/master/docker/Dockerfile.firedrake
 
-FROM lpaehler/hydrogym-firedrake-env:stable
+FROM lpaehler/hydrogym-env:stable
 
+USER root
+
+# Get the latest updates and remove the apt lists.
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    build-essential \
+    gfortran \
+    autoconf \
+    automake \
+    libtool \
+    pkg-config \
+    m4 \
+    flex \
+    bison \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 USER firedrake
 WORKDIR /home/firedrake
 
 ENV PETSC_ARCH default
+ENV VENV=/home/firedrake/firedrake
 
 # Installation of basic Firedrake.
 # RUN curl -O https://raw.githubusercontent.com/firedrakeproject/firedrake/master/scripts/firedrake-install
@@ -22,7 +40,7 @@ ENV PETSC_ARCH default
 #     --mpif90=$MPICH_DIR/mpif90 \
 #     --mpiexec=$MPICH_DIR/mpiexec"
 
-# Installation of extra Firedrake components.
+# # Installation of extra Firedrake components.
 # RUN bash -c "source firedrake/bin/activate; \
 #     firedrake-update \
 #         --documentation-dependencies \
@@ -35,13 +53,80 @@ ENV PETSC_ARCH default
 #         --install irksome \
 #         --install thetis"
 
-
 # Installation of Nek-MARL dependencies.
+# Install the OpenMPI and UCX for the communication between the agents.
+
+ENV OPENMPI_VERSION=4.1.4
+ENV MPI_UCX_ROOT=/home/firedrake/ucx_mpi
+ENV UCX_INSTALL=/home/firedrake/ucx_mpi/ucx/ucx_local
+ENV OPENMPI_INSTALL=/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx
+ENV MPI_UCX_ENV=/home/firedrake/.bashrc.openmpi_ucx
+ENV OMPI_ALLOW_RUN_AS_ROOT=1
+ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+
+RUN set -eux; \
+    mkdir -p "$MPI_UCX_ROOT"; \
+    cd "$MPI_UCX_ROOT"; \
+    rm -rf ucx; \
+    git clone https://github.com/openucx/ucx.git; \
+    cd ucx; \
+    mkdir -p "$UCX_INSTALL"; \
+    ./autogen.sh; \
+    ./contrib/configure-release --prefix="$UCX_INSTALL" --enable-mt; \
+    make -j"$(nproc)"; \
+    make install
+
+RUN set -eux; \
+    cd "$MPI_UCX_ROOT"; \
+    if [ ! -f "openmpi-${OPENMPI_VERSION}.tar.gz" ]; then \
+        wget "https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-${OPENMPI_VERSION}.tar.gz"; \
+    fi; \
+    tar -xzvf "openmpi-${OPENMPI_VERSION}.tar.gz"; \
+    cd "openmpi-${OPENMPI_VERSION}"; \
+    ./configure --prefix="$OPENMPI_INSTALL" --with-ucx="$UCX_INSTALL" --without-gpfs CC=gcc CXX=g++ FC=gfortran; \
+    make -j"$(nproc)"; \
+    make install
+
+RUN cat > "$MPI_UCX_ENV" << EOF
+# OpenMPI + UCX Environment Configuration
+# Generated on container build
+# Do not edit manually - this file is auto-generated
+
+export MPI_UCX_ROOT="/home/firedrake/ucx_mpi"
+export UCX_ROOT="/home/firedrake/ucx_mpi/ucx/ucx_local"
+export OPENMPI_ROOT="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx"
+
+export PATH="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx/bin:\$PATH"
+export PATH="/home/firedrake/ucx_mpi/ucx/ucx_local/bin:\$PATH"
+export LD_LIBRARY_PATH="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx/lib:/home/firedrake/ucx_mpi/ucx/ucx_local/lib:\$LD_LIBRARY_PATH"
+export OPAL_PREFIX="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx"
+export UCX_NET_DEVICES=all
+export UCX_TLS=rc,sm,ud,self
+export OMP_NUM_THREADS=1
+EOF
+
+
+
 # NOTE: This is a temporary solution to install the Nek-MARL package into the Firedrake environment.
-
-
 RUN bash -c "git clone --recursive https://github.com/Fantasy98/hydrogym_NEK.git nek_hgym"
 
-RUN bash -c "source firedrake/bin/activate; \  
-    pip install -r requirements_nek.txt \
-    pip install -e /home/nek_hgym"
+# Install dependencies for Nek-MARL, note it would violate the further installation on other packages.
+RUN bash -c "source $VENV/bin/activate; \  
+    $VENV/bin/python -m pip install pip==22.3.1 > log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install setuptools==59.5.0 > log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install stable-baselines3==1.7.0 > log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install pettingzoo==1.19.0  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install supersuit==3.5.0  >>    log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install gym==0.24.1  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install omegaconf==2.1.0  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install scipy  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install matplotlib  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install numpy==1.22.4  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install tensorboard  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install pandas  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install pyyaml  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install numpy==1.24.0  >> log_nek.txt 2>&1; \
+    $VENV/bin/python -m pip install -e /home/firedrake/nek_hgym  >> log_nek_hgym.txt 2>&1"
+
+## Always actiavte the environment before using it.
+RUN bash -c "source $VENV/bin/activate"
