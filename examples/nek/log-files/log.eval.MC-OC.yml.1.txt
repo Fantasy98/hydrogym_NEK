@@ -1,0 +1,1207 @@
+ [NEK] COMM_SPLIT DONE! RANK, Color           1           1
+/----------------------------------------------------------\\
+|      _   __ ______ __ __  ______  ____   ____   ____     |
+|     / | / // ____// //_/ / ____/ / __ \\/ __ \\/ __ \\   |
+|    /  |/ // __/  / ,<   /___ \\ / / / // / / // / / /    |
+|   / /|  // /___ / /| | ____/ / / /_/ // /_/ // /_/ /     |
+|  /_/ |_//_____//_/ |_|/_____/  \\___/ \\___/ \\___/      |
+|                                                          |
+|----------------------------------------------------------|
+|                                                          |
+| COPYRIGHT (c) 2008-2020 UCHICAGO ARGONNE, LLC            |
+| Version:  20.0-dev                                       |
+| Web:      https://nek5000.mcs.anl.gov                    |
+|                                                          |
+\\----------------------------------------------------------/
+
+ Number of MPI ranks :          10
+  
+ Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_001/phill.par                                                        
+general = [(null)]
+general:stopat = [numSteps]
+general:numsteps = [500000]
+general:dt = [-1.000e-02]
+general:timestepper = [bdf3]
+general:variabledt = [no]
+general:writecontrol = [timeStep]
+general:writeinterval = [100000]
+general:dealiasing = [yes]
+general:filtering = [none]
+general:filterweight = [0.010000]
+general:filtercutoffratio = [0.900000]
+general:userparam01 = [1]
+general:userparam02 = [0]
+general:userparam03 = [15.0]
+general:userparam04 = [180.0]
+general:userparam05 = [20.0]
+general:userparam06 = [5.0]
+general:userparam07 = [207.0]
+problemtype = [(null)]
+problemtype:stressformulation = [no]
+problemtype:variableproperties = [no]
+pressure = [(null)]
+pressure:residualtol = [1.000000e-08]
+pressure:residualproj = [no]
+velocity = [(null)]
+velocity:residualtol = [1.000000e-08]
+velocity:residualproj = [no]
+velocity:density = [1.000000]
+velocity:viscosity = [-2800.000000]
+velocity:advection = [yes]
+_runpar = [(null)]
+_runpar:parfwrite = [no]
+_runpar:outparfile = [outparfile]
+_monitor = [(null)]
+_monitor:loglevel = [1]
+_monitor:walltime = [23:45]
+_chkpoint = [(null)]
+_chkpoint:readchkpt = [yes]
+_chkpoint:chkpfnumber = [1]
+_chkpoint:chkpinterval = [10000000]
+_stat = [(null)]
+_stat:avstep = [10]
+_stat:iostep = [300000000]
+_tsrs = [(null)]
+_tsrs:smpstep = [23]
+ Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_001/phill.re2                                                        
+ nelgt/nelgv/lelt:         128         128          13
+ lx1/lx2/lx3/lxd:           6           4           6           9
+
+
+
+ partioning elements to MPI ranks
+ Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_001/phill.ma2                                                        
+ 
+ Max neighbors: 9 | Min neighbors: 4 | Avg neighbors: 6.200000
+ Max nvolume: 28 | Min nvolume: 2 | Avg nvolume: 14.400000
+ Max volume: 108 | Min volume: 65 | Avg volume: 89.800000
+ Max elements: 13 | Min elements: 12 | Balance: 1.083333
+  
+ done :: partioning   0.29100E-03 sec
+
+ reading mesh 
+ reading bc for ifld           1
+ done :: read .re2 file    0.85E-02 sec
+
+ setup mesh topology
+   Right-handed check complete for         128 elements. OK.
+   setvert3d:   6        8208       16400        8208        8208
+gs_setup: 4266 unique labels shared
+   pairwise times (avg, min, max): 4.83015e-06 4.371e-06 4.9994e-06
+   crystal router                : 0.000107818 0.000101314 0.000112145
+   all reduce                    : 0.000313958 0.000310325 0.000318605
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 37628 31804 40724
+   buffer bytes (avg, min, max): 18192 13136 21168
+   setupds time 7.4332E-03 seconds   0  6        8208         128
+           8  max multiplicity
+ done :: setup mesh topology
+  
+ call usrdat
+ done :: usrdat
+
+ generate geometry data
+ NOTE: All elements deformed , param(59) ^=0
+ done :: generate geometry data
+  
+ call usrdat2
+ done :: usrdat2
+
+  0.0000E+00  1.1102E-16  5.5511E-17  0.0000E+00  1.1102E-16  5.5511E-17 xyz repair 1
+  0.0000E+00  1.1102E-16  5.5511E-17  0.0000E+00  1.9596E-16  1.1195E-16 xyz repair 2
+  0.0000E+00  1.1102E-16  5.5511E-17  0.0000E+00  1.4269E-16  1.0869E-16 xyz repair 3
+  0.0000E+00  0.0000E+00  5.5511E-17  0.0000E+00  0.0000E+00  5.5511E-17 xyz repair 4
+ regenerate geometry data           1
+ NOTE: All elements deformed , param(59) ^=0
+ done :: regenerate geometry data           1
+  
+ regenerate geometry data           1
+ NOTE: All elements deformed , param(59) ^=0
+ done :: regenerate geometry data           1
+  
+ verify mesh topology
+   0.0000000000000000        2.6699999999999999       Xrange
+   0.0000000000000000        1.0000000000000000       Yrange
+   0.0000000000000000       0.80000000000000027       Zrange
+ done :: verify mesh topology
+  
+ mesh metrics:
+ GLL grid spacing min/max    : 2.26E-03 1.90E-01
+ scaled Jacobian  min/max/avg: 1.00E+00 1.00E+00 1.00E+00
+ aspect ratio     min/max/avg: 3.42E+00 3.47E+01 9.29E+00
+
+ IFTRAN    = T
+ IFFLOW    = T
+ IFHEAT    = F
+ IFSPLIT   = F
+ IFLOMACH  = F
+ IFUSERVP  = F
+ IFUSERMV  = F
+ IFPERT    = F
+ IFADJ     = F
+ IFSTRS    = F
+ IFCHAR    = F
+ IFCYCLIC  = F
+ IFAXIS    = F
+ IFMVBD    = F
+ IFMELT    = F
+ IFNEKNEK  = F
+ IFNEKNEKC = F
+ IFSYNC    = F
+   
+ IFVCOR    = T
+ IFINTQ    = F
+ IFGEOM    = F
+ IFSURT    = F
+ IFWCNO    = F
+   
+ IFTMSH for field           1    =  F
+ IFADVC for field           1    =  T
+ IFNONL for field           1    =  F
+   
+ Dealiasing enabled, nxd=           9
+  
+ Estimated eigenvalues
+ EIGAA =    8.8917703696379977     
+ EIGGA =    1046295.9292866390     
+ EIGAE =    1.3844498311225235     
+ EIGAS =    1.2975011101743879E-002
+ EIGGE =    1046295.9292866390     
+ EIGGS =    2.0000000000000000     
+  
+ initialize pressure solver
+ mg_nx:           1           3           5
+ mg_ny:           1           3           5
+ mg_nz:           1           3           5
+gs_setup: 130 unique labels shared
+   pairwise times (avg, min, max): 1.87533e-06 1.681e-06 1.9888e-06
+   crystal router                : 1.71035e-06 1.6397e-06 1.7684e-06
+   all reduce                    : 2.85269e-06 2.8162e-06 2.9128e-06
+   used all_to_all method: crystal router
+   handle bytes (avg, min, max): 7702.4 5964 9772
+   buffer bytes (avg, min, max): 1472 1120 2192
+   setupds time 3.3948E-04 seconds   1  2         144         128
+   setvert3d:   4        2576        3600        2576        2576
+gs_setup: 1474 unique labels shared
+   pairwise times (avg, min, max): 2.90517e-06 2.6902e-06 3.0199e-06
+   crystal router                : 3.40098e-06 3.1676e-06 3.5474e-06
+   all reduce                    : 0.000140469 0.000137938 0.000142716
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 14914.4 12668 16052
+   buffer bytes (avg, min, max): 7497.6 5424 8752
+   setupds time 2.8325E-03 seconds   2  4        2576         128
+   setvert3d:   4        2576        3600        2576        2576
+gs_setup: 1474 unique labels shared
+   pairwise times (avg, min, max): 2.68256e-06 2.4729e-06 2.8042e-06
+   crystal router                : 3.34151e-06 3.2718e-06 3.4515e-06
+   all reduce                    : 0.000137028 0.000135989 0.000139184
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 14914.4 12668 16052
+   buffer bytes (avg, min, max): 7497.6 5424 8752
+   setupds time 2.7708E-03 seconds   3  4        2576         128
+   setvert3d:   6        8208       16400        8208        8208
+gs_setup: 4266 unique labels shared
+   pairwise times (avg, min, max): 3.58951e-06 3.298e-06 3.7565e-06
+   crystal router                : 0.000101086 9.65551e-05 0.000106299
+   all reduce                    : 0.00033377 0.000330513 0.000336759
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 37628 31804 40724
+   buffer bytes (avg, min, max): 18192 13136 21168
+   setupds time 7.7263E-03 seconds   4  6        8208         128
+ setup h1 coarse grid, nx_crs=           2
+gs_setup: 130 unique labels shared
+   pairwise times (avg, min, max): 1.64642e-06 1.5349e-06 1.7641e-06
+   crystal router                : 1.58924e-06 1.4922e-06 1.6439e-06
+   all reduce                    : 2.81293e-06 2.7853e-06 2.8572e-06
+   used all_to_all method: crystal router
+   handle bytes (avg, min, max): 7702.4 5964 9772
+   buffer bytes (avg, min, max): 1472 1120 2192
+ done :: setup h1 coarse grid    9.8963500000000260E-004  sec
+  
+ call usrdat3
+ done :: usrdat3
+
+ set initial conditions
+ nekuic (1) for ifld            1
+ call nekuic for vel  
+ xyz min     0.0000       0.0000       0.0000    
+ uvwpt min -0.35856       0.0000     -0.73336       0.0000       0.0000    
+ xyz max     2.6700       1.0000      0.80000    
+ uvwpt max  0.40500       0.0000      0.72906       0.0000       0.0000    
+ done :: set initial conditions
+  
+ call userchk
+  [MONITOR] Registered module [FRAME]: Framework backbone
+  [MONITOR] Registered module [MONITOR]: Monitoring module
+  [MONITOR] Registered timer [FRM_TOT]: Total elapsed framework time
+  [MONITOR] Initial log threshold set to:  4
+  [MONITOR] Module [RUNPAR] not registered
+  [MONITOR] Registered module [RUNPAR]: Runtime parameters
+  [RUNPAR] Module [RUNPAR] registered section _RUNPAR: Runtime parameter section for rprm module
+  [RUNPAR] Section _RUNPAR registered parameter PARFWRITE: Do we write runtime parameter file
+  [RUNPAR] Section _RUNPAR registered parameter PARFNAME: Runtime parameter file name for output (without .par)
+  [RUNPAR] Module [MONITOR] registered section _MONITOR: Runtime parameter section for monitor module
+  [RUNPAR] Section _MONITOR registered parameter LOGLEVEL: Logging threshold for toolboxes
+  [RUNPAR] Section _MONITOR registered parameter IFTIMDSCR: Write timer description in the summary
+  [RUNPAR] Section _MONITOR registered parameter WALLTIME: Simulation wall time
+  [MONITOR] Module [IOTOOL] not registered
+  [MONITOR] Registered module [IOTOOL]: I/O TOOLS
+  [MONITOR] Module [CHKPOINT] not registered
+  [MONITOR] Registered module [CHKPOINT]: Checkpointing I/O
+  [MONITOR] Registered timer [CHP_TOT]: Checkpointing total time
+  [MONITOR] Registered timer [CHP_INI]: Checkpointing initialisation time
+  [RUNPAR] Module [CHKPOINT] registered section _CHKPOINT: Runtime paramere section for checkpoint module
+  [RUNPAR] Section _CHKPOINT registered parameter READCHKPT: Restat from checkpoint
+  [RUNPAR] Section _CHKPOINT registered parameter CHKPFNUMBER: Restart file number
+  [RUNPAR] Section _CHKPOINT registered parameter CHKPINTERVAL: Checkpiont saving frequency (number of time steps)
+  [MONITOR] Module [MSTEP] not registered
+  [MONITOR] Registered module [MSTEP]: Multi-file checkpointing
+  [MONITOR] Registered timer [CHP_READ]: Checkpointing reading time
+  [MONITOR] Registered timer [CHP_WRITE]: Checkpointing writing time
+  [MONITOR] Module [STAT] not registered
+  [MONITOR] Registered module [STAT]: 2D and 3D statistics
+  [MONITOR] Module [MAP2D] not registered
+  [MONITOR] Module [MAP2D] not registered
+  [MONITOR] Registered module [MAP2D]: Mapping 3D mesh to 2D section
+  [MONITOR] Registered timer [MAP2D_TOT]: 2D mapping total time
+  [MONITOR] Registered timer [STAT_TOT]: Statistics total time
+  [MONITOR] Registered timer [STAT_INI]: Statistics initialisation time
+  [MONITOR] Registered timer [STAT_AVG]: Statistics averaging time
+  [MONITOR] Registered timer [STAT_CMM]: Statistics communication time
+  [MONITOR] Registered timer [STAT_IO]: Statistics IO time
+  [RUNPAR] Module [STAT] registered section _STAT: Runtime paramere section for statistics module
+  [RUNPAR] Section _STAT registered parameter AVSTEP: Frequency of averaging
+  [RUNPAR] Section _STAT registered parameter IOSTEP: Frequency of filed saving
+  [MONITOR] Module [TSRS] not registered
+  [MONITOR] Registered module [TSRS]: point time series
+  [MONITOR] Registered timer [TSRS_TOT]: Time series total time
+  [MONITOR] Registered timer [TSRS_INI]: Time seires initialisation time
+  [MONITOR] Registered timer [TSRS_CVP]: Vorticity and pressure calc. time
+  [MONITOR] Registered timer [TSRS_INT]: Time series interpolation time
+  [MONITOR] Registered timer [TSRS_BFR]: Time series buffering time
+  [MONITOR] Registered timer [TSRS_IO]: Time series I/O time
+  [RUNPAR] Module [TSRS] registered section _TSRS: Runtime paramere section for time series module
+  [RUNPAR] Section _TSRS registered parameter SMPSTEP: Frequency of sampling
+  [RUNPAR] WARNING: Unknown runtime parameter _RUNPAR:OUTPARFILE
+  [MONITOR] Reseting log threshold to:  1
+  [MONITOR] Summary of registered modules
+    [FRAME     ] : Framework backbone                                                                                                                  
+        [MONITOR   ] : Monitoring module                                                                                                                   
+        [RUNPAR    ] : Runtime parameters                                                                                                                  
+        [IOTOOL    ] : I/O TOOLS                                                                                                                           
+        [CHKPOINT  ] : Checkpointing I/O                                                                                                                   
+            [MSTEP     ] : Multi-file checkpointing                                                                                                            
+        [STAT      ] : 2D and 3D statistics                                                                                                                
+        [MAP2D     ] : Mapping 3D mesh to 2D section                                                                                                       
+        [TSRS      ] : point time series                                                                                                                   
+  [RUNPAR] Summary of registered runtime parameters for active sections
+#
+[_RUNPAR]               # Runtime parameter section for rprm module
+PARFWRITE            = no                     # Do we write runtime parameter file
+PARFNAME             = outparfile             # Runtime parameter file name for output (without .par)
+#
+[_MONITOR]              # Runtime parameter section for monitor module
+LOGLEVEL             = 1                      # Logging threshold for toolboxes
+IFTIMDSCR            = no                     # Write timer description in the summary
+WALLTIME             = 23:45                  # Simulation wall time
+#
+[_CHKPOINT]             # Runtime paramere section for checkpoint module
+READCHKPT            = yes                    # Restat from checkpoint
+CHKPFNUMBER          = 1                      # Restart file number
+CHKPINTERVAL         = 10000000               # Checkpiont saving frequency (number of time steps)
+#
+[_STAT]                 # Runtime paramere section for statistics module
+AVSTEP               = 10                     # Frequency of averaging
+IOSTEP               = ********               # Frequency of filed saving
+#
+[_TSRS]                 # Runtime paramere section for time series module
+SMPSTEP              = 23                     # Frequency of sampling
+ 
+  [CHKPOINT] WARNING: wrong chpt_step; resetting to NSTEPS
+  [MAP2D] 3D=>2D mapping begin
+  [MAP2D] Local 3D=>2D mapping
+  [MAP2D] Global 3D=>2D mapping
+  [MAP2D] Cycle 001; globally unmarked =       81
+  [MAP2D] Global number of unique 2D elements:       32
+  [MAP2D] Owned 2D element imbalance:
+  [MAP2D] min:        0
+  [MAP2D] max:        8
+  [MAP2D] 3D=>2D mapping end
+  [MAP2D] Creating 2D mesh
+  [STAT] Getting loacal int. coeff.
+gs_setup: 1152 unique labels shared
+   pairwise times (avg, min, max): 1.69394e-06 1.545e-06 1.7812e-06
+   crystal router                : 2.79356e-06 2.7346e-06 2.8884e-06
+   all reduce                    : 0.000167173 0.000165429 0.000168947
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 8776.8 8348 9564
+   buffer bytes (avg, min, max): 7603.2 6912 9216
+  [TSRS] Interpolation point number :     1152
+
+ Point redistribution; pts_map_all:
+Global point nr          1152
+Average point nr          115
+Old loc pts nr min/max    115    116
+Assgn point nr min/max      0    432
+Nr of shifted points      804
+Mapping time min/max    0.29521E-04  0.41287E-04
+
+
+ Point redistribution; pts_transfer_min:
+New loc pts nr min/max    114    116
+Sending time min/max    0.14620E-03  0.17790E-03
+
+       FILE:rs6phill0.f00001                                                                                                                    
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.40091205E+03
+  [MSTEP] io-nodes =       10
+ DRL_STATE F F
+ [NEK] DRL STEP           1
+------------ INITIALIZATION -------------
+ [NEK] INTERCOMM ESTABLISHED!
+ ==============================
+ [DRL] STATE Initialisation
+ ==============================
+ YW: FIND WALL PTS
+ [DRL] STATE SORTING NUMCTRL=         576
+ [DRL]: Retau, yplus, ys   180.00000000000000        15.000000000000000        8.3333333333333343E-002
+ [DRL] Sensing: Failed Interp:           0
+ ---------------------------
+ [DRL] NODE INFO READY
+ ---------------------------
+ ==============================
+ [DRL] FINISH INIT
+ ==============================
+ done :: userchk
+
+gridpoints unique/tot:         16400        27648
+dofs vel/pr:                   16000         8192
+  
+ Initial time: 0.8999960E+03
+ Initialization successfully completed   0.62688E-01 sec
+ DRL_STATE F F
+ [NEK] Back to SOLV,init: F
+ ============================
+ [NEK] Reset TIME LOOP and CHKPT!
+ ============================
+       FILE:rs6phill0.f00001                                                                                                                    
+[STB3] REQUEST NODE LIST
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.21979131E+03
+  [MSTEP] io-nodes =       10
+
+Starting time loop ...
+
+     DT/DTCFL/DTFS/DTINIT   0.100E-01   0.522-309   0.522-309   0.100E-01
+Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.281 0.0000E+00 0.0000E+00
+             Solving for fluid
+          1  Hmholtz VELX       1   3.7866E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       2   2.2899E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       3   6.0436E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       4   3.1385E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       5   6.5780E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       6   1.9220E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       7   3.3663E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       8   3.4319E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       9   1.1232E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      10   3.0689E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      11   1.0014E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      12   1.9140E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      13   6.8890E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      12   6.8890E-09   3.7866E-01   1.0000E-08
+          1  Hmholtz VELY       1   3.2652E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       2   5.8453E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       3   9.2483E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       4   1.6872E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       5   4.0462E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       6   3.8470E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       7   5.2971E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       8   1.3058E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       9   3.0206E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY      10   8.3666E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       9   8.3666E-09   3.2652E-01   1.0000E-08
+          1  Hmholtz VELZ       1   3.7326E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       2   2.0247E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       3   5.4126E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       4   2.8000E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       5   5.8320E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       6   1.7009E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       7   3.0782E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       8   3.0725E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       9   9.7704E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      10   2.6800E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      11   8.8836E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      12   1.6796E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      13   5.9986E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      12   5.9986E-09   3.7326E-01   1.0000E-08
+    1 1.00000E-08 5.74465E-05 2.25774E-04 2.54443E-01       1 Divergence
+    2 1.00000E-08 2.21974E-05 2.25774E-04 9.83168E-02       1 Divergence
+    3 1.00000E-08 1.27284E-05 2.25774E-04 5.63770E-02       1 Divergence
+    4 1.00000E-08 9.09571E-06 2.25774E-04 4.02868E-02       1 Divergence
+    5 1.00000E-08 6.61014E-06 2.25774E-04 2.92777E-02       1 Divergence
+    6 1.00000E-08 4.27802E-06 2.25774E-04 1.89483E-02       1 Divergence
+    7 1.00000E-08 2.71199E-06 2.25774E-04 1.20120E-02       1 Divergence
+    8 1.00000E-08 1.64725E-06 2.25774E-04 7.29603E-03       1 Divergence
+    9 1.00000E-08 9.75488E-07 2.25774E-04 4.32064E-03       1 Divergence
+   10 1.00000E-08 6.14927E-07 2.25774E-04 2.72364E-03       1 Divergence
+   11 1.00000E-08 4.01252E-07 2.25774E-04 1.77723E-03       1 Divergence
+   12 1.00000E-08 2.94275E-07 2.25774E-04 1.30341E-03       1 Divergence
+   13 1.00000E-08 2.21752E-07 2.25774E-04 9.82185E-04       1 Divergence
+   14 1.00000E-08 1.54253E-07 2.25774E-04 6.83220E-04       1 Divergence
+   15 1.00000E-08 1.17274E-07 2.25774E-04 5.19431E-04       1 Divergence
+   16 1.00000E-08 8.76420E-08 2.25774E-04 3.88185E-04       1 Divergence
+   17 1.00000E-08 6.69934E-08 2.25774E-04 2.96728E-04       1 Divergence
+   18 1.00000E-08 5.04981E-08 2.25774E-04 2.23667E-04       1 Divergence
+   19 1.00000E-08 3.63079E-08 2.25774E-04 1.60815E-04       1 Divergence
+   20 1.00000E-08 2.58904E-08 2.25774E-04 1.14674E-04       1 Divergence
+   21 1.00000E-08 2.05218E-08 2.25774E-04 9.08954E-05       1 Divergence
+   22 1.00000E-08 1.48687E-08 2.25774E-04 6.58565E-05       1 Divergence
+   23 1.00000E-08 1.18904E-08 2.25774E-04 5.26649E-05       1 Divergence
+   24 1.00000E-08 1.00897E-08 2.25774E-04 4.46892E-05       1 Divergence
+   25 1.00000E-08 8.29986E-09 2.25774E-04 3.67618E-05       1 Divergence
+          1  U-PRES gmres      25   8.2999E-09   2.2577E-04   1.0000E-08   2.0830E-03   5.9690E-03
+          1  Hmholtz VELX       1   9.9674E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       2   7.0774E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       3   1.8506E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       4   9.6754E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       5   2.0115E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       6   6.0768E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       7   9.9141E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       8   1.0610E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       9   3.3835E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      10   8.9882E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      11   2.9526E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      12   5.8227E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      13   2.0284E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      14   3.6334E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      13   3.6334E-09   9.9674E-01   1.0000E-08
+    1 1.00000E-04 3.51970E-11 3.88549E-11 9.05858E-01       0 Divergence
+          0  U-PRES gmres       1   3.5197E-11   3.8855E-11   1.0000E-04   7.7264E-05   2.1781E-04
+          1  Volflow X              9.0001E+02   4.9629E-03   3.9437E-05   7.9996E-01   8.0000E-01
+          1  Fluid done  9.0001E+02  9.1413E-03
+       FILE:rs6phill0.f00002                                                                                                                    
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.30096269E+03
+  [MSTEP] io-nodes =       10
+  [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   2.0000000000663931E-003
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: INTAL
+ =============================
+ [NEK] SEND HAND-SHAKE
+[STB3] NODE LIST GET:[0 1 2]
+ [NEK] Finish SEND NODE INFO
+ ======== INTO MPI LOOP ============
+[STB3] INIT END, NUM AGENT=576
+[STB3] DUMP NODE INFO : runs/0/history/NODE_INFO.csv
+[STB3] GLL WEIGHT=[0.06666667 0.37847496 0.55485838 0.55485838 0.37847496 0.06666667]
+SCALE: dUdy=12.4271
+ Utau=0.0638
+------------ FINISH -------------
+Controller type OC created successfully
+Beginning integration
+
+--------------------------------------------------------
+███╗   ██╗███████╗██╗  ██╗    ██████╗ ██████╗ ██╗     
+████╗  ██║██╔════╝██║ ██╔╝    ██╔══██╗██╔══██╗██║     
+██╔██╗ ██║█████╗  █████╔╝     ██║  ██║██████╔╝██║     
+██║╚██╗██║██╔══╝  ██╔═██╗     ██║  ██║██╔══██╗██║     
+██║ ╚████║███████╗██║  ██╗    ██████╔╝██║  ██║███████╗
+            NEK5000 Reinforcement Learning
+                    HydroGym-dev
+                    Yuning Wang
+--------------------------------------------------------
+
+
+[STB3] RESET!
+[STB3] EPISODE=1
+[STB3] SAVE LOG
+[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00001
+[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00002
+[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00003
+ =============================
+ [NEK] RECV REQUEST: RSETS
+[STB3] Start SIM
+ =============================
+ DRL_STATE T T
+ [NEK] RESTART Time Evolution!
+ ========OUT MPI LOOP!========
+ DRL_STATE T T
+ [NEK] IF QUIT T
+ [NEK] QUIT SOLV LOOP
+ DRL_STATE F F
+ [NEK] Back to SOLV,init: F
+ ============================
+ [NEK] Reset TIME LOOP and CHKPT!
+ ============================
+       FILE:rs6phill0.f00001                                                                                                                    
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.89980409E+03
+  [MSTEP] io-nodes =       10
+
+Starting time loop ...
+
+Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.281 0.0000E+00 0.0000E+00
+             Solving for fluid
+          1  Hmholtz VELX       1   3.7866E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       2   2.2899E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       3   6.0436E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       4   3.1385E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       5   6.5780E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       6   1.9220E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       7   3.3663E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       8   3.4319E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX       9   1.1232E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      10   3.0689E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      11   1.0014E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      12   1.9140E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      13   6.8890E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELX      12   6.8890E-09   3.7866E-01   1.0000E-08
+          1  Hmholtz VELY       1   3.2652E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       2   5.8453E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       3   9.2483E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       4   1.6872E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       5   4.0462E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       6   3.8470E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       7   5.2971E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       8   1.3058E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       9   3.0206E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY      10   8.3666E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELY       9   8.3666E-09   3.2652E-01   1.0000E-08
+          1  Hmholtz VELZ       1   3.7326E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       2   2.0247E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       3   5.4126E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       4   2.8000E-03   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       5   5.8320E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       6   1.7009E-04   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       7   3.0782E-05   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       8   3.0725E-06   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ       9   9.7704E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      10   2.6800E-07   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      11   8.8836E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      12   1.6796E-08   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      13   5.9986E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
+          1  Hmholtz VELZ      12   5.9986E-09   3.7326E-01   1.0000E-08
+    1 1.00000E-08 5.74465E-05 2.25774E-04 2.54443E-01       1 Divergence
+    2 1.00000E-08 2.21974E-05 2.25774E-04 9.83168E-02       1 Divergence
+    3 1.00000E-08 1.27284E-05 2.25774E-04 5.63770E-02       1 Divergence
+    4 1.00000E-08 9.09571E-06 2.25774E-04 4.02868E-02       1 Divergence
+    5 1.00000E-08 6.61014E-06 2.25774E-04 2.92777E-02       1 Divergence
+    6 1.00000E-08 4.27802E-06 2.25774E-04 1.89483E-02       1 Divergence
+    7 1.00000E-08 2.71199E-06 2.25774E-04 1.20120E-02       1 Divergence
+    8 1.00000E-08 1.64725E-06 2.25774E-04 7.29603E-03       1 Divergence
+    9 1.00000E-08 9.75488E-07 2.25774E-04 4.32064E-03       1 Divergence
+   10 1.00000E-08 6.14927E-07 2.25774E-04 2.72364E-03       1 Divergence
+   11 1.00000E-08 4.01252E-07 2.25774E-04 1.77723E-03       1 Divergence
+   12 1.00000E-08 2.94275E-07 2.25774E-04 1.30341E-03       1 Divergence
+   13 1.00000E-08 2.21752E-07 2.25774E-04 9.82185E-04       1 Divergence
+   14 1.00000E-08 1.54253E-07 2.25774E-04 6.83220E-04       1 Divergence
+   15 1.00000E-08 1.17274E-07 2.25774E-04 5.19431E-04       1 Divergence
+   16 1.00000E-08 8.76420E-08 2.25774E-04 3.88185E-04       1 Divergence
+   17 1.00000E-08 6.69934E-08 2.25774E-04 2.96728E-04       1 Divergence
+   18 1.00000E-08 5.04981E-08 2.25774E-04 2.23667E-04       1 Divergence
+   19 1.00000E-08 3.63079E-08 2.25774E-04 1.60815E-04       1 Divergence
+   20 1.00000E-08 2.58904E-08 2.25774E-04 1.14674E-04       1 Divergence
+   21 1.00000E-08 2.05218E-08 2.25774E-04 9.08954E-05       1 Divergence
+   22 1.00000E-08 1.48687E-08 2.25774E-04 6.58565E-05       1 Divergence
+   23 1.00000E-08 1.18904E-08 2.25774E-04 5.26649E-05       1 Divergence
+   24 1.00000E-08 1.00897E-08 2.25774E-04 4.46892E-05       1 Divergence
+   25 1.00000E-08 8.29986E-09 2.25774E-04 3.67618E-05       1 Divergence
+          1  U-PRES gmres      25   8.2999E-09   2.2577E-04   1.0000E-08   1.7049E-03   5.0790E-03
+          1  Volflow X              9.0001E+02   4.9629E-03   3.9437E-05   7.9996E-01   8.0000E-01
+          1  Fluid done  9.0001E+02  7.1010E-03
+       FILE:rs6phill0.f00002                                                                                                                    
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.55314963E+03
+  [MSTEP] io-nodes =       10
+  [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   2.0000000000663931E-003
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+
+        1  9.0000E+02 Write checkpoint
+       FILE:/home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_001/angphill0.f00001                                                 
+ min/max:   0.0000       2.6700       0.0000       1.0000       0.0000      0.80000    
+ min/max:   0.0000       1.3738     -0.27629      0.25191       0.0000       1.3738    
+ min/max: -0.52595E-01  0.67352E-01
+
+        1  9.0000E+02 done :: Write checkpoint
+                              file size =     0.75    MB
+                              avg data-throughput =   276.4MB/s
+                              io-nodes =    10
+
+ At           1 YW: WIRTE ANGLE FOR TEST
+gs_setup: 1152 unique labels shared
+   pairwise times (avg, min, max): 1.67961e-06 1.4855e-06 1.7688e-06
+   crystal router                : 2.91469e-06 2.8375e-06 2.9994e-06
+   all reduce                    : 2.70205e-05 2.66236e-05 2.72688e-05
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 33228 31388 34620
+   buffer bytes (avg, min, max): 7603.2 6912 9216
+gs_setup: 792 unique labels shared
+   pairwise times (avg, min, max): 9.2237e-07 8.104e-07 1.0013e-06
+   crystal router                : 2.15062e-06 2.095e-06 2.2369e-06
+   all reduce                    : 2.75737e-05 2.73306e-05 2.78268e-05
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 27752.8 23868 30812
+   buffer bytes (avg, min, max): 2534.4 1152 4032
+ [STATE] AVG HANDLE INIT!           7           8
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   899.99799999250001     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+[STB3] ACTION for 576 Agents
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+gs_setup: 1152 unique labels shared
+   pairwise times (avg, min, max): 1.7734e-06 1.5276e-06 2.0045e-06
+   crystal router                : 3.13732e-06 3.0692e-06 3.2348e-06
+   all reduce                    : 6.10457e-05 6.03382e-05 6.28137e-05
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 33228 31388 34620
+   buffer bytes (avg, min, max): 7603.2 6912 9216
+gs_setup: 792 unique labels shared
+   pairwise times (avg, min, max): 9.51e-07 8.293e-07 1.0292e-06
+   crystal router                : 2.0168e-06 1.9514e-06 2.0823e-06
+   all reduce                    : 0.000100689 9.91741e-05 0.000102973
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 27752.8 23868 30812
+   buffer bytes (avg, min, max): 2534.4 1152 4032
+ [REWARD] AVG HANDLE INIT!           9          10
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      2, t= 9.0000800E+02, DT= 1.0000000E-02, C=  0.280 5.3084E-02 2.4303E-02
+             Solving for fluid
+          2  Hmholtz VELX      10   9.0630E-09   4.1708E-01   1.0000E-08
+          2  Hmholtz VELY       8   3.8961E-09   3.5932E-01   1.0000E-08
+          2  Hmholtz VELZ      10   8.1688E-09   4.1082E-01   1.0000E-08
+[LOGGER] act_index=0 dUdy=13.09737 R=-0.05394 
+          2  U-PRES gmres      49   8.2790E-09   2.1466E-01   1.0000E-08   3.5268E-03   9.6134E-03
+          2  Hmholtz VELX      11   4.5913E-09   9.9674E-01   1.0000E-08
+          0  U-PRES gmres       1   4.1532E-11   4.1893E-11   1.0000E-04   7.9137E-05   2.0031E-04
+          2  Volflow X              9.0001E+02   4.9598E-03   2.6277E-05   7.9997E-01   8.0000E-01
+          2  Fluid done  9.0001E+02  1.2231E-02
+       FILE:rs6phill0.f00003                                                                                                                    
+  [MSTEP] Checkpoint read:
+  [MSTEP] avg data-throughput (MB/s) =  0.53113356E+03
+  [MSTEP] io-nodes =       10
+  [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   1.9999999999527063E-003
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   899.99999999249997     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.01,		 Reward: -0.054,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+[STB3] ACTION for 576 Agents
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      3, t= 9.0001000E+02, DT= 1.0000000E-02, C=  0.280 7.3570E-02 2.0486E-02
+             Solving for fluid
+          3  Hmholtz VELX      10   2.4750E-09   4.4209E-01   1.0000E-08
+          3  Hmholtz VELY       7   8.6269E-09   3.8089E-01   1.0000E-08
+          3  Hmholtz VELZ      10   2.2251E-09   4.3564E-01   1.0000E-08
+[LOGGER] act_index=1 dUdy=13.09707 R=-0.05391 
+          3  U-PRES gmres      48   9.7455E-09   2.1469E-01   1.0000E-08   3.3370E-03   9.3265E-03
+          3  Hmholtz VELX      10   6.3832E-09   9.9674E-01   1.0000E-08
+          0  U-PRES gmres       1   3.7949E-11   3.8301E-11   1.0000E-04   7.8607E-05   2.0213E-04
+          3  Volflow X              9.0001E+02   4.9581E-03   2.1492E-05   7.9998E-01   8.0000E-01
+          3  Fluid done  9.0001E+02  1.1846E-02
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.00999999249996     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.02,		 Reward: -0.054,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      4, t= 9.0002000E+02, DT= 1.0000000E-02, C=  0.279 9.1767E-02 1.8197E-02
+             Solving for fluid
+          4  Hmholtz VELX      10   4.2306E-09   1.6911E+00   1.0000E-08
+          4  Hmholtz VELY       8   1.9928E-09   2.9382E+00   1.0000E-08
+          4  Hmholtz VELZ      10   3.4946E-09   2.5747E+00   1.0000E-08
+[LOGGER] act_index=2 dUdy=13.09610 R=-0.05383 
+          4  U-PRES gmres      52   7.0624E-09   6.3748E-01   1.0000E-08   3.8673E-03   9.8225E-03
+          4  Volflow X              9.0002E+02   2.4984E-03   1.0830E-05   7.9999E-01   8.0000E-01
+          4  Fluid done  9.0002E+02  1.1368E-02
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.01999999249995     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.03,		 Reward: -0.054,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+[STB3] ACTION for 576 Agents
+ [NEK] IF QUIT F
+Step      5, t= 9.0003000E+02, DT= 1.0000000E-02, C=  0.280 1.0938E-01 1.7617E-02
+             Solving for fluid
+          5  Hmholtz VELX      10   6.3040E-09   2.4142E+00   1.0000E-08
+          5  Hmholtz VELY       8   2.2921E-09   4.0195E+00   1.0000E-08
+          5  Hmholtz VELZ      10   3.9071E-09   3.4964E+00   1.0000E-08
+[LOGGER] act_index=3 dUdy=13.01744 R=-0.04750 
+          5  U-PRES gmres      52   9.1860E-09   7.5202E-01   1.0000E-08   3.5158E-03   9.9340E-03
+          5  Volflow X              9.0003E+02   6.0413E-03   2.6188E-05   7.9997E-01   8.0000E-01
+          5  Fluid done  9.0003E+02  1.1502E-02
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.02999999249994     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.04,		 Reward: -0.048,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+[STB3] ACTION for 576 Agents
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      6, t= 9.0004000E+02, DT= 1.0000000E-02, C=  0.280 1.2705E-01 1.7666E-02
+             Solving for fluid
+          6  Hmholtz VELX      10   5.7220E-09   2.1701E+00   1.0000E-08
+          6  Hmholtz VELY       8   2.2798E-09   3.1882E+00   1.0000E-08
+          6  Hmholtz VELZ      10   3.8947E-09   2.5271E+00   1.0000E-08
+[LOGGER] act_index=4 dUdy=13.00361 R=-0.04639 
+          6  U-PRES gmres      52   6.6331E-09   5.1119E-01   1.0000E-08   3.5205E-03   9.1839E-03
+          6  Volflow X              9.0004E+02   3.6687E-03   1.5903E-05   7.9998E-01   8.0000E-01
+          6  Fluid done  9.0004E+02  1.0698E-02
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+[STB3] STATE RECV
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.03999999249993     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.05,		 Reward: -0.046,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+[STB3] ACTION for 576 Agents
+Step      7, t= 9.0005000E+02, DT= 1.0000000E-02, C=  0.279 1.4397E-01 1.6916E-02
+             Solving for fluid
+          7  Hmholtz VELX      10   5.8802E-09   1.7341E+00   1.0000E-08
+          7  Hmholtz VELY       8   2.2517E-09   2.0498E+00   1.0000E-08
+          7  Hmholtz VELZ      10   3.7613E-09   1.5551E+00   1.0000E-08
+[LOGGER] act_index=5 dUdy=12.96331 R=-0.04315 
+          7  U-PRES gmres      51   8.6823E-09   2.7974E-01   1.0000E-08   3.5214E-03   8.1366E-03
+          7  Volflow X              9.0005E+02   4.7406E-03   2.0550E-05   7.9998E-01   8.0000E-01
+          7  Fluid done  9.0005E+02  9.5498E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.04999999249992     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.06,		 Reward: -0.043,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      8, t= 9.0006000E+02, DT= 1.0000000E-02, C=  0.275 1.5972E-01 1.5753E-02
+             Solving for fluid
+          8  Hmholtz VELX      10   4.8152E-09   1.3805E+00   1.0000E-08
+          8  Hmholtz VELY       8   2.1683E-09   1.4830E+00   1.0000E-08
+          8  Hmholtz VELZ      10   3.6082E-09   9.6554E-01   1.0000E-08
+[LOGGER] act_index=6 dUdy=12.93649 R=-0.04099 
+          8  U-PRES gmres      51   8.5043E-09   1.6073E-01   1.0000E-08   3.4303E-03   7.9615E-03
+          8  Volflow X              9.0006E+02   4.2252E-03   1.8316E-05   7.9998E-01   8.0000E-01
+          8  Fluid done  9.0006E+02  9.3707E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.05999999249991     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.07,		 Reward: -0.041,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step      9, t= 9.0007000E+02, DT= 1.0000000E-02, C=  0.272 1.7529E-01 1.5572E-02
+             Solving for fluid
+          9  Hmholtz VELX      10   4.9564E-09   1.2262E+00   1.0000E-08
+          9  Hmholtz VELY       8   2.1501E-09   1.1082E+00   1.0000E-08
+          9  Hmholtz VELZ      10   3.5428E-09   7.9204E-01   1.0000E-08
+[LOGGER] act_index=7 dUdy=12.90021 R=-0.03807 
+          9  U-PRES gmres      50   9.2211E-09   1.0623E-01   1.0000E-08   3.4538E-03   8.0155E-03
+          9  Volflow X              9.0007E+02   4.5007E-03   1.9510E-05   7.9998E-01   8.0000E-01
+          9  Fluid done  9.0007E+02  9.4936E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.06999999249990     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.08,		 Reward: -0.038,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     10, t= 9.0008000E+02, DT= 1.0000000E-02, C=  0.273 1.9087E-01 1.5580E-02
+             Solving for fluid
+         10  Hmholtz VELX      10   4.2931E-09   1.0343E+00   1.0000E-08
+         10  Hmholtz VELY       8   2.1072E-09   9.9370E-01   1.0000E-08
+         10  Hmholtz VELZ      10   3.5116E-09   7.0818E-01   1.0000E-08
+[LOGGER] act_index=8 dUdy=12.86843 R=-0.03551 
+         10  U-PRES gmres      49   9.6558E-09   7.7193E-02   1.0000E-08   3.3132E-03   7.7182E-03
+[STB3] STATE RECV
+         10  Volflow X              9.0008E+02   4.3677E-03   1.8933E-05   7.9998E-01   8.0000E-01
+         10  Fluid done  9.0008E+02  9.2008E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.07999999249989     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.09,		 Reward: -0.036,		 Mem: 33.3
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+[STB3] ACTION for 576 Agents
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     11, t= 9.0009000E+02, DT= 1.0000000E-02, C=  0.272 2.0640E-01 1.5527E-02
+             Solving for fluid
+         11  Hmholtz VELX      10   4.4592E-09   9.8274E-01   1.0000E-08
+         11  Hmholtz VELY       8   2.0976E-09   8.2140E-01   1.0000E-08
+         11  Hmholtz VELZ      10   3.5092E-09   6.9649E-01   1.0000E-08
+[LOGGER] act_index=9 dUdy=12.83369 R=-0.03272 
+         11  U-PRES gmres      49   7.5649E-09   5.9572E-02   1.0000E-08   3.2986E-03   7.6550E-03
+         11  Volflow X              9.0009E+02   4.4517E-03   1.9297E-05   7.9998E-01   8.0000E-01
+         11  Fluid done  9.0009E+02  8.9965E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.08999999249988     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+[INTEGRATE] AT 10/10.0 SAVE Trajectories
+t: 0.10,		 Reward: -0.033,		 Mem: 33.3
+[INTEGRATE] SAVED RECORD to runs/1998/env_001/vars_record_1770779550.mat
+
+▗▖  ▗▖▗▄▄▄▖▗▖ ▗▖    ▗▄▄▄ ▗▄▄▖ ▗▖       ▗▄▄▄▖▗▖  ▗▖▗▄▄▄ 
+▐▛▚▖▐▌▐▌   ▐▌▗▞▘    ▐▌  █▐▌ ▐▌▐▌       ▐▌   ▐▛▚▖▐▌▐▌  █
+▐▌ ▝▜▌▐▛▀▀▘▐▛▚▖     ▐▌  █▐▛▀▚▖▐▌       ▐▛▀▀▘▐▌ ▝▜▌▐▌  █
+▐▌  ▐▌▐▙▄▄▖▐▌ ▐▌    ▐▙▄▄▀▐▌ ▐▌▐▙▄▄▖    ▐▙▄▄▖▐▌  ▐▌▐▙▄▄▀
+
+[STB3] CLOSE ENV
+[STB3] REWARD LOGGER CLOSED
+ =============================
+ [NEK] RECV REQUEST: TERMN
+ =============================
+ --------------STOP-----------------
+ [TERMN] !!!!! LAST STEP !!!!!
+ [TERMN] CKPT SAVED!
+ --------------STOP-----------------
+ [TERMN] DISCONNECT!
+  
+run successful: dying ...
+  
+[STB3] TERMN ENV, Sleep: 0.1SEC
+  
+total elapsed time             :   3.21875E-01 sec
+total solver time w/o IO       :   2.03651E-01 sec
+time/timestep                  :   1.85138E-02 sec
+avg throughput per timestep    :   8.85827E+04 gridpts/CPUs
+total max memory usage         :   2.93192E-01 GB
+
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.

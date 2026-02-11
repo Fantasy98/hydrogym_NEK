@@ -144,6 +144,6 @@ elif [[ "${MODE}" == "eval" ]]; then
             --steps "${STEPS}" \
             --overrides "runner.rank=${ienv}" "runner.evaluation=True" \
             :\
-            -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
+            -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" > "${LOG_DIR}/log.eval.${CONFIG_NAME}.${ienv}.txt" 2>&1
     done
 fi

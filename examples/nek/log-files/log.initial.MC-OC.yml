@@ -1,6 +1,6 @@
 [NEK] RUN ROOT DIR: ./runs
 [NEK] CASE RUN FOLDER: ./runs/1998
-[NEK] RANK RUN FOLDER: ./runs/1998/env_005
+[NEK] RANK RUN FOLDER: ./runs/1998/env_006
 
 --------------------------------------------------------
 ███╗   ██╗███████╗██╗  ██╗    ██████╗ ██████╗ ██╗     
@@ -16,20 +16,23 @@
 
 Allocated 1152 points
 Written 1152 points to the file
-[IO] ./runs/1998/env_005/nek5000 COPIED
-[IO] ./runs/1998/env_005/phill.re2 COPIED
-[IO] ./runs/1998/env_005/phill.ma2 COPIED
-[IO] ./runs/1998/env_005/phill.usr COPIED
-[IO] ./runs/1998/env_005/int_pos COPIED
-[IO] WARNING: ./runs/1998/env_005/SIZE not EXIST
+[IO] REMOVE EXIST: ./runs/1998/env_006/nek5000
+[IO] ./runs/1998/env_006/nek5000 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_006/phill.re2
+[IO] ./runs/1998/env_006/phill.re2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_006/phill.ma2
+[IO] ./runs/1998/env_006/phill.ma2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_006/phill.usr
+[IO] ./runs/1998/env_006/phill.usr COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_006/int_pos
+[IO] ./runs/1998/env_006/int_pos COPIED
+[IO] ./runs/1998/env_006/SIZE EXIST
 [IO] SESSION NAME WRITTEN
 [IO] Writting .par file:
-./runs/1998/env_005/phill.par
-[IO] WRITTEN .par file: ./runs/1998/env_005/phill.par
-[INIT] IMPORTING RESTART FILES!
-[STB3] RS6 file RESET: ./data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00001
-[STB3] RS6 file RESET: ./data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00002
-[STB3] RS6 file RESET: ./data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00003
+./runs/1998/env_006/phill.par
+[IO] WRITTEN .par file: ./runs/1998/env_006/phill.par
+[INIT] 6 FILE!
+[INIT] File Exists no need to copy!
 [NEK] RUN PATH: dir-files/RUN_PATH_1998.txt
 
 ▗▖  ▗▖▗▄▄▄▖▗▖ ▗▖    ▗▄▄▄ ▗▄▄▖ ▗▖       ▗▄▄▄▖▗▖  ▗▖▗▄▄▄ 

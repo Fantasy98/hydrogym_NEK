@@ -1,6 +1,9 @@
-from typing import Callable, Iterable, Optional, Tuple
+from typing import Callable, Iterable, Optional, Tuple, Dict
+import os
+import time
 
 import numpy as np
+import scipy.io as sio
 
 from hydrogym.core import CallbackBase
 
@@ -60,6 +63,35 @@ def integrate(
   controller_states = None
   episode_start = np.ones((1,), dtype=bool)  # True on first step
   
+  # Initialize history recording if enabled
+  vars_record = False
+  vars_record_freq = 1
+  agent_dict = {}
+  if hasattr(env, 'conf') and hasattr(env.conf, 'runner'):
+    vars_record = getattr(env.conf.runner, 'vars_record', False)
+    vars_record_freq = getattr(env.conf.runner, 'vars_record_freq', 1)
+  
+  if vars_record:
+    # Get agent list based on environment type
+    if hasattr(env, 'pz_env'):
+      # NekMARLGymWrapper: get underlying parallel_env
+      agents_list = list(env.pz_env.possible_agents)
+    elif hasattr(env, 'possible_agents'):
+      # Direct parallel_env
+      agents_list = list(env.possible_agents)
+    else:
+      # Single agent case
+      agents_list = ['agent_0']
+    
+    # Initialize dictionary for collecting data
+    agent_dict = {
+      agent: {
+        "obs_rec": [],
+        "act_rec": [],
+        "rew_rec": [],
+      } for agent in agents_list
+    }
+  
   # Main integration loop
   while t < t_end and iter < max_steps:
     # Get controller action if provided
@@ -87,6 +119,7 @@ def integrate(
                   for agent in env.possible_agents}
 
     # Step the environment
+    info = {}
     if hasattr(env, 'step'):
       result = env.step(action)
       if isinstance(result, tuple) and len(result) >= 2:
@@ -98,6 +131,7 @@ def integrate(
           break
       else:
         obs = result
+        info = {}
 
     # Update time
     t = t_start + (iter + 1) * dt
@@ -105,6 +139,55 @@ def integrate(
     
     # Update episode_start flag (False after first step)
     episode_start = np.zeros((1,), dtype=bool)
+
+    # Record history if enabled
+    if vars_record and (iter % vars_record_freq == 0):
+      if hasattr(env, 'pz_env'):
+        # NekMARLGymWrapper: obs and action are concatenated arrays
+        # Need to split them for each agent
+        if isinstance(obs, np.ndarray) and isinstance(action, np.ndarray):
+          # Split concatenated obs and action
+          for i, agent in enumerate(agents_list):
+            start_obs = i * env.per_agent_obs_size
+            end_obs = (i + 1) * env.per_agent_obs_size
+            start_act = i * env.per_agent_act_size
+            end_act = (i + 1) * env.per_agent_act_size
+            
+            agent_obs = obs[start_obs:end_obs].reshape(1, -1)
+            agent_act = action[start_act:end_act].reshape(1, -1)
+            
+            # Get per-agent reward from info if available
+            if isinstance(info, dict) and 'reward_per_agent' in info:
+              agent_rew = np.array([[info['reward_per_agent'][agent]]])
+            else:
+              # Use aggregated reward divided by number of agents
+              agent_rew = np.array([[last_reward / len(agents_list)]])
+            
+            agent_dict[agent]['obs_rec'].append(agent_obs)
+            agent_dict[agent]['act_rec'].append(agent_act)
+            agent_dict[agent]['rew_rec'].append(agent_rew)
+      elif hasattr(env, 'possible_agents'):
+        # Direct parallel_env: obs and action are dicts
+        if isinstance(obs, dict) and isinstance(action, dict):
+          for agent in agents_list:
+            if agent in obs and agent in action:
+              agent_dict[agent]['obs_rec'].append(obs[agent].reshape(1, -1))
+              agent_dict[agent]['act_rec'].append(action[agent].reshape(1, -1))
+              # Get reward from info if available
+              if isinstance(info, dict) and 'reward_per_agent' in info:
+                agent_rew = np.array([[info['reward_per_agent'][agent]]])
+              else:
+                agent_rew = np.array([[0.0]])
+              agent_dict[agent]['rew_rec'].append(agent_rew)
+      else:
+        # Single agent case
+        agent = agents_list[0]
+        agent_dict[agent]['obs_rec'].append(obs.reshape(1, -1) if isinstance(obs, np.ndarray) else np.array([[obs]]))
+        agent_dict[agent]['act_rec'].append(action.reshape(1, -1) if isinstance(action, np.ndarray) else np.array([[action]]))
+        agent_dict[agent]['rew_rec'].append(np.array([[last_reward]]))
+      
+      if iter % (vars_record_freq * 10) == 0:  # Print every 10 records
+        print(f"[INTEGRATE] AT {iter}/{max_steps} SAVE Trajectories", flush=True)
 
     # Call callbacks
     for cb in callbacks:
@@ -114,6 +197,62 @@ def integrate(
   for cb in callbacks:
     if hasattr(cb, 'close'):
       cb.close()
+
+  # Save recorded history if enabled
+  if vars_record and len(agent_dict) > 0:
+    # Concatenate all recorded data
+    for agent in agent_dict.keys():
+      for key in agent_dict[agent].keys():
+        if len(agent_dict[agent][key]) > 0:
+          agent_dict[agent][key] = np.concatenate(agent_dict[agent][key], axis=0)
+        else:
+          agent_dict[agent][key] = np.array([])
+    
+    # Determine save path - prioritize RUN_PATH file (source of truth from nek_initial.py)
+    # This matches the folder created by nek_initial.py
+    save_path = None
+    
+    # First, try to read from RUN_PATH file using agent_run_name (like exec-script does)
+    # This is the most reliable since it's created by nek_initial.py
+    if hasattr(env, 'conf') and hasattr(env.conf, 'runner'):
+      agent_run_name = getattr(env.conf.runner, 'agent_run_name', None)
+      if agent_run_name is not None:
+        dir_files_path = f"dir-files/RUN_PATH_{agent_run_name}.txt"
+        if os.path.exists(dir_files_path):
+          with open(dir_files_path, 'r') as f:
+            save_path = f.readline().strip()
+            # Handle relative paths (like "./runs/1998/env_006")
+            if save_path.startswith('./'):
+              save_path = save_path[2:]
+    
+    # Fallback: try to get the folder from the underlying parallel_env
+    if save_path is None:
+      if hasattr(env, 'pz_env') and hasattr(env.pz_env, 'folder'):
+        save_path = str(env.pz_env.folder)
+      elif hasattr(env, 'folder'):
+        save_path = str(env.folder)
+    
+    # Last resort: construct from config if RUN_PATH file doesn't exist
+    if save_path is None and hasattr(env, 'conf') and hasattr(env.conf, 'runner'):
+      run_name = getattr(env.conf.logging, 'run_name', None)
+      if run_name:
+        # Determine rank folder based on evaluation mode (matching nek_initial.py)
+        if getattr(env.conf.runner, 'evaluation', False):
+          rank = getattr(env.conf.runner, 'rank', 0)
+          save_path = f"runs/{run_name}/env_{rank:03d}"
+        else:
+          save_path = f"runs/{run_name}/train"
+    
+    if save_path is None:
+      save_path = "."
+    
+    # Ensure directory exists
+    os.makedirs(save_path, exist_ok=True)
+    
+    # Save as .mat file
+    filename = os.path.join(save_path, f'vars_record_{int(time.time())}.mat')
+    sio.savemat(filename, agent_dict)
+    print(f"[INTEGRATE] SAVED RECORD to {filename}", flush=True)
 
   show_end()
   return env
