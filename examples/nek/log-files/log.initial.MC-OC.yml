@@ -1,0 +1,40 @@
+[NEK] RUN ROOT DIR: ./runs
+[NEK] CASE RUN FOLDER: ./runs/1998
+[NEK] RANK RUN FOLDER: ./runs/1998/env_001
+
+--------------------------------------------------------
+███╗   ██╗███████╗██╗  ██╗    ██████╗ ██████╗ ██╗     
+████╗  ██║██╔════╝██║ ██╔╝    ██╔══██╗██╔══██╗██║     
+██╔██╗ ██║█████╗  █████╔╝     ██║  ██║██████╔╝██║     
+██║╚██╗██║██╔══╝  ██╔═██╗     ██║  ██║██╔══██╗██║     
+██║ ╚████║███████╗██║  ██╗    ██████╔╝██║  ██║███████╗
+            NEK5000 Reinforcement Learning
+                    HydroGym-dev
+                    Yuning Wang
+--------------------------------------------------------
+
+
+Allocated 1152 points
+Written 1152 points to the file
+[IO] REMOVE EXIST: ./runs/1998/env_001/nek5000
+[IO] ./runs/1998/env_001/nek5000 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_001/phill.re2
+[IO] ./runs/1998/env_001/phill.re2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_001/phill.ma2
+[IO] ./runs/1998/env_001/phill.ma2 COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_001/phill.usr
+[IO] ./runs/1998/env_001/phill.usr COPIED
+[IO] REMOVE EXIST: ./runs/1998/env_001/int_pos
+[IO] ./runs/1998/env_001/int_pos COPIED
+[IO] ./runs/1998/env_001/SIZE EXIST
+[IO] SESSION NAME WRITTEN
+[IO] Writting .par file:
+./runs/1998/env_001/phill.par
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[IO] WRITTEN .par file: ./runs/1998/env_001/phill.par
+[INIT] 6 FILE!
+[INIT] File Exists no need to copy!
+[NEK] RUN PATH: ./runs/1998/env_001

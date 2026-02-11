@@ -1,0 +1,25 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "/home/yuninw/codes/drl/hydrogym_dev/examples/nek/nek_initial.py", line 84, in <module>
+    main()
+  File "/home/yuninw/codes/drl/hydrogym_dev/examples/nek/nek_initial.py", line 37, in main
+    conf = parse_omegaconf(str(args.config), args.overrides)
+  File "/home/yuninw/codes/drl/hydrogym_dev/examples/nek/nek_initial.py", line 20, in parse_omegaconf
+    OmegaConf.load(conf_file),
+  File "/home/yuninw/apps/mpi_drl/miniforge3/envs/drl/lib/python3.8/site-packages/omegaconf/omegaconf.py", line 183, in load
+    with io.open(os.path.abspath(file_), "r", encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/yuninw/codes/drl/hydrogym_dev/examples/nek/conf/MC-AFC.yml'
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[46470,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

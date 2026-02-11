@@ -1,0 +1,110 @@
+#!/bin/bash
+
+# Unified run script for mini_channel demo.
+# This mirrors the flow in drl_repo_TEST/execs/run-script:
+#   1) initialize run folder
+#   2) read nproc + run path
+#   3) mpirun: rank0 python + ranks>0 nek5000
+
+ORIG_ARGS=("$@")
+set --
+
+#-- Load environment --
+source ~/.bashrc.miniforge
+source ~/.bashrc.openmpi_ucx
+set -- "${ORIG_ARGS[@]}"
+
+# -- OPENMPI UCX SETUP --
+unset OMPI_MCA_pml OMPI_MCA_osc UCX_TLS UCX_NET_DEVICES
+export HWLOC_HIDE_ERRORS=1
+export UCX_TLS=sm,self,tcp,cma,sysv,posix
+export OMPI_MCA_btl=self,vader,tcp
+export OMPI_ALLOW_RUN_AS_ROOT=1
+export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+
+
+# -- LOG SETUP --
+LOG_DIR="log-files"
+mkdir -p ${LOG_DIR}
+
+# -- SCRIPT DIR SETUP --
+SCRIPT_DIR=$(pwd)
+
+# -- Default values --
+CONFIG_NAME="MC-AFC.yml" # No DRL control, just evaluation
+STEPS=100
+FLAG_COMPILE=0
+SCRIPT_NAME="run-transient.py"
+while [[ $# -gt 1 ]]; do
+    case "$1" in
+        --config)
+            CONFIG_NAME="$2"
+            shift 2
+            ;;
+        --mode)
+            MODE="$2"
+            shift 2
+            ;;
+        --steps)
+            STEPS="$2"
+            shift 2
+            ;;
+        --script)
+            SCRIPT_NAME="$2"
+            shift 2
+            ;;
+    esac
+    if [[ "$1" == "--compile" ]]; then
+        FLAG_COMPILE=1
+        shift 1
+    fi
+    # Help message
+    if [[ "$1" == "--help" ]]; then
+        echo "Usage: $0 [--config CONFIG_NAME] [--mode MODE] [--steps STEPS] [--compile]"
+        echo "  --config CONFIG_NAME: Configuration file name"
+        echo "  --mode MODE: Mode of the simulation"
+        echo "  --steps STEPS: Number of steps"
+        echo "  --compile: Compile the case"
+        echo "  --script SCRIPT_NAME: Script name"
+        exit 0
+    fi
+done
+
+# -- Initialize run folder --
+CONFIG_PATH="${SCRIPT_DIR}/conf/${CONFIG_NAME}"
+
+# -- Compile the case --
+# # Go to the compile folder and compile the case.
+if [[ "${FLAG_COMPILE}" == 1 ]]; then
+    COMPILE_PATH=$(grep -ri 'compile_path' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+    COMPILE_PATH=$(echo "${COMPILE_PATH}" | sed 's/"//g')
+    if [[ "${COMPILE_PATH}" != /* ]]; then
+        COMPILE_PATH="${SCRIPT_DIR}/${COMPILE_PATH}"
+    fi
+    echo "COMPILE_PATH: ${COMPILE_PATH}"
+    if [[ ! -d "${COMPILE_PATH}" ]]; then
+        echo "Error: compile_path does not exist: ${COMPILE_PATH}"
+        exit 1
+    fi
+    cd "${COMPILE_PATH}"
+    bash compile_script --clean
+    bash compile_script --all
+    echo "Compiled the case."
+    cd "${SCRIPT_DIR}" # Go back to the script directory.
+fi
+
+# -- Initialize run folder --
+mpirun -n 1 python3 "${SCRIPT_DIR}/nek_initial.py" --config "${CONFIG_PATH}" \
+  > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
+
+# -- Tracking the run folder --
+AGENT_RUN_NAME=$(grep -ri 'agent_run_name' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+NTOT=$(grep -ri 'nproc' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+RUN_PATH=$(head -n 1 "RUN_PATH_${AGENT_RUN_NAME}.txt")
+RUN_ROOT=$(dirname "${RUN_PATH}")
+RUN_NAME=$(basename "${RUN_PATH}")
+echo "CONFIG: ${CONFIG_NAME}, NTOT: ${NTOT}, RUN_PATH: ${RUN_PATH}"
+
+# -- Run the script --
+mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" :\
+ -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 

@@ -4,6 +4,7 @@ from .nek_marl import parallel_env
 from .utils import io
 from .utils.utils import is_rank_zero, print
 from .wrapper import NekMARLGymWrapper, load_nek_config
+from .AFC import AFC, OppoCtrl, BLCtrl, SinWave, ZeroCtrl, make_afc_controller
 
 __all__ = [
     "Config",
@@ -14,4 +15,10 @@ __all__ = [
     "io",
     "is_rank_zero",
     "print",
+    "AFC",
+    "OppoCtrl",
+    "BLCtrl",
+    "SinWave",
+    "ZeroCtrl",
+    "make_afc_controller",
 ]
