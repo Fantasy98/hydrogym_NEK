@@ -3,9 +3,8 @@ MARL ENV using NEK5000
 @yuningw
 """
 
-# from gym import spaces
-# NOTE: This is depends on the verison of STB3 
 from gym import spaces
+# NOTE: This is depends on the verison of STB3 
 import numpy as np
 import functools
 import pettingzoo

@@ -1,4 +1,4 @@
-### makefile automatically created by makenek 02/10/2026 18:17:44 ###
+### makefile automatically created by makenek 02/10/2026 19:41:39 ###
 BINNAME=nek5000
 LIBNAME=libnek5000.a
 CASENAME:=phill

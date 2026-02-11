@@ -173,6 +173,7 @@ class PDEBase(metaclass=abc.ABCMeta):
     for i, u in enumerate(self.enlist(act)):
       self.actuators[i].state = u
 
+  # YW: A minor change to the original code or releasing the constrain of the act input.
   def advance_time(self, dt: float, act: Optional[List[float]] = None) -> List[float]:
     """Update the current controls state. May involve integrating
         a dynamics model rather than directly setting the controls state.
