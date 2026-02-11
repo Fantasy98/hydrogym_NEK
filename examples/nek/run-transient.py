@@ -11,17 +11,25 @@ import numpy as np
 
 import hydrogym.nek as hgym
 from hydrogym.nek import make_afc_controller
+from omegaconf import OmegaConf
+from typing import List
+from hydrogym.nek.configs import Config
 
+def parse_omegaconf(conf_file: str, overrides: List[str]):
+  conf = OmegaConf.merge(
+      OmegaConf.structured(Config()),
+      OmegaConf.load(conf_file),
+      OmegaConf.from_dotlist(overrides),
+  )
+  return conf
 
 def parse_args():
   parser = argparse.ArgumentParser()
   parser.add_argument("--config", type=str, required=True)
-  parser.add_argument("--run-root", type=str, default="runs")
-  parser.add_argument("--run-name", type=str, default=None)
+  parser.add_argument("--overrides", type=str, nargs="*", help="Config overrides, e.g. `other.gpus=4`")
   parser.add_argument("--steps", type=float, default=None)
   parser.add_argument("--ctrl_type", type=str, default="OC")
   return parser.parse_args()
-
 
 def log_postprocess(env):
   """Extract values to log from the environment"""
@@ -37,20 +45,14 @@ def log_postprocess(env):
 
 
 def main():
+  # -- Parse the arguments --
   args = parse_args()
-  # -- Create config overrides --
-  if args.ctrl_type == "OC":
-    overrides = [f"runner.normalize_input=None", f"runner.rescale_actions=False", 
-    "simulation.ndrl=1"]
-  else:
-    overrides = []
+  # -- Parse the configuration --
+  conf = parse_omegaconf(str(args.config), args.overrides)
 
-  # Create environment
+  # -- Create the environment --
   env = hgym.NekMARLGymWrapper(
-      config_path=args.config,
-      run_root=args.run_root,
-      run_name=args.run_name,
-      config_overrides=overrides,
+      conf=conf,
       reward_agg="mean",
   )
 
@@ -68,7 +70,9 @@ def main():
             env.conf.runner.nb_episodes *\
             env.conf.simulation.ndrl
   T_final = ideal_max_transient_steps * dt
+  # if steps is provided, use it to calculate the final time
   max_steps = int(T_final / dt) if args.steps is None else args.steps
+  T_final = max_steps * dt
 
   # -- Set up the callback --
   print_fmt = "t: {0:.2f},\t\t Reward: {1:.3f},\t\t Mem: {2:.1f}"
@@ -77,7 +81,7 @@ def main():
       nvals=2,
       interval=1,
       print_fmt=print_fmt,
-      filename=f"{env.conf.simulation.CASENAME}_log.dat",
+      filename=f"log-files/callback_{env.conf.simulation.CASENAME}_log.dat",
   )
 
   callbacks = [

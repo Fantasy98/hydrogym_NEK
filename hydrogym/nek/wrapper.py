@@ -56,16 +56,12 @@ class NekMARLGymWrapper(gym.Env):
 
   def __init__(
       self,
-      config_path: str,
-      config_overrides: Optional[List[str]] = None,
+      conf,
       run_root: str = "runs",
       run_name: Optional[str] = None,
       reward_agg: str = "mean",
   ):
-    self.conf = load_nek_config(
-        config_path=config_path,
-        overrides=config_overrides,
-    )
+    self.conf = conf
 
     # Create run folder for the Nek env.
     if run_name is None:

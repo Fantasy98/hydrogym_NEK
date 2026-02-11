@@ -32,17 +32,15 @@ SCRIPT_DIR=$(pwd)
 
 # -- Default values --
 CONFIG_NAME="MC-AFC.yml" # No DRL control, just evaluation
-STEPS=100
+MODE="run"
+STEPS=None
+NENVS=6
 FLAG_COMPILE=0
 SCRIPT_NAME="run-transient.py"
 while [[ $# -gt 1 ]]; do
     case "$1" in
         --config)
             CONFIG_NAME="$2"
-            shift 2
-            ;;
-        --mode)
-            MODE="$2"
             shift 2
             ;;
         --steps)
@@ -53,6 +51,14 @@ while [[ $# -gt 1 ]]; do
             SCRIPT_NAME="$2"
             shift 2
             ;;
+        --mode)
+            MODE="$2"
+            shift 2
+            ;;
+        --nenvs)
+            NENVS="$2"
+            shift 2
+            ;;
     esac
     if [[ "$1" == "--compile" ]]; then
         FLAG_COMPILE=1
@@ -60,12 +66,13 @@ while [[ $# -gt 1 ]]; do
     fi
     # Help message
     if [[ "$1" == "--help" ]]; then
-        echo "Usage: $0 [--config CONFIG_NAME] [--mode MODE] [--steps STEPS] [--compile]"
+        echo "Usage: $0 [--config CONFIG_NAME] [--steps STEPS] [--compile] [--script SCRIPT_NAME] [--mode MODE] [--nenvs NENVS]"
         echo "  --config CONFIG_NAME: Configuration file name"
-        echo "  --mode MODE: Mode of the simulation"
         echo "  --steps STEPS: Number of steps"
         echo "  --compile: Compile the case"
         echo "  --script SCRIPT_NAME: Script name"
+        echo "  --mode MODE: Mode of the simulation"
+        echo "  --nenvs NENVS: Number of environments"
         exit 0
     fi
 done
@@ -94,17 +101,49 @@ if [[ "${FLAG_COMPILE}" == 1 ]]; then
 fi
 
 # -- Initialize run folder --
-mpirun -n 1 python3 "${SCRIPT_DIR}/nek_initial.py" --config "${CONFIG_PATH}" \
-  > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
+initialize_run_folder() {
+    local overrides=("$@")
+    # Build command with optional overrides (nek_initial.py accepts overrides as positional arguments)
+    INIT_CMD=("${SCRIPT_DIR}/nek_initial.py" --config "${CONFIG_PATH}")
+    if [[ ${#overrides[@]} -gt 0 ]]; then
+        INIT_CMD+=("${overrides[@]}")
+    fi
+    mpirun -n 1 python3 "${INIT_CMD[@]}" \
+      > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
 
-# -- Tracking the run folder --
-AGENT_RUN_NAME=$(grep -ri 'agent_run_name' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
-NTOT=$(grep -ri 'nproc' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
-RUN_PATH=$(head -n 1 "RUN_PATH_${AGENT_RUN_NAME}.txt")
-RUN_ROOT=$(dirname "${RUN_PATH}")
-RUN_NAME=$(basename "${RUN_PATH}")
-echo "CONFIG: ${CONFIG_NAME}, NTOT: ${NTOT}, RUN_PATH: ${RUN_PATH}"
+    # -- Tracking the run folder --
+    AGENT_RUN_NAME=$(grep -ri 'agent_run_name' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+    NTOT=$(grep -ri 'nproc' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
+    DIR_FILES_PATH="dir-files/RUN_PATH_${AGENT_RUN_NAME}.txt"
+
+    if [[ ! -f "${DIR_FILES_PATH}" ]]; then
+        echo "Error: dir-files/RUN_PATH_${AGENT_RUN_NAME}.txt does not exist"
+        exit 1
+    fi
+    RUN_PATH=$(head -n 1 "${DIR_FILES_PATH}")
+    RUN_ROOT=$(dirname "${DIR_FILES_PATH}")
+    RUN_NAME=$(basename "${DIR_FILES_PATH}")
+    echo "CONFIG: ${CONFIG_NAME}, NTOT: ${NTOT}, RUN_ROOT: ${RUN_ROOT}, RUN_NAME: ${RUN_NAME}"
+}
 
 # -- Run the script --
-mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" :\
- -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
+if [[ "${MODE}" == "run" ]]; then
+
+    initialize_run_folder
+    mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" --steps "${STEPS}" :\
+            -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
+
+elif [[ "${MODE}" == "eval" ]]; then
+
+    for ((ienv=1; ienv<=NENVS; ienv++)); do
+        # Build eval-specific overrides
+        EVAL_OVERRIDES=("runner.rank=${ienv}" "runner.evaluation=True")
+        # Pass overrides to initialize_run_folder
+        initialize_run_folder "${EVAL_OVERRIDES[@]}"
+        mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" \
+            --steps "${STEPS}" \
+            --overrides "runner.rank=${ienv}" "runner.evaluation=True" \
+            :\
+            -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
+    done
+fi

@@ -11,7 +11,7 @@ from typing import List
 from omegaconf import OmegaConf
 
 from hydrogym.nek import Config
-from hydrogym.nek.nek_lib.nek_utils import NEK_INIT
+from hydrogym.nek.nek_lib.nek_utils import NEK_INIT, show_end
 
 
 def parse_omegaconf(conf_file: str, overrides: List[str]):
@@ -72,12 +72,15 @@ def main():
   initializer.main()
 
   # Write run path file for downstream launch scripts.
-  run_path_file = f"RUN_PATH_{conf.runner.agent_run_name}.txt"
-  with open(run_path_file, "w") as f:
+  dir_files_path = "dir-files"
+  if not os.path.exists(dir_files_path):
+    os.makedirs(dir_files_path, exist_ok=True)
+  dir_files_path = f"{dir_files_path}/RUN_PATH_{conf.runner.agent_run_name}.txt"
+  with open(dir_files_path, "w") as f:
     f.write(rank_folder + "\n")
-    f.write("")
 
-  print(f"[NEK] RUN PATH: {rank_folder}")
+  print(f"[NEK] RUN PATH: {dir_files_path}")
+  show_end()
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ import numpy as np
 
 from hydrogym.core import CallbackBase
 
+from hydrogym.nek.nek_lib.nek_utils import show_title, show_end
 
 def integrate(
     env,
@@ -29,6 +30,7 @@ def integrate(
   Returns:
     The environment after integration
   """
+  show_title()
   t_start, t_end = t_span
   iter = 0
   t = t_start
@@ -113,5 +115,6 @@ def integrate(
     if hasattr(cb, 'close'):
       cb.close()
 
+  show_end()
   return env
 
