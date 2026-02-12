@@ -1,132 +1,206 @@
-# Dockerfile for a fully enabled Firedrake as base environment for HydroGym
-#   Based on:
-#   https://github.com/firedrakeproject/firedrake/blob/master/docker/Dockerfile.vanilla
-#   https://github.com/firedrakeproject/firedrake/blob/master/docker/Dockerfile.firedrake
+# Dockerfile for a NEK-MARL environment.
+FROM ubuntu:22.04
 
-FROM lpaehler/hydrogym-env:stable
+ENV DEBIAN_FRONTEND=noninteractive
 
-USER root
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Get the latest updates and remove the apt lists.
-RUN apt-get update && apt-get install -y \
-    wget \
-    git \
-    build-essential \
-    gfortran \
-    autoconf \
-    automake \
-    libtool \
-    pkg-config \
-    m4 \
-    flex \
-    bison \
-    ca-certificates \
+# ----------------------------------------------------------------------
+# Base system packages needed for UCX/OpenMPI builds and Nek
+# ----------------------------------------------------------------------
+RUN apt-get update \
+    && apt-get -y dist-upgrade \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        gfortran \
+        gcc \
+        g++ \
+        make \
+        autoconf \
+        automake \
+        libtool \
+        pkg-config \
+        git \
+        wget \
+        ca-certificates \
+        curl \
+        openssh-client \
+        tzdata \
+        python3 \
+        python3-dev \
+        python3-venv \
+        python3-pip \
+        zlib1g-dev \
+        libopenblas-serial-dev \
+        libcurl4-openssl-dev \
+        libxml2-dev \
+        bison \
+        flex \
     && rm -rf /var/lib/apt/lists/*
-USER firedrake
-WORKDIR /home/firedrake
 
-ENV PETSC_ARCH default
-ENV VENV=/home/firedrake/firedrake
+# ----------------------------------------------------------------------
+# UCX + OpenMPI installation (following install_mpi.sh)
+# ----------------------------------------------------------------------
+ENV MPI_BASE=/opt/ucx_mpi
+ENV UCX_INSTALL=${MPI_BASE}/ucx_local \
+    OPENMPI_VERSION=4.1.4 \
+    OPENMPI_INSTALL=${MPI_BASE}/openmpi-4.1.4-ucx
 
-# Installation of basic Firedrake.
-# RUN curl -O https://raw.githubusercontent.com/firedrakeproject/firedrake/master/scripts/firedrake-install
-# RUN bash -c "python3 firedrake-install \
-#     --no-package-manager \
-#     --disable-ssh \
-#     --torch \
-#     --honour-petsc-dir \
-#     --mpicc=$MPICH_DIR/mpicc \
-#     --mpicxx=$MPICH_DIR/mpicxx \
-#     --mpif90=$MPICH_DIR/mpif90 \
-#     --mpiexec=$MPICH_DIR/mpiexec"
+RUN set -euo pipefail \
+    && mkdir -p "${MPI_BASE}" \
+    && cd "${MPI_BASE}" \
+    # UCX
+    && git clone https://github.com/openucx/ucx.git \
+    && cd ucx \
+    && mkdir -p "${UCX_INSTALL}" \
+    && UCX_INSTALL_ABS="${UCX_INSTALL}" \
+    && ./autogen.sh \
+    && ./contrib/configure-release --prefix="${UCX_INSTALL_ABS}" --enable-mt \
+    && make -j"$(nproc)" \
+    && make install \
+    && cd "${MPI_BASE}" \
+    # OpenMPI
+    && wget "https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-${OPENMPI_VERSION}.tar.gz" \
+    && tar -xzf "openmpi-${OPENMPI_VERSION}.tar.gz" \
+    && cd "openmpi-${OPENMPI_VERSION}" \
+    && UCX_PATH="${UCX_INSTALL}" \
+    && OPENMPI_INSTALL_ABS="${OPENMPI_INSTALL}" \
+    && ./configure --prefix="${OPENMPI_INSTALL_ABS}" \
+                   --with-ucx="${UCX_PATH}" \
+                   --without-gpfs \
+                   CC=gcc CXX=g++ FC=gfortran \
+    && make -j"$(nproc)" \
+    && make install \
+    && cd "${MPI_BASE}" \
+    && rm -f "openmpi-${OPENMPI_VERSION}.tar.gz"
 
-# # Installation of extra Firedrake components.
-# RUN bash -c "source firedrake/bin/activate; \
-#     firedrake-update \
-#         --documentation-dependencies \
-#         --netgen \
-#         --slepc \
-#         --tinyasm \
-#         --install femlium \
-#         --install fascd \
-#         --install gusto \
-#         --install irksome \
-#         --install thetis"
+ENV MPI_UCX_ROOT=${MPI_BASE} \
+    UCX_ROOT=${UCX_INSTALL} \
+    OPENMPI_ROOT=${OPENMPI_INSTALL} \
+    OPAL_PREFIX=${OPENMPI_INSTALL} \
+    PATH=${OPENMPI_INSTALL}/bin:${UCX_INSTALL}/bin:${PATH} \
+    LD_LIBRARY_PATH=${OPENMPI_INSTALL}/lib:${UCX_INSTALL}/lib:${LD_LIBRARY_PATH}
 
-# Installation of Nek-MARL dependencies.
-# Install the OpenMPI and UCX for the communication between the agents.
+# ----------------------------------------------------------------------
+# Miniforge + Python environment for Nek
+# (following install_miniforge.sh and install_auto_env.sh)
+# ----------------------------------------------------------------------
+ENV MINIFORGE_INSTALL=/opt/miniforge3 \
+    CONDA_ENV=nek
 
-ENV OPENMPI_VERSION=4.1.4
-ENV MPI_UCX_ROOT=/home/firedrake/ucx_mpi
-ENV UCX_INSTALL=/home/firedrake/ucx_mpi/ucx/ucx_local
-ENV OPENMPI_INSTALL=/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx
-ENV MPI_UCX_ENV=/home/firedrake/.bashrc.openmpi_ucx
-ENV OMPI_ALLOW_RUN_AS_ROOT=1
-ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+RUN set -euo pipefail \
+    && arch="$(uname -m)" \
+    && if [ "${arch}" = "x86_64" ]; then \
+         MINIFORGE_ARCH="Linux-x86_64"; \
+       elif [ "${arch}" = "aarch64" ] || [ "${arch}" = "arm64" ]; then \
+         MINIFORGE_ARCH="Linux-aarch64"; \
+       else \
+         echo "Unsupported architecture: ${arch}" >&2; exit 1; \
+       fi \
+    && curl -fsSL "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-${MINIFORGE_ARCH}.sh" -o /tmp/miniforge.sh \
+    && bash /tmp/miniforge.sh -b -p "${MINIFORGE_INSTALL}" \
+    && rm /tmp/miniforge.sh \
+    && "${MINIFORGE_INSTALL}/bin/conda" create --name "${CONDA_ENV}" python=3.8 -y \
+    # Follow utils/install_auto_env.sh package order
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install pip==22.3.1 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install setuptools==59.5.0 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install mpi4py==3.1.4 --no-cache-dir \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install stable-baselines3==1.7.0 --no-cache-dir \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install pettingzoo==1.19.0 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install supersuit==3.5.0 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install gym==0.24.1 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install omegaconf==2.1.0 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install scipy \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install matplotlib \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install numpy==1.22.4 \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install tensorboard \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install pandas \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install pyyaml \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python -m pip install psutil \
+    && "${MINIFORGE_INSTALL}/bin/conda" clean -afy
 
-RUN set -eux; \
-    mkdir -p "$MPI_UCX_ROOT"; \
-    cd "$MPI_UCX_ROOT"; \
-    rm -rf ucx; \
-    git clone https://github.com/openucx/ucx.git; \
-    cd ucx; \
-    mkdir -p "$UCX_INSTALL"; \
-    ./autogen.sh; \
-    ./contrib/configure-release --prefix="$UCX_INSTALL" --enable-mt; \
-    make -j"$(nproc)"; \
-    make install
+# ----------------------------------------------------------------------
+# Patch Supersuit's vec_env_args (following utils/patch_supersuit.py)
+# ----------------------------------------------------------------------
+RUN set -euo pipefail \
+    && "${MINIFORGE_INSTALL}/bin/conda" run -n "${CONDA_ENV}" python - << 'EOF'
+import os
+import shutil
+from pathlib import Path
 
-RUN set -eux; \
-    cd "$MPI_UCX_ROOT"; \
-    if [ ! -f "openmpi-${OPENMPI_VERSION}.tar.gz" ]; then \
-        wget "https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-${OPENMPI_VERSION}.tar.gz"; \
-    fi; \
-    tar -xzvf "openmpi-${OPENMPI_VERSION}.tar.gz"; \
-    cd "openmpi-${OPENMPI_VERSION}"; \
-    ./configure --prefix="$OPENMPI_INSTALL" --with-ucx="$UCX_INSTALL" --without-gpfs CC=gcc CXX=g++ FC=gfortran; \
-    make -j"$(nproc)"; \
-    make install
+import supersuit
 
-RUN cat > "$MPI_UCX_ENV" << EOF
-# OpenMPI + UCX Environment Configuration
-# Generated on container build
-# Do not edit manually - this file is auto-generated
 
-export MPI_UCX_ROOT="/home/firedrake/ucx_mpi"
-export UCX_ROOT="/home/firedrake/ucx_mpi/ucx/ucx_local"
-export OPENMPI_ROOT="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx"
+def find_supersuit_path():
+    return os.path.dirname(supersuit.__file__)
 
-export PATH="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx/bin:\$PATH"
-export PATH="/home/firedrake/ucx_mpi/ucx/ucx_local/bin:\$PATH"
-export LD_LIBRARY_PATH="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx/lib:/home/firedrake/ucx_mpi/ucx/ucx_local/lib:\$LD_LIBRARY_PATH"
-export OPAL_PREFIX="/home/firedrake/ucx_mpi/openmpi-${OPENMPI_VERSION}-ucx"
-export UCX_NET_DEVICES=all
-export UCX_TLS=rc,sm,ud,self
-export OMP_NUM_THREADS=1
+
+def backup_original_file(file_path: str):
+    backup_path = file_path + ".backup"
+    if not os.path.exists(backup_path):
+        shutil.copy2(file_path, backup_path)
+        print(f"Created backup: {backup_path}")
+    else:
+        print(f"Backup already exists: {backup_path}")
+
+
+def patch_vec_env_args(file_path: str):
+    with open(file_path, "r") as f:
+        content = f.read()
+
+    original_function = """def vec_env_args(env, num_envs):
+    def env_fn():
+        env_copy = cloudpickle.loads(cloudpickle.dumps(env))
+        return env_copy
+
+    return [env_fn] * num_envs, env.observation_space, env.action_space"""
+
+    patched_function = """def vec_env_args(env, num_envs):
+    if num_envs == 1:
+        def env_fn():
+            env_copy = env
+            return env_copy
+    else: 
+        def env_fn():
+            env_copy = cloudpickle.loads(cloudpickle.dumps(env))
+            return env_copy
+
+    return [env_fn] * num_envs, env.observation_space, env.action_space"""
+
+    if patched_function in content:
+        print("Supersuit patch already applied.")
+        return
+
+    if original_function not in content:
+        raise SystemExit("Original vec_env_args function not found; file may have changed.")
+
+    new_content = content.replace(original_function, patched_function)
+    with open(file_path, "w") as f:
+        f.write(new_content)
+
+    print("Supersuit vec_env_args patched successfully.")
+
+
+supersuit_path = find_supersuit_path()
+target_file = os.path.join(supersuit_path, "vector", "vector_constructors.py")
+
+if not os.path.exists(target_file):
+    raise SystemExit(f"Supersuit vector_constructors.py not found at: {target_file}")
+
+print(f"Supersuit path: {supersuit_path}")
+print(f"Target file: {target_file}")
+
+backup_original_file(target_file)
+patch_vec_env_args(target_file)
 EOF
 
+# ----------------------------------------------------------------------
+# Make Conda available by default in interactive shells
+# ----------------------------------------------------------------------
+RUN echo "source ${MINIFORGE_INSTALL}/etc/profile.d/conda.sh" >> /root/.bashrc \
+    && echo "conda activate ${CONDA_ENV}" >> /root/.bashrc
 
+ENV PATH=${MINIFORGE_INSTALL}/bin:${PATH}
 
-# NOTE: This is a temporary solution to install the Nek-MARL package into the Firedrake environment.
-RUN bash -c "git clone --recursive https://github.com/Fantasy98/hydrogym_NEK.git nek_hgym"
-
-# Install dependencies for Nek-MARL, note it would violate the further installation on other packages.
-RUN bash -c "source $VENV/bin/activate; \  
-    $VENV/bin/python -m pip install pip==22.3.1 > log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install setuptools==59.5.0 > log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install stable-baselines3==1.7.0 > log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install pettingzoo==1.19.0  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install supersuit==3.5.0  >>    log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install gym==0.24.1  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install omegaconf==2.1.0  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install scipy  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install matplotlib  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install numpy==1.22.4  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install tensorboard  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install pandas  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install pyyaml  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install numpy==1.24.0  >> log_nek.txt 2>&1; \
-    $VENV/bin/python -m pip install -e /home/firedrake/nek_hgym  >> log_nek_hgym.txt 2>&1"
-
-## Always actiavte the environment before using it.
-RUN bash -c "source $VENV/bin/activate"
+# Default working directory
+WORKDIR /workspace

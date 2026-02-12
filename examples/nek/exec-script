@@ -6,13 +6,11 @@
 #   2) read nproc + run path
 #   3) mpirun: rank0 python + ranks>0 nek5000
 
-ORIG_ARGS=("$@")
-set --
-
-#-- Load environment --
-source ~/.bashrc.miniforge
-source ~/.bashrc.openmpi_ucx
-set -- "${ORIG_ARGS[@]}"
+#-- Load environment (optional) --
+# If you need custom environments, uncomment and adjust the lines below.
+# source ~/.bashrc.miniforge
+# source ~/.bashrc.openmpi_ucx
+# source /home/firedrake/firedrake/bin/activate
 
 # -- OPENMPI UCX SETUP --
 unset OMPI_MCA_pml OMPI_MCA_osc UCX_TLS UCX_NET_DEVICES
@@ -31,9 +29,9 @@ mkdir -p ${LOG_DIR}
 SCRIPT_DIR=$(pwd)
 
 # -- Default values --
-CONFIG_NAME="MC-AFC.yml" # No DRL control, just evaluation
-MODE="run"
-STEPS=None
+CONFIG_NAME="MC-OC.yml" # No DRL control, just evaluation
+MODE="eval"
+STEPS=""
 NENVS=6
 FLAG_COMPILE=0
 SCRIPT_NAME="run-transient.py"
@@ -60,6 +58,7 @@ while [[ $# -gt 1 ]]; do
             shift 2
             ;;
     esac
+    # Make --compile flag optional
     if [[ "$1" == "--compile" ]]; then
         FLAG_COMPILE=1
         shift 1
@@ -77,11 +76,11 @@ while [[ $# -gt 1 ]]; do
     fi
 done
 
+echo "FLAG_COMPILE: ${FLAG_COMPILE}"
 # -- Initialize run folder --
 CONFIG_PATH="${SCRIPT_DIR}/conf/${CONFIG_NAME}"
 
-# -- Compile the case --
-# # Go to the compile folder and compile the case.
+# -- Compile the case (only when --compile is passed) --
 if [[ "${FLAG_COMPILE}" == 1 ]]; then
     COMPILE_PATH=$(grep -ri 'compile_path' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')
     COMPILE_PATH=$(echo "${COMPILE_PATH}" | sed 's/"//g')
@@ -130,7 +129,11 @@ initialize_run_folder() {
 if [[ "${MODE}" == "run" ]]; then
 
     initialize_run_folder
-    mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" --steps "${STEPS}" :\
+    STEP_ARGS=()
+    if [[ -n "${STEPS}" ]]; then
+        STEP_ARGS=(--steps "${STEPS}")
+    fi
+    mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" "${STEP_ARGS[@]}" :\
             -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
 
 elif [[ "${MODE}" == "eval" ]]; then
@@ -140,8 +143,12 @@ elif [[ "${MODE}" == "eval" ]]; then
         EVAL_OVERRIDES=("runner.rank=${ienv}" "runner.evaluation=True")
         # Pass overrides to initialize_run_folder
         initialize_run_folder "${EVAL_OVERRIDES[@]}"
+        STEP_ARGS=()
+        if [[ -n "${STEPS}" ]]; then
+            STEP_ARGS=(--steps "${STEPS}")
+        fi
         mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" \
-            --steps "${STEPS}" \
+            "${STEP_ARGS[@]}" \
             --overrides "runner.rank=${ienv}" "runner.evaluation=True" \
             :\
             -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" > "${LOG_DIR}/log.eval.${CONFIG_NAME}.${ienv}.txt" 2>&1

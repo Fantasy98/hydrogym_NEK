@@ -27,7 +27,7 @@ def parse_args():
   parser = argparse.ArgumentParser()
   parser.add_argument("--config", type=str, required=True)
   parser.add_argument("--overrides", type=str, nargs="*", help="Config overrides, e.g. `other.gpus=4`")
-  parser.add_argument("--steps", type=float, default=None)
+  parser.add_argument("--steps", type=int, default=None)
   parser.add_argument("--ctrl_type", type=str, default="OC")
   return parser.parse_args()
 

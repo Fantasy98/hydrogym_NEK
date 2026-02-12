@@ -24,6 +24,8 @@ def parse_omegaconf(conf_file: str, overrides: List[str]):
 
 
 def main():
+
+  # -- Load environment --
   parser = argparse.ArgumentParser()
   parser.add_argument("--config", type=Path, help="YAML configuration")
   parser.add_argument(

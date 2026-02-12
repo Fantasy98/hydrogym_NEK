@@ -16,7 +16,7 @@
 
  Number of MPI ranks :          10
   
- Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_002/phill.par                                                        
+ Reading /workspace/examples/nek/runs/1998/env_002/phill.par                                                                                 
 general = [(null)]
 general:stopat = [numSteps]
 general:numsteps = [500000]
@@ -63,37 +63,37 @@ _stat:avstep = [10]
 _stat:iostep = [300000000]
 _tsrs = [(null)]
 _tsrs:smpstep = [23]
- Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_002/phill.re2                                                        
+ Reading /workspace/examples/nek/runs/1998/env_002/phill.re2                                                                                 
  nelgt/nelgv/lelt:         128         128          13
  lx1/lx2/lx3/lxd:           6           4           6           9
 
 
 
  partioning elements to MPI ranks
- Reading /home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_002/phill.ma2                                                        
+ Reading /workspace/examples/nek/runs/1998/env_002/phill.ma2                                                                                 
  
  Max neighbors: 9 | Min neighbors: 4 | Avg neighbors: 6.200000
  Max nvolume: 28 | Min nvolume: 2 | Avg nvolume: 14.400000
  Max volume: 108 | Min volume: 65 | Avg volume: 89.800000
  Max elements: 13 | Min elements: 12 | Balance: 1.083333
   
- done :: partioning   0.39796E-03 sec
+ done :: partioning   0.34898E-03 sec
 
  reading mesh 
  reading bc for ifld           1
- done :: read .re2 file    0.10E-01 sec
+ done :: read .re2 file    0.12E-01 sec
 
  setup mesh topology
    Right-handed check complete for         128 elements. OK.
    setvert3d:   6        8208       16400        8208        8208
 gs_setup: 4266 unique labels shared
-   pairwise times (avg, min, max): 4.89413e-06 4.5325e-06 5.1027e-06
-   crystal router                : 0.000125745 0.000123016 0.000130362
-   all reduce                    : 0.000132983 0.000132449 0.000135105
+   pairwise times (avg, min, max): 4.83226e-06 4.3956e-06 5.1695e-06
+   crystal router                : 0.000231432 0.000156202 0.000290535
+   all reduce                    : 0.000358977 0.000352376 0.000363613
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 37628 31804 40724
    buffer bytes (avg, min, max): 18192 13136 21168
-   setupds time 6.2514E-03 seconds   0  6        8208         128
+   setupds time 9.4768E-03 seconds   0  6        8208         128
            8  max multiplicity
  done :: setup mesh topology
   
@@ -174,49 +174,49 @@ gs_setup: 4266 unique labels shared
  mg_ny:           1           3           5
  mg_nz:           1           3           5
 gs_setup: 130 unique labels shared
-   pairwise times (avg, min, max): 1.66309e-06 1.5212e-06 1.7599e-06
-   crystal router                : 1.6868e-06 1.6305e-06 1.7697e-06
-   all reduce                    : 2.96412e-06 2.859e-06 3.0538e-06
+   pairwise times (avg, min, max): 1.63522e-06 1.5324e-06 1.7348e-06
+   crystal router                : 1.70362e-06 1.652e-06 1.7707e-06
+   all reduce                    : 2.77558e-06 2.7304e-06 2.8424e-06
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 2741.6 2364 3012
    buffer bytes (avg, min, max): 1436.8 1040 1728
-   setupds time 4.6283E-04 seconds   1  2         144         128
+   setupds time 5.1839E-04 seconds   1  2         144         128
    setvert3d:   4        2576        3600        2576        2576
 gs_setup: 1474 unique labels shared
-   pairwise times (avg, min, max): 3.25182e-06 2.7548e-06 3.3848e-06
-   crystal router                : 3.46999e-06 3.4012e-06 3.5845e-06
-   all reduce                    : 0.000167109 0.000165004 0.000170592
+   pairwise times (avg, min, max): 3.07192e-06 2.8877e-06 3.1893e-06
+   crystal router                : 3.75434e-06 3.6755e-06 3.8707e-06
+   all reduce                    : 0.000177615 0.000173893 0.000179653
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 14914.4 12668 16052
    buffer bytes (avg, min, max): 7497.6 5424 8752
-   setupds time 3.2213E-03 seconds   2  4        2576         128
+   setupds time 3.4230E-03 seconds   2  4        2576         128
    setvert3d:   4        2576        3600        2576        2576
 gs_setup: 1474 unique labels shared
-   pairwise times (avg, min, max): 1.64901e-05 1.62864e-05 1.66329e-05
-   crystal router                : 3.55353e-06 3.4625e-06 3.7068e-06
-   all reduce                    : 0.000137632 0.000136437 0.00014208
-   used all_to_all method: crystal router
-   handle bytes (avg, min, max): 55032 40268 69164
-   buffer bytes (avg, min, max): 11606.4 9216 15088
-   setupds time 4.7094E-03 seconds   3  4        2576         128
+   pairwise times (avg, min, max): 2.76034e-06 2.5673e-06 2.8746e-06
+   crystal router                : 3.56353e-06 3.486e-06 3.6771e-06
+   all reduce                    : 0.000170912 0.000168128 0.000174296
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 14914.4 12668 16052
+   buffer bytes (avg, min, max): 7497.6 5424 8752
+   setupds time 3.2773E-03 seconds   3  4        2576         128
    setvert3d:   6        8208       16400        8208        8208
 gs_setup: 4266 unique labels shared
-   pairwise times (avg, min, max): 3.97165e-06 3.7013e-06 4.1757e-06
-   crystal router                : 0.000101036 9.73392e-05 0.000108652
-   all reduce                    : 0.000127627 0.000127151 0.000128154
+   pairwise times (avg, min, max): 4.08262e-06 3.8777e-06 4.2309e-06
+   crystal router                : 0.000101672 9.52975e-05 0.00010663
+   all reduce                    : 0.000446828 0.000440792 0.000451961
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 37628 31804 40724
    buffer bytes (avg, min, max): 18192 13136 21168
-   setupds time 5.9655E-03 seconds   4  6        8208         128
+   setupds time 8.9152E-03 seconds   4  6        8208         128
  setup h1 coarse grid, nx_crs=           2
 gs_setup: 130 unique labels shared
-   pairwise times (avg, min, max): 1.65336e-06 1.547e-06 1.7203e-06
-   crystal router                : 1.6533e-06 1.5896e-06 1.7135e-06
-   all reduce                    : 2.95055e-06 2.9122e-06 3.0082e-06
-   used all_to_all method: crystal router
-   handle bytes (avg, min, max): 7702.4 5964 9772
-   buffer bytes (avg, min, max): 1472 1120 2192
- done :: setup h1 coarse grid    2.5809690000000024E-003  sec
+   pairwise times (avg, min, max): 1.61016e-06 1.5275e-06 1.6813e-06
+   crystal router                : 1.67533e-06 1.6146e-06 1.735e-06
+   all reduce                    : 2.66655e-06 2.6194e-06 2.7379e-06
+   used all_to_all method: pairwise
+   handle bytes (avg, min, max): 2741.6 2364 3012
+   buffer bytes (avg, min, max): 1436.8 1040 1728
+ done :: setup h1 coarse grid    1.2243110000000057E-003  sec
   
  call usrdat3
  done :: usrdat3
@@ -330,9 +330,9 @@ SMPSTEP              = 23                     # Frequency of sampling
   [MAP2D] Creating 2D mesh
   [STAT] Getting loacal int. coeff.
 gs_setup: 1152 unique labels shared
-   pairwise times (avg, min, max): 1.6237e-06 1.4611e-06 1.7229e-06
-   crystal router                : 2.74982e-06 2.6909e-06 2.8347e-06
-   all reduce                    : 7.16234e-05 6.91395e-05 7.32288e-05
+   pairwise times (avg, min, max): 2.43252e-06 1.5087e-06 2.7263e-06
+   crystal router                : 2.95969e-06 2.896e-06 3.0556e-06
+   all reduce                    : 0.000169658 0.000167117 0.000172655
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 8776.8 8348 9564
    buffer bytes (avg, min, max): 7603.2 6912 9216
@@ -344,22 +344,22 @@ Average point nr          115
 Old loc pts nr min/max    115    116
 Assgn point nr min/max      0    432
 Nr of shifted points      804
-Mapping time min/max    0.28966E-04  0.29144E-04
+Mapping time min/max    0.44082E-04  0.64911E-04
 
 
  Point redistribution; pts_transfer_min:
 New loc pts nr min/max    114    116
-Sending time min/max    0.16365E-04  0.29704E-04
+Sending time min/max    0.78936E-04  0.35791E-03
 
        FILE:rs6phill0.f00001                                                                                                                    
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.18029162E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.63744246E+03
   [MSTEP] io-nodes =       10
  DRL_STATE F F
  [NEK] DRL STEP           1
  [NEK] INTERCOMM ESTABLISHED!
- ==============================
 ------------ INITIALIZATION -------------
+ ==============================
  [DRL] STATE Initialisation
  ==============================
  YW: FIND WALL PTS
@@ -378,22 +378,22 @@ gridpoints unique/tot:         16400        27648
 dofs vel/pr:                   16000         8192
   
  Initial time: 0.8999960E+03
- Initialization successfully completed   0.60160E-01 sec
+ Initialization successfully completed   0.64250E-01 sec
  DRL_STATE F F
  [NEK] Back to SOLV,init: F
  ============================
  [NEK] Reset TIME LOOP and CHKPT!
  ============================
        FILE:rs6phill0.f00001                                                                                                                    
+[STB3] REQUEST NODE LIST
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.73928221E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.78568657E+02
   [MSTEP] io-nodes =       10
 
 Starting time loop ...
 
-     DT/DTCFL/DTFS/DTINIT   0.100E-01   0.470-309   0.470-309   0.100E-01
+     DT/DTCFL/DTFS/DTINIT   0.100E-01   0.526-309   0.526-309   0.100E-01
 Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.238 0.0000E+00 0.0000E+00
-[STB3] REQUEST NODE LIST
              Solving for fluid
           1  Hmholtz VELX       1   3.1703E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
           1  Hmholtz VELX       2   1.3936E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
@@ -456,7 +456,7 @@ Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.238 0.0000E+00 0.0000E+0
    20 1.00000E-08 1.40035E-08 1.89248E-04 7.39952E-05       1 Divergence
    21 1.00000E-08 1.13550E-08 1.89248E-04 6.00004E-05       1 Divergence
    22 1.00000E-08 9.40317E-09 1.89248E-04 4.96870E-05       1 Divergence
-          1  U-PRES gmres      22   9.4032E-09   1.8925E-04   1.0000E-08   3.4524E-03   8.5426E-03
+          1  U-PRES gmres      22   9.4032E-09   1.8925E-04   1.0000E-08   1.9415E-03   6.1176E-03
           1  Hmholtz VELX       1   9.9674E-01   3.5714E-04   1.0000E-08   1.0000E+02   F
           1  Hmholtz VELX       2   7.0774E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
           1  Hmholtz VELX       3   1.8506E-02   3.5714E-04   1.0000E-08   1.0000E+02   F
@@ -473,14 +473,14 @@ Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.238 0.0000E+00 0.0000E+0
           1  Hmholtz VELX      14   3.6334E-09   3.5714E-04   1.0000E-08   1.0000E+02   F
           1  Hmholtz VELX      13   3.6334E-09   9.9674E-01   1.0000E-08
     1 1.00000E-04 3.51970E-11 3.88549E-11 9.05858E-01       0 Divergence
-          0  U-PRES gmres       1   3.5197E-11   3.8855E-11   1.0000E-04   8.0511E-05   3.2539E-04
+          0  U-PRES gmres       1   3.5197E-11   3.8855E-11   1.0000E-04   9.2549E-05   2.8063E-04
           1  Volflow X              9.0001E+02   4.2010E-03   3.3383E-05   7.9997E-01   8.0000E-01
-          1  Fluid done  9.0001E+02  1.2798E-02
+          1  Fluid done  9.0001E+02  1.0123E-02
        FILE:rs6phill0.f00002                                                                                                                    
 [STB3] NODE LIST GET:[0 1 2]
 [STB3] INIT END, NUM AGENT=576
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.43099328E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.14776690E+03
   [MSTEP] io-nodes =       10
   [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   2.0000000000663931E-003
  DRL_STATE F F
@@ -514,13 +514,13 @@ Beginning integration
 [STB3] RESET!
 [STB3] EPISODE=1
 [STB3] SAVE LOG
-[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00001
-[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00002
-[RSTART] RESET: /home/yuninw/codes/drl/hydrogym_dev/examples/nek/data/restarts/rs6_mini_Channel/init_3/rs6phill0.f00003
+[RSTART] RESET: /workspace/examples/nek/data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00001
+[RSTART] RESET: /workspace/examples/nek/data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00002
+[RSTART] RESET: /workspace/examples/nek/data/restarts/rs6_mini_Channel/init_5/rs6phill0.f00003
+[STB3] Start SIM
  =============================
  [NEK] RECV REQUEST: RSETS
  =============================
-[STB3] Start SIM
  DRL_STATE T T
  [NEK] RESTART Time Evolution!
  ========OUT MPI LOOP!========
@@ -534,7 +534,7 @@ Beginning integration
  ============================
        FILE:rs6phill0.f00001                                                                                                                    
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.47684408E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.32566303E+03
   [MSTEP] io-nodes =       10
 
 Starting time loop ...
@@ -602,12 +602,12 @@ Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.238 0.0000E+00 0.0000E+0
    20 1.00000E-08 1.40035E-08 1.89248E-04 7.39952E-05       1 Divergence
    21 1.00000E-08 1.13550E-08 1.89248E-04 6.00004E-05       1 Divergence
    22 1.00000E-08 9.40317E-09 1.89248E-04 4.96870E-05       1 Divergence
-          1  U-PRES gmres      22   9.4032E-09   1.8925E-04   1.0000E-08   3.1886E-03   6.0406E-03
+          1  U-PRES gmres      22   9.4032E-09   1.8925E-04   1.0000E-08   1.7021E-03   5.0106E-03
           1  Volflow X              9.0001E+02   4.2010E-03   3.3383E-05   7.9997E-01   8.0000E-01
-          1  Fluid done  9.0001E+02  7.8599E-03
+          1  Fluid done  9.0001E+02  7.6494E-03
        FILE:rs6phill0.f00002                                                                                                                    
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.16787664E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.57249673E+03
   [MSTEP] io-nodes =       10
   [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   2.0000000000663931E-003
  DRL_STATE F F
@@ -617,28 +617,28 @@ Step      1, t= 9.0000600E+02, DT= 1.0000000E-02, C=  0.238 0.0000E+00 0.0000E+0
  =============================
 
         1  9.0000E+02 Write checkpoint
-       FILE:/home/yuninw/codes/drl/hydrogym_dev/examples/nek/runs/1998/env_002/angphill0.f00001                                                 
+       FILE:/workspace/examples/nek/runs/1998/env_002/angphill0.f00001                                                                          
  min/max:   0.0000       2.6700       0.0000       1.0000       0.0000      0.80000    
  min/max:   0.0000       1.2977     -0.18343      0.21999       0.0000       1.2977    
  min/max: -0.61710E-01  0.31130E-01
 
         1  9.0000E+02 done :: Write checkpoint
                               file size =     0.75    MB
-                              avg data-throughput =    45.8MB/s
+                              avg data-throughput =   231.8MB/s
                               io-nodes =    10
 
  At           1 YW: WIRTE ANGLE FOR TEST
 gs_setup: 1152 unique labels shared
-   pairwise times (avg, min, max): 1.62543e-06 1.4278e-06 1.7229e-06
-   crystal router                : 2.82538e-06 2.759e-06 2.8855e-06
-   all reduce                    : 0.000102217 0.000101375 0.000104181
+   pairwise times (avg, min, max): 1.80179e-06 1.6684e-06 1.8943e-06
+   crystal router                : 3.15217e-06 3.1021e-06 3.2477e-06
+   all reduce                    : 6.40237e-05 6.34944e-05 6.57548e-05
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 33228 31388 34620
    buffer bytes (avg, min, max): 7603.2 6912 9216
 gs_setup: 792 unique labels shared
-   pairwise times (avg, min, max): 9.4749e-07 8.65e-07 1.0133e-06
-   crystal router                : 2.08131e-06 2.0207e-06 2.1624e-06
-   all reduce                    : 0.000115914 0.000112426 0.000118734
+   pairwise times (avg, min, max): 9.3657e-07 8.486e-07 9.935e-07
+   crystal router                : 2.22469e-06 2.1794e-06 2.2831e-06
+   all reduce                    : 8.92604e-05 8.83485e-05 9.11777e-05
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 27752.8 23868 30812
    buffer bytes (avg, min, max): 2534.4 1152 4032
@@ -673,16 +673,16 @@ gs_setup: 792 unique labels shared
  [REWARD] INQURY
  --------------------------------
 gs_setup: 1152 unique labels shared
-   pairwise times (avg, min, max): 1.63821e-06 1.4974e-06 1.7302e-06
-   crystal router                : 2.9472e-06 2.8907e-06 3.0443e-06
-   all reduce                    : 0.00010128 0.000100391 0.000103242
-   used all_to_all method: pairwise
-   handle bytes (avg, min, max): 33228 31388 34620
-   buffer bytes (avg, min, max): 7603.2 6912 9216
+   pairwise times (avg, min, max): 3.81647e-06 3.6441e-06 3.9232e-06
+   crystal router                : 2.82579e-06 2.7755e-06 2.9106e-06
+   all reduce                    : 3.08786e-05 3.06948e-05 3.10347e-05
+   used all_to_all method: crystal router
+   handle bytes (avg, min, max): 66663.2 59988 80276
+   buffer bytes (avg, min, max): 10310.4 9216 13824
 gs_setup: 792 unique labels shared
-   pairwise times (avg, min, max): 1.10029e-06 8.643e-07 1.2043e-06
-   crystal router                : 2.06066e-06 2.0043e-06 2.1336e-06
-   all reduce                    : 0.00011349 0.000110337 0.000116387
+   pairwise times (avg, min, max): 9.3144e-07 8.051e-07 1.0123e-06
+   crystal router                : 2.00932e-06 1.978e-06 2.08e-06
+   all reduce                    : 0.000103167 0.000102272 0.000105072
    used all_to_all method: pairwise
    handle bytes (avg, min, max): 27752.8 23868 30812
    buffer bytes (avg, min, max): 2534.4 1152 4032
@@ -692,20 +692,20 @@ gs_setup: 792 unique labels shared
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      2, t= 9.0000800E+02, DT= 1.0000000E-02, C=  0.238 7.1769E-02 4.4666E-02
+Step      2, t= 9.0000800E+02, DT= 1.0000000E-02, C=  0.238 5.7018E-02 2.7763E-02
              Solving for fluid
           2  Hmholtz VELX      10   5.3588E-09   3.4920E-01   1.0000E-08
           2  Hmholtz VELY       8   2.7929E-09   2.9476E-01   1.0000E-08
           2  Hmholtz VELZ      10   5.3181E-09   3.2709E-01   1.0000E-08
 [LOGGER] act_index=0 dUdy=11.08016 R=0.10839 
-          2  U-PRES gmres      48   9.9186E-09   1.6567E-01   1.0000E-08   3.4510E-03   9.9339E-03
+          2  U-PRES gmres      48   9.9186E-09   1.6567E-01   1.0000E-08   3.5906E-03   9.4795E-03
           2  Hmholtz VELX      11   4.5913E-09   9.9674E-01   1.0000E-08
-          0  U-PRES gmres       1   4.1532E-11   4.1893E-11   1.0000E-04   7.9442E-05   2.1290E-04
+          0  U-PRES gmres       1   4.1532E-11   4.1893E-11   1.0000E-04   8.0018E-05   1.8169E-04
           2  Volflow X              9.0001E+02   4.1938E-03   2.2219E-05   7.9998E-01   8.0000E-01
-          2  Fluid done  9.0001E+02  1.2567E-02
+          2  Fluid done  9.0001E+02  1.2048E-02
        FILE:rs6phill0.f00003                                                                                                                    
   [MSTEP] Checkpoint read:
-  [MSTEP] avg data-throughput (MB/s) =  0.52689815E+03
+  [MSTEP] avg data-throughput (MB/s) =  0.57087455E+03
   [MSTEP] io-nodes =       10
   [MSTEP] WARNING:  Time step inconsistent, new=   1.0000000000000000E-002 , old=   1.9999999999527063E-003
  DRL_STATE F F
@@ -722,18 +722,17 @@ Step      2, t= 9.0000800E+02, DT= 1.0000000E-02, C=  0.238 7.1769E-02 4.4666E-0
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
 [STB3] STATE RECV
-t: 0.01,		 Reward: 0.108,		 Mem: 33.4
+t: 0.01,		 Reward: 0.108,		 Mem: 22.4
  =============================
+[ZNMF] DONE BY NEK5000
  [NEK] RECV REQUEST: CNTRL
  =============================
  -------------------------
  [ACTION] STANDING BY
  -------------------------
-[ZNMF] DONE BY NEK5000
  -------------------------
  [ACTION] UPDATED
  -------------------------
-[STB3] ACTION for 576 Agents
  ======== INTO MPI LOOP ============
  =============================
  [NEK] RECV REQUEST: EVOLV
@@ -748,17 +747,18 @@ t: 0.01,		 Reward: 0.108,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      3, t= 9.0001000E+02, DT= 1.0000000E-02, C=  0.238 9.2506E-02 2.0737E-02
+Step      3, t= 9.0001000E+02, DT= 1.0000000E-02, C=  0.238 7.7198E-02 2.0180E-02
+[STB3] ACTION for 576 Agents
              Solving for fluid
           3  Hmholtz VELX      10   1.4615E-09   3.7010E-01   1.0000E-08
           3  Hmholtz VELY       7   6.0582E-09   3.1258E-01   1.0000E-08
           3  Hmholtz VELZ      10   1.4492E-09   3.4679E-01   1.0000E-08
 [LOGGER] act_index=1 dUdy=11.07985 R=0.10841 
-          3  U-PRES gmres      46   9.9959E-09   1.6583E-01   1.0000E-08   3.2975E-03   9.2438E-03
+          3  U-PRES gmres      46   9.9959E-09   1.6583E-01   1.0000E-08   3.3125E-03   8.4230E-03
           3  Hmholtz VELX      10   6.3832E-09   9.9674E-01   1.0000E-08
-          0  U-PRES gmres       1   3.7949E-11   3.8301E-11   1.0000E-04   7.9487E-05   2.1524E-04
+          0  U-PRES gmres       1   3.7949E-11   3.8301E-11   1.0000E-04   7.6900E-05   1.7442E-04
           3  Volflow X              9.0001E+02   4.1904E-03   1.8165E-05   7.9998E-01   8.0000E-01
-          3  Fluid done  9.0001E+02  1.1719E-02
+          3  Fluid done  9.0001E+02  1.0871E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -773,7 +773,7 @@ Step      3, t= 9.0001000E+02, DT= 1.0000000E-02, C=  0.238 9.2506E-02 2.0737E-0
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
 [STB3] STATE RECV
-t: 0.02,		 Reward: 0.108,		 Mem: 33.4
+t: 0.02,		 Reward: 0.108,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -799,15 +799,15 @@ t: 0.02,		 Reward: 0.108,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      4, t= 9.0002000E+02, DT= 1.0000000E-02, C=  0.237 1.1047E-01 1.7961E-02
+Step      4, t= 9.0002000E+02, DT= 1.0000000E-02, C=  0.237 9.4297E-02 1.7099E-02
              Solving for fluid
           4  Hmholtz VELX      10   2.7856E-09   1.3588E+00   1.0000E-08
           4  Hmholtz VELY       7   9.8775E-09   2.3823E+00   1.0000E-08
           4  Hmholtz VELZ      10   2.2311E-09   2.1121E+00   1.0000E-08
 [LOGGER] act_index=2 dUdy=11.07891 R=0.10849 
-          4  U-PRES gmres      52   6.0185E-09   4.9647E-01   1.0000E-08   3.6065E-03   8.2934E-03
+          4  U-PRES gmres      52   6.0185E-09   4.9647E-01   1.0000E-08   3.6633E-03   8.7991E-03
           4  Volflow X              9.0002E+02   2.9142E-03   1.2632E-05   7.9999E-01   8.0000E-01
-          4  Fluid done  9.0002E+02  9.8131E-03
+          4  Fluid done  9.0002E+02  1.0239E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -822,7 +822,7 @@ Step      4, t= 9.0002000E+02, DT= 1.0000000E-02, C=  0.237 1.1047E-01 1.7961E-0
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
 [STB3] STATE RECV
-t: 0.03,		 Reward: 0.108,		 Mem: 33.4
+t: 0.03,		 Reward: 0.108,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -848,15 +848,15 @@ t: 0.03,		 Reward: 0.108,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      5, t= 9.0003000E+02, DT= 1.0000000E-02, C=  0.234 1.2651E-01 1.6040E-02
+Step      5, t= 9.0003000E+02, DT= 1.0000000E-02, C=  0.234 1.1070E-01 1.6403E-02
              Solving for fluid
           5  Hmholtz VELX      10   4.0926E-09   1.9347E+00   1.0000E-08
           5  Hmholtz VELY       8   1.6157E-09   3.3445E+00   1.0000E-08
           5  Hmholtz VELZ      10   2.4900E-09   2.8978E+00   1.0000E-08
 [LOGGER] act_index=3 dUdy=11.02888 R=0.11251 
-          5  U-PRES gmres      52   7.5402E-09   5.9643E-01   1.0000E-08   3.6090E-03   8.3361E-03
+          5  U-PRES gmres      52   7.5402E-09   5.9643E-01   1.0000E-08   3.6891E-03   8.8228E-03
           5  Volflow X              9.0003E+02   4.7962E-03   2.0791E-05   7.9998E-01   8.0000E-01
-          5  Fluid done  9.0003E+02  9.7593E-03
+          5  Fluid done  9.0003E+02  1.0335E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -871,7 +871,7 @@ Step      5, t= 9.0003000E+02, DT= 1.0000000E-02, C=  0.234 1.2651E-01 1.6040E-0
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
 [STB3] STATE RECV
-t: 0.04,		 Reward: 0.113,		 Mem: 33.4
+t: 0.04,		 Reward: 0.113,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -897,16 +897,15 @@ t: 0.04,		 Reward: 0.113,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      6, t= 9.0004000E+02, DT= 1.0000000E-02, C=  0.233 1.4260E-01 1.6097E-02
+Step      6, t= 9.0004000E+02, DT= 1.0000000E-02, C=  0.233 1.2708E-01 1.6380E-02
              Solving for fluid
           6  Hmholtz VELX      10   4.0561E-09   1.7721E+00   1.0000E-08
           6  Hmholtz VELY       8   1.6411E-09   2.6668E+00   1.0000E-08
           6  Hmholtz VELZ      10   2.4893E-09   2.1765E+00   1.0000E-08
 [LOGGER] act_index=4 dUdy=11.02007 R=0.11322 
-          6  U-PRES gmres      51   9.3262E-09   4.1919E-01   1.0000E-08   3.5203E-03   8.1015E-03
-[STB3] STATE RECV
+          6  U-PRES gmres      51   9.3262E-09   4.1919E-01   1.0000E-08   3.6395E-03   8.6537E-03
           6  Volflow X              9.0004E+02   3.4415E-03   1.4918E-05   7.9999E-01   8.0000E-01
-          6  Fluid done  9.0004E+02  9.5749E-03
+          6  Fluid done  9.0004E+02  1.0108E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -920,7 +919,8 @@ Step      6, t= 9.0004000E+02, DT= 1.0000000E-02, C=  0.233 1.4260E-01 1.6097E-0
  [STATE] TIME GET   900.03999999249993     
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-t: 0.05,		 Reward: 0.113,		 Mem: 33.4
+[STB3] STATE RECV
+t: 0.05,		 Reward: 0.113,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -931,7 +931,6 @@ t: 0.05,		 Reward: 0.113,		 Mem: 33.4
  -------------------------
  [ACTION] UPDATED
  -------------------------
-[STB3] ACTION for 576 Agents
  ======== INTO MPI LOOP ============
  =============================
  [NEK] RECV REQUEST: EVOLV
@@ -941,20 +940,21 @@ t: 0.05,		 Reward: 0.113,		 Mem: 33.4
  --------------------------------
  [REWARD] INQURY
  --------------------------------
+[STB3] ACTION for 576 Agents
  ----------------------
  [REWARD] GET!
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      7, t= 9.0005000E+02, DT= 1.0000000E-02, C=  0.231 1.5831E-01 1.5710E-02
+Step      7, t= 9.0005000E+02, DT= 1.0000000E-02, C=  0.231 1.4332E-01 1.6239E-02
              Solving for fluid
           7  Hmholtz VELX      10   3.8043E-09   1.3871E+00   1.0000E-08
           7  Hmholtz VELY       8   1.5954E-09   1.7432E+00   1.0000E-08
           7  Hmholtz VELZ      10   2.4163E-09   1.3286E+00   1.0000E-08
 [LOGGER] act_index=5 dUdy=10.99428 R=0.11530 
-          7  U-PRES gmres      51   5.9908E-09   2.3748E-01   1.0000E-08   3.5282E-03   8.0762E-03
+          7  U-PRES gmres      51   5.9908E-09   2.3748E-01   1.0000E-08   3.7774E-03   8.8461E-03
           7  Volflow X              9.0005E+02   4.1056E-03   1.7797E-05   7.9998E-01   8.0000E-01
-          7  Fluid done  9.0005E+02  9.5214E-03
+          7  Fluid done  9.0005E+02  1.0328E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -966,10 +966,10 @@ Step      7, t= 9.0005000E+02, DT= 1.0000000E-02, C=  0.231 1.5831E-01 1.5710E-0
  [STATE] SENSING PLANE GET
  --------------------
  [STATE] TIME GET   900.04999999249992     
-[STB3] STATE RECV
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-t: 0.06,		 Reward: 0.115,		 Mem: 33.4
+[STB3] STATE RECV
+t: 0.06,		 Reward: 0.115,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -995,15 +995,15 @@ t: 0.06,		 Reward: 0.115,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      8, t= 9.0006000E+02, DT= 1.0000000E-02, C=  0.228 1.7399E-01 1.5673E-02
+Step      8, t= 9.0006000E+02, DT= 1.0000000E-02, C=  0.228 1.5972E-01 1.6406E-02
              Solving for fluid
           8  Hmholtz VELX      10   3.2872E-09   1.1183E+00   1.0000E-08
           8  Hmholtz VELY       8   1.5642E-09   1.2002E+00   1.0000E-08
           8  Hmholtz VELZ      10   2.3409E-09   8.2998E-01   1.0000E-08
 [LOGGER] act_index=6 dUdy=10.97700 R=0.11669 
-          8  U-PRES gmres      50   7.6118E-09   1.3698E-01   1.0000E-08   3.4516E-03   8.0015E-03
+          8  U-PRES gmres      50   7.6118E-09   1.3698E-01   1.0000E-08   3.5730E-03   8.5101E-03
           8  Volflow X              9.0006E+02   3.7820E-03   1.6394E-05   7.9998E-01   8.0000E-01
-          8  Fluid done  9.0006E+02  9.4706E-03
+          8  Fluid done  9.0006E+02  1.0036E-02
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -1011,14 +1011,14 @@ Step      8, t= 9.0006000E+02, DT= 1.0000000E-02, C=  0.228 1.7399E-01 1.5673E-0
  =============================
  [DRL] STATE AVG SUBSTRACT!
  [DRL] STATE AVG SUBSTRACT!
-[STB3] STATE RECV
  --------------------
  [STATE] SENSING PLANE GET
  --------------------
  [STATE] TIME GET   900.05999999249991     
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-t: 0.07,		 Reward: 0.117,		 Mem: 33.4
+[STB3] STATE RECV
+t: 0.07,		 Reward: 0.117,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -1044,30 +1044,30 @@ t: 0.07,		 Reward: 0.117,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step      9, t= 9.0007000E+02, DT= 1.0000000E-02, C=  0.231 1.8968E-01 1.5692E-02
+Step      9, t= 9.0007000E+02, DT= 1.0000000E-02, C=  0.231 1.7590E-01 1.6175E-02
              Solving for fluid
           9  Hmholtz VELX      10   3.1042E-09   9.5989E-01   1.0000E-08
           9  Hmholtz VELY       8   1.5404E-09   9.1065E-01   1.0000E-08
           9  Hmholtz VELZ      10   2.3007E-09   6.4363E-01   1.0000E-08
 [LOGGER] act_index=7 dUdy=10.95393 R=0.11854 
-          9  U-PRES gmres      49   7.6663E-09   8.8101E-02   1.0000E-08   3.3723E-03   7.7947E-03
+          9  U-PRES gmres      49   7.6663E-09   8.8101E-02   1.0000E-08   3.4147E-03   8.1896E-03
           9  Volflow X              9.0007E+02   3.9572E-03   1.7154E-05   7.9998E-01   8.0000E-01
-          9  Fluid done  9.0007E+02  9.3461E-03
+          9  Fluid done  9.0007E+02  9.7016E-03
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
  [NEK] RECV REQUEST: STATE
  =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
 [STB3] STATE RECV
- [DRL] STATE AVG SUBSTRACT!
- [DRL] STATE AVG SUBSTRACT!
  --------------------
  [STATE] SENSING PLANE GET
  --------------------
  [STATE] TIME GET   900.06999999249990     
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-t: 0.08,		 Reward: 0.119,		 Mem: 33.4
+t: 0.08,		 Reward: 0.119,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -1093,21 +1093,20 @@ t: 0.08,		 Reward: 0.119,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step     10, t= 9.0008000E+02, DT= 1.0000000E-02, C=  0.237 2.0525E-01 1.5575E-02
+Step     10, t= 9.0008000E+02, DT= 1.0000000E-02, C=  0.237 1.9165E-01 1.5755E-02
              Solving for fluid
          10  Hmholtz VELX      10   2.8023E-09   8.3812E-01   1.0000E-08
          10  Hmholtz VELY       7   9.8840E-09   7.7402E-01   1.0000E-08
          10  Hmholtz VELZ      10   2.2834E-09   5.7116E-01   1.0000E-08
 [LOGGER] act_index=8 dUdy=10.93346 R=0.12019 
-         10  U-PRES gmres      48   7.7333E-09   6.1871E-02   1.0000E-08   3.3347E-03   7.6757E-03
+         10  U-PRES gmres      48   7.7333E-09   6.1871E-02   1.0000E-08   3.3419E-03   7.9857E-03
          10  Volflow X              9.0008E+02   3.8861E-03   1.6846E-05   7.9998E-01   8.0000E-01
-         10  Fluid done  9.0008E+02  9.0476E-03
+         10  Fluid done  9.0008E+02  9.3526E-03
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
  [NEK] RECV REQUEST: STATE
  =============================
-[STB3] STATE RECV
  [DRL] STATE AVG SUBSTRACT!
  [DRL] STATE AVG SUBSTRACT!
  --------------------
@@ -1116,7 +1115,8 @@ Step     10, t= 9.0008000E+02, DT= 1.0000000E-02, C=  0.237 2.0525E-01 1.5575E-0
  [STATE] TIME GET   900.07999999249989     
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-t: 0.09,		 Reward: 0.120,		 Mem: 33.4
+[STB3] STATE RECV
+t: 0.09,		 Reward: 0.120,		 Mem: 22.4
  =============================
  [NEK] RECV REQUEST: CNTRL
  =============================
@@ -1142,15 +1142,214 @@ t: 0.09,		 Reward: 0.120,		 Mem: 33.4
  ----------------------
  DRL_STATE F F
  [NEK] IF QUIT F
-Step     11, t= 9.0009000E+02, DT= 1.0000000E-02, C=  0.242 2.2040E-01 1.5151E-02
+Step     11, t= 9.0009000E+02, DT= 1.0000000E-02, C=  0.242 2.0707E-01 1.5417E-02
              Solving for fluid
          11  Hmholtz VELX      10   2.7268E-09   7.7282E-01   1.0000E-08
          11  Hmholtz VELY       7   9.7868E-09   6.7163E-01   1.0000E-08
          11  Hmholtz VELZ      10   2.2796E-09   5.5213E-01   1.0000E-08
 [LOGGER] act_index=9 dUdy=10.91139 R=0.12197 
-         11  U-PRES gmres      47   8.9760E-09   4.6481E-02   1.0000E-08   3.2384E-03   7.4640E-03
+         11  U-PRES gmres      47   8.9760E-09   4.6481E-02   1.0000E-08   3.3798E-03   7.9289E-03
          11  Volflow X              9.0009E+02   3.9406E-03   1.7082E-05   7.9998E-01   8.0000E-01
-         11  Fluid done  9.0009E+02  8.7139E-03
+         11  Fluid done  9.0009E+02  9.3320E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.08999999249988     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+[INTEGRATE] AT 10/100 SAVE Trajectories
+t: 0.10,		 Reward: 0.122,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     12, t= 9.0010000E+02, DT= 1.0000000E-02, C=  0.246 2.2257E-01 1.5502E-02
+             Solving for fluid
+         12  Hmholtz VELX      10   2.5554E-09   7.0795E-01   1.0000E-08
+         12  Hmholtz VELY       7   9.7480E-09   6.2573E-01   1.0000E-08
+         12  Hmholtz VELZ      10   2.2782E-09   5.4415E-01   1.0000E-08
+[LOGGER] act_index=10 dUdy=10.89029 R=0.12367 
+         12  U-PRES gmres      46   8.8833E-09   3.6477E-02   1.0000E-08   3.2011E-03   7.6527E-03
+         12  Volflow X              9.0010E+02   3.9385E-03   1.7073E-05   7.9998E-01   8.0000E-01
+         12  Fluid done  9.0010E+02  8.9808E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.09999999249987     
+[STB3] STATE RECV
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.11,		 Reward: 0.124,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     13, t= 9.0011000E+02, DT= 1.0000000E-02, C=  0.249 2.3761E-01 1.5037E-02
+             Solving for fluid
+         13  Hmholtz VELX      10   2.5274E-09   6.7953E-01   1.0000E-08
+         13  Hmholtz VELY       7   9.7020E-09   5.7706E-01   1.0000E-08
+         13  Hmholtz VELZ      10   2.2777E-09   5.4232E-01   1.0000E-08
+[LOGGER] act_index=11 dUdy=10.86875 R=0.12540 
+         13  U-PRES gmres      45   8.8169E-09   2.9348E-02   1.0000E-08   3.1900E-03   7.5591E-03
+         13  Volflow X              9.0011E+02   3.9623E-03   1.7176E-05   7.9998E-01   8.0000E-01
+         13  Fluid done  9.0011E+02  8.9513E-03
+  [STAT] Average compute
+  [STAT] Average fields.
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.10999999249987     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.12,		 Reward: 0.125,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+[STB3] ACTION for 576 Agents
+Step     14, t= 9.0012000E+02, DT= 1.0000000E-02, C=  0.251 2.5289E-01 1.5280E-02
+             Solving for fluid
+         14  Hmholtz VELX      10   2.4329E-09   6.4437E-01   1.0000E-08
+         14  Hmholtz VELY       7   9.6826E-09   5.5868E-01   1.0000E-08
+         14  Hmholtz VELZ      10   2.2769E-09   5.4084E-01   1.0000E-08
+[LOGGER] act_index=12 dUdy=10.84758 R=0.12710 
+         14  U-PRES gmres      45   7.4267E-09   2.3931E-02   1.0000E-08   3.1523E-03   7.5067E-03
+         14  Volflow X              9.0012E+02   3.9772E-03   1.7240E-05   7.9998E-01   8.0000E-01
+         14  Fluid done  9.0012E+02  8.8107E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.11999999249986     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.13,		 Reward: 0.127,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     15, t= 9.0013000E+02, DT= 1.0000000E-02, C=  0.251 2.6784E-01 1.4953E-02
+             Solving for fluid
+         15  Hmholtz VELX      10   2.4241E-09   6.3264E-01   1.0000E-08
+         15  Hmholtz VELY       7   9.6542E-09   5.3325E-01   1.0000E-08
+         15  Hmholtz VELZ      10   2.2760E-09   5.4020E-01   1.0000E-08
+[LOGGER] act_index=13 dUdy=10.82628 R=0.12882 
+         15  U-PRES gmres      44   9.8646E-09   1.9655E-02   1.0000E-08   3.0946E-03   7.3977E-03
+         15  Volflow X              9.0013E+02   3.9919E-03   1.7304E-05   7.9998E-01   8.0000E-01
+         15  Fluid done  9.0013E+02  8.7788E-03
  DRL_STATE F F
  ======== INTO MPI LOOP ============
  =============================
@@ -1162,40 +1361,655 @@ Step     11, t= 9.0009000E+02, DT= 1.0000000E-02, C=  0.242 2.2040E-01 1.5151E-0
  --------------------
  [STATE] SENSING PLANE GET
  --------------------
- [STATE] TIME GET   900.08999999249988     
+ [STATE] TIME GET   900.12999999249985     
  [STATE] BUFFER TRANSFERRED
  ======== INTO MPI LOOP ============
-[INTEGRATE] AT 10/10.0 SAVE Trajectories
-t: 0.10,		 Reward: 0.122,		 Mem: 33.4
-[INTEGRATE] SAVED RECORD to runs/1998/env_002/vars_record_1770779553.mat
-
-▗▖  ▗▖▗▄▄▄▖▗▖ ▗▖    ▗▄▄▄ ▗▄▄▖ ▗▖       ▗▄▄▄▖▗▖  ▗▖▗▄▄▄ 
-▐▛▚▖▐▌▐▌   ▐▌▗▞▘    ▐▌  █▐▌ ▐▌▐▌       ▐▌   ▐▛▚▖▐▌▐▌  █
-▐▌ ▝▜▌▐▛▀▀▘▐▛▚▖     ▐▌  █▐▛▀▚▖▐▌       ▐▛▀▀▘▐▌ ▝▜▌▐▌  █
-▐▌  ▐▌▐▙▄▄▖▐▌ ▐▌    ▐▙▄▄▀▐▌ ▐▌▐▙▄▄▖    ▐▙▄▄▖▐▌  ▐▌▐▙▄▄▀
-
-[STB3] CLOSE ENV
+t: 0.14,		 Reward: 0.129,		 Mem: 22.4
  =============================
- [NEK] RECV REQUEST: TERMN
+ [NEK] RECV REQUEST: CNTRL
  =============================
- --------------STOP-----------------
- [TERMN] !!!!! LAST STEP !!!!!
- [TERMN] CKPT SAVED!
- --------------STOP-----------------
- [TERMN] DISCONNECT!
-  
-run successful: dying ...
-  
-  
-total elapsed time             :   3.27870E-01 sec
-total solver time w/o IO       :   2.04097E-01 sec
-time/timestep                  :   1.85542E-02 sec
-avg throughput per timestep    :   8.83895E+04 gridpts/CPUs
-total max memory usage         :   2.92872E-01 GB
-
-[STB3] REWARD LOGGER CLOSED
-[STB3] TERMN ENV, Sleep: 0.1SEC
-Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
-Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
-Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
-See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     16, t= 9.0014000E+02, DT= 1.0000000E-02, C=  0.251 2.8266E-01 1.4815E-02
+             Solving for fluid
+         16  Hmholtz VELX      10   2.3737E-09   6.1378E-01   1.0000E-08
+         16  Hmholtz VELY       7   9.6399E-09   5.2595E-01   1.0000E-08
+         16  Hmholtz VELZ      10   2.2750E-09   5.3948E-01   1.0000E-08
+[LOGGER] act_index=14 dUdy=10.80516 R=0.13052 
+         16  U-PRES gmres      42   8.5220E-09   1.6208E-02   1.0000E-08   2.9424E-03   7.0566E-03
+         16  Volflow X              9.0014E+02   4.0075E-03   1.7372E-05   7.9998E-01   8.0000E-01
+         16  Fluid done  9.0014E+02  8.4183E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+[STB3] STATE RECV
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.13999999249984     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.15,		 Reward: 0.131,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     17, t= 9.0015000E+02, DT= 1.0000000E-02, C=  0.249 2.9710E-01 1.4441E-02
+             Solving for fluid
+         17  Hmholtz VELX      10   2.3714E-09   6.0964E-01   1.0000E-08
+         17  Hmholtz VELY       7   9.6173E-09   5.1238E-01   1.0000E-08
+         17  Hmholtz VELZ      10   2.2739E-09   5.3895E-01   1.0000E-08
+[LOGGER] act_index=15 dUdy=10.78404 R=0.13222 
+         17  U-PRES gmres      38   8.8014E-09   1.3396E-02   1.0000E-08   2.6323E-03   6.7017E-03
+[STB3] STATE RECV
+         17  Volflow X              9.0015E+02   4.0172E-03   1.7414E-05   7.9998E-01   8.0000E-01
+         17  Fluid done  9.0015E+02  8.0924E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.14999999249983     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.16,		 Reward: 0.132,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+[STB3] ACTION for 576 Agents
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     18, t= 9.0016000E+02, DT= 1.0000000E-02, C=  0.246 3.1137E-01 1.4267E-02
+             Solving for fluid
+         18  Hmholtz VELX      10   2.3455E-09   5.9955E-01   1.0000E-08
+         18  Hmholtz VELY       7   9.6027E-09   5.0984E-01   1.0000E-08
+         18  Hmholtz VELZ      10   2.2729E-09   5.3844E-01   1.0000E-08
+[LOGGER] act_index=16 dUdy=10.76303 R=0.13391 
+         18  U-PRES gmres      40   7.8419E-09   1.1088E-02   1.0000E-08   2.7706E-03   6.6170E-03
+[STB3] STATE RECV
+         18  Volflow X              9.0016E+02   4.0286E-03   1.7463E-05   7.9998E-01   8.0000E-01
+         18  Fluid done  9.0016E+02  7.9365E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.15999999249982     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.17,		 Reward: 0.134,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+[STB3] ACTION for 576 Agents
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     19, t= 9.0017000E+02, DT= 1.0000000E-02, C=  0.242 3.2547E-01 1.4102E-02
+             Solving for fluid
+         19  Hmholtz VELX      10   2.3447E-09   5.9870E-01   1.0000E-08
+         19  Hmholtz VELY       7   9.5818E-09   5.0244E-01   1.0000E-08
+         19  Hmholtz VELZ      10   2.2720E-09   5.3799E-01   1.0000E-08
+[LOGGER] act_index=17 dUdy=10.74208 R=0.13559 
+         19  U-PRES gmres      39   8.9777E-09   9.1851E-03   1.0000E-08   2.6657E-03   6.4208E-03
+         19  Volflow X              9.0017E+02   4.0337E-03   1.7486E-05   7.9998E-01   8.0000E-01
+         19  Fluid done  9.0017E+02  7.7429E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.16999999249981     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.18,		 Reward: 0.136,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+[STB3] ACTION for 576 Agents
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     20, t= 9.0018000E+02, DT= 1.0000000E-02, C=  0.237 3.3920E-01 1.3735E-02
+             Solving for fluid
+         20  Hmholtz VELX      10   2.3321E-09   5.9328E-01   1.0000E-08
+         20  Hmholtz VELY       7   9.5670E-09   5.0187E-01   1.0000E-08
+         20  Hmholtz VELZ      10   2.2711E-09   5.3759E-01   1.0000E-08
+[LOGGER] act_index=18 dUdy=10.72122 R=0.13727 
+         20  U-PRES gmres      39   8.4265E-09   7.6137E-03   1.0000E-08   2.7344E-03   6.5060E-03
+         20  Volflow X              9.0018E+02   4.0399E-03   1.7512E-05   7.9998E-01   8.0000E-01
+         20  Fluid done  9.0018E+02  7.8295E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.17999999249980     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.19,		 Reward: 0.137,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+[STB3] ACTION for 576 Agents
+Step     21, t= 9.0019000E+02, DT= 1.0000000E-02, C=  0.231 3.5316E-01 1.3961E-02
+             Solving for fluid
+         21  Hmholtz VELX      10   2.3313E-09   5.9374E-01   1.0000E-08
+         21  Hmholtz VELY       7   9.5484E-09   4.9771E-01   1.0000E-08
+         21  Hmholtz VELZ      10   2.2704E-09   5.3721E-01   1.0000E-08
+[LOGGER] act_index=19 dUdy=10.70044 R=0.13894 
+         21  U-PRES gmres      39   6.9452E-09   6.3139E-03   1.0000E-08   2.6837E-03   6.3613E-03
+         21  Volflow X              9.0019E+02   4.0412E-03   1.7518E-05   7.9998E-01   8.0000E-01
+         21  Fluid done  9.0019E+02  7.6588E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.18999999249979     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+[INTEGRATE] AT 20/100 SAVE Trajectories
+t: 0.20,		 Reward: 0.139,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+[STB3] ACTION for 576 Agents
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     22, t= 9.0020000E+02, DT= 1.0000000E-02, C=  0.233 3.6693E-01 1.3766E-02
+             Solving for fluid
+         22  Hmholtz VELX      10   2.3260E-09   5.9082E-01   1.0000E-08
+         22  Hmholtz VELY       7   9.5361E-09   4.9791E-01   1.0000E-08
+         22  Hmholtz VELZ      10   2.2697E-09   5.3686E-01   1.0000E-08
+[LOGGER] act_index=20 dUdy=10.67977 R=0.14061 
+         22  U-PRES gmres      38   8.9768E-09   5.2379E-03   1.0000E-08   2.6913E-03   6.3301E-03
+         22  Volflow X              9.0020E+02   4.0430E-03   1.7526E-05   7.9998E-01   8.0000E-01
+         22  Fluid done  9.0020E+02  7.6439E-03
+[STB3] STATE RECV
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.19999999249978     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.21,		 Reward: 0.141,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     23, t= 9.0021000E+02, DT= 1.0000000E-02, C=  0.237 3.8067E-01 1.3737E-02
+             Solving for fluid
+         23  Hmholtz VELX      10   2.3250E-09   5.9173E-01   1.0000E-08
+         23  Hmholtz VELY       7   9.5225E-09   4.9551E-01   1.0000E-08
+         23  Hmholtz VELZ      10   2.2692E-09   5.3651E-01   1.0000E-08
+[LOGGER] act_index=21 dUdy=10.65919 R=0.14226 
+         23  U-PRES gmres      38   7.4998E-09   4.3465E-03   1.0000E-08   2.6491E-03   6.2889E-03
+         23  Volflow X              9.0021E+02   4.0414E-03   1.7519E-05   7.9998E-01   8.0000E-01
+         23  Fluid done  9.0021E+02  7.6250E-03
+  [STAT] Average compute
+  [STAT] Average fields.
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.20999999249977     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.22,		 Reward: 0.142,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+[STB3] ACTION for 576 Agents
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     24, t= 9.0022000E+02, DT= 1.0000000E-02, C=  0.242 3.9458E-01 1.3911E-02
+             Solving for fluid
+         24  Hmholtz VELX      10   2.3236E-09   5.9017E-01   1.0000E-08
+         24  Hmholtz VELY       7   9.5154E-09   4.9597E-01   1.0000E-08
+         24  Hmholtz VELZ      10   2.2687E-09   5.3614E-01   1.0000E-08
+[LOGGER] act_index=22 dUdy=10.63873 R=0.14391 
+         24  U-PRES gmres      37   9.1710E-09   3.6081E-03   1.0000E-08   2.5853E-03   6.1393E-03
+         24  Volflow X              9.0022E+02   4.0403E-03   1.7514E-05   7.9998E-01   8.0000E-01
+         24  Fluid done  9.0022E+02  7.4567E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.21999999249977     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.23,		 Reward: 0.144,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     25, t= 9.0023000E+02, DT= 1.0000000E-02, C=  0.246 4.0812E-01 1.3541E-02
+             Solving for fluid
+         25  Hmholtz VELX      10   2.3227E-09   5.9116E-01   1.0000E-08
+         25  Hmholtz VELY       7   9.5086E-09   4.9458E-01   1.0000E-08
+         25  Hmholtz VELZ      10   2.2682E-09   5.3574E-01   1.0000E-08
+[LOGGER] act_index=23 dUdy=10.61837 R=0.14555 
+         25  U-PRES gmres      36   9.0281E-09   2.9961E-03   1.0000E-08   2.5031E-03   5.9403E-03
+         25  Volflow X              9.0023E+02   4.0372E-03   1.7500E-05   7.9998E-01   8.0000E-01
+         25  Fluid done  9.0023E+02  7.2874E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+[STB3] STATE RECV
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.22999999249976     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+t: 0.24,		 Reward: 0.146,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     26, t= 9.0024000E+02, DT= 1.0000000E-02, C=  0.250 4.2158E-01 1.3465E-02
+             Solving for fluid
+         26  Hmholtz VELX      10   2.3234E-09   5.9038E-01   1.0000E-08
+         26  Hmholtz VELY       7   9.5078E-09   4.9513E-01   1.0000E-08
+         26  Hmholtz VELZ      10   2.2676E-09   5.3531E-01   1.0000E-08
+[LOGGER] act_index=24 dUdy=10.59814 R=0.14717 
+         26  U-PRES gmres      34   8.8374E-09   2.4893E-03   1.0000E-08   2.3766E-03   5.6390E-03
+         26  Volflow X              9.0024E+02   4.0347E-03   1.7490E-05   7.9998E-01   8.0000E-01
+         26  Fluid done  9.0024E+02  7.0123E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.23999999249975     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.25,		 Reward: 0.147,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+[STB3] ACTION for 576 Agents
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     27, t= 9.0025000E+02, DT= 1.0000000E-02, C=  0.253 4.3521E-01 1.3623E-02
+             Solving for fluid
+         27  Hmholtz VELX      10   2.3227E-09   5.9131E-01   1.0000E-08
+         27  Hmholtz VELY       7   9.5077E-09   4.9437E-01   1.0000E-08
+         27  Hmholtz VELZ      10   2.2670E-09   5.3483E-01   1.0000E-08
+[LOGGER] act_index=25 dUdy=10.57804 R=0.14879 
+         27  U-PRES gmres      33   9.8699E-09   2.0693E-03   1.0000E-08   2.3178E-03   5.4808E-03
+         27  Volflow X              9.0025E+02   4.0311E-03   1.7474E-05   7.9998E-01   8.0000E-01
+         27  Fluid done  9.0025E+02  6.7886E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.24999999249974     
+ [STATE] BUFFER TRANSFERRED
+[STB3] STATE RECV
+ ======== INTO MPI LOOP ============
+t: 0.26,		 Reward: 0.149,		 Mem: 22.4
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+ -------------------------
+ [ACTION] UPDATED
+ -------------------------
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: EVOLV
+ =============================
+ ========OUT MPI LOOP!========
+ ========INTO EVLOV!=========
+ --------------------------------
+ [REWARD] INQURY
+ --------------------------------
+[STB3] ACTION for 576 Agents
+ ----------------------
+ [REWARD] GET!
+ ----------------------
+ DRL_STATE F F
+ [NEK] IF QUIT F
+Step     28, t= 9.0026000E+02, DT= 1.0000000E-02, C=  0.255 4.4813E-01 1.2924E-02
+             Solving for fluid
+         28  Hmholtz VELX      10   2.3246E-09   5.9096E-01   1.0000E-08
+         28  Hmholtz VELY       7   9.5122E-09   4.9493E-01   1.0000E-08
+         28  Hmholtz VELZ      10   2.2661E-09   5.3430E-01   1.0000E-08
+[LOGGER] act_index=26 dUdy=10.55806 R=0.15040 
+         28  U-PRES gmres      33   7.4248E-09   1.7219E-03   1.0000E-08   2.5180E-03   5.7236E-03
+         28  Volflow X              9.0026E+02   4.0285E-03   1.7463E-05   7.9998E-01   8.0000E-01
+         28  Fluid done  9.0026E+02  7.0501E-03
+ DRL_STATE F F
+ ======== INTO MPI LOOP ============
+ =============================
+ [NEK] RECV REQUEST: STATE
+ =============================
+ [DRL] STATE AVG SUBSTRACT!
+ [DRL] STATE AVG SUBSTRACT!
+ --------------------
+ [STATE] SENSING PLANE GET
+ --------------------
+ [STATE] TIME GET   900.25999999249973     
+ [STATE] BUFFER TRANSFERRED
+ ======== INTO MPI LOOP ============
+[STB3] STATE RECV
+t: 0.27,		 Reward: 0.150,		 Mem: 22.5
+ =============================
+ [NEK] RECV REQUEST: CNTRL
+ =============================
+ -------------------------
+ [ACTION] STANDING BY
+ -------------------------
+[ZNMF] DONE BY NEK5000
+mpirun: Forwarding signal 20 to job

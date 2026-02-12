@@ -11,6 +11,50 @@
 </p>
 
 
+# Quick Guide on NEK Usage: 
+
+We recommand using the Docker enviroment for running the Nek example. 
+
+First clone this repo: 
+
+```
+git clone git@github.com:Fantasy98/hydrogym_NEK.git
+```
+
+Unzip the solver: 
+
+```
+cd third_party && tar -xvf KTH_DRL_Framework.tar.gz && cd ../ 
+```
+
+Get the docker image: 
+
+```
+docker pull yuninw/hydrogym-nek:custom
+```
+
+Run the docker image:
+
+```
+docker run --cpus=12  -it --user root -v $PWD:/workspace yuninw/hydrogym-nek:custom
+```
+
+Inside the docker image, install the hydrogym: 
+
+```
+pip install -e . 
+```
+
+
+Do a small test on the Nek case 
+
+```
+cd ./examples/nek/
+./exec-script --compile --step 100
+```
+
+The results can be checked in the log files. 
+
 
 # About this Package
 
