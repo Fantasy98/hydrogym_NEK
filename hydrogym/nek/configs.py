@@ -2,7 +2,7 @@
 Configuration of runner and NEK
 @yuningw
 """
-from dataclasses import dataclass 
+from dataclasses import dataclass, field
 import argparse
 from omegaconf import OmegaConf
 from typing import Optional, List
@@ -179,9 +179,9 @@ class Logging:
 
 @dataclass
 class Config:
-    simulation:Simulation   =   Simulation()
-    runner: Runner          =   Runner()
-    logging: Logging        =   Logging()
+    simulation: Simulation = field(default_factory=Simulation)
+    runner: Runner = field(default_factory=Runner)
+    logging: Logging = field(default_factory=Logging)
 
 
 def add_subparser(parser: argparse.ArgumentParser):

@@ -12,6 +12,17 @@
 # source ~/.bashrc.openmpi_ucx
 # source /home/firedrake/firedrake/bin/activate
 
+source /workspace/test/load-module
+ml list 
+source /workspace/env/bin/activate
+
+echo "Environment activated"
+echo "Python version: $(python --version)"
+echo "MPI version: $(mpirun --version)"
+echo "MPI4PY version: $(python -c 'import mpi4py; print(mpi4py.__version__)')"
+echo "Nek version: $(nek5000 --version)"
+echo "Nek version: $(nek5000 --version)"
+
 # -- OPENMPI UCX SETUP --
 unset OMPI_MCA_pml OMPI_MCA_osc UCX_TLS UCX_NET_DEVICES
 export HWLOC_HIDE_ERRORS=1
@@ -107,7 +118,7 @@ initialize_run_folder() {
     if [[ ${#overrides[@]} -gt 0 ]]; then
         INIT_CMD+=("${overrides[@]}")
     fi
-    mpirun -n 1 python3 "${INIT_CMD[@]}" \
+    mpirun --allow-run-as-root -n 1 python3 "${INIT_CMD[@]}" \
       > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
 
     # -- Tracking the run folder --
@@ -133,7 +144,7 @@ if [[ "${MODE}" == "run" ]]; then
     if [[ -n "${STEPS}" ]]; then
         STEP_ARGS=(--steps "${STEPS}")
     fi
-    mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" "${STEP_ARGS[@]}" :\
+    mpirun --allow-run-as-root -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" "${STEP_ARGS[@]}" :\
             -n "${NTOT}" bash -c "cd ${RUN_PATH} && ./nek5000" 
 
 elif [[ "${MODE}" == "eval" ]]; then
@@ -147,7 +158,7 @@ elif [[ "${MODE}" == "eval" ]]; then
         if [[ -n "${STEPS}" ]]; then
             STEP_ARGS=(--steps "${STEPS}")
         fi
-        mpirun -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" \
+        mpirun --allow-run-as-root -n 1 python3 "${SCRIPT_DIR}/${SCRIPT_NAME}" --config "${CONFIG_PATH}" \
             "${STEP_ARGS[@]}" \
             --overrides "runner.rank=${ienv}" "runner.evaluation=True" \
             :\

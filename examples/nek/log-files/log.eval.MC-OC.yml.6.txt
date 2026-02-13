@@ -1,8 +1,11 @@
+[4d04f199b580:04010] UNKNOWN HWLOC ERROR
 Traceback (most recent call last):
   File "/workspace/examples/nek/run-transient.py", line 9, in <module>
     import psutil
 ModuleNotFoundError: No module named 'psutil'
 --------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
+prterun detected that one or more processes exited with non-zero status,
+thus causing the job to be terminated. The first process to do so was:
+
+   Process name: [prterun-4d04f199b580-4010@1,0] Exit code:    1
 --------------------------------------------------------------------------

@@ -1,0 +1,12 @@
+#!/bin/bash
+## Load module in the new container 
+
+ml purge 
+# Load GCC 13.3.0 Foundamental 
+ml GCC/13.3.0
+ml OpenMPI/5.0.5-GCC-13.3.0-SystemCUDA
+ml Python/3.12.3-GCCcore-13.3.0
+ml mpi4py/4.0.1-gompi-2024a-SystemCUDA
+
+
+

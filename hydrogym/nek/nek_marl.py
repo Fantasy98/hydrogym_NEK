@@ -323,10 +323,17 @@ class parallel_env(ParallelEnv):
         # Resetting reward value
         rewards = {}
 
-        # Trasform actions to write before re-scaling
-        ctrl_value = {}            
-        for i_a,agent in enumerate(self.agents):
-            ctrl_value[agent] = actions[agent]  
+        # Transform actions to scalars before re-scaling
+        ctrl_value = {}
+        for i_a, agent in enumerate(self.agents):
+            raw_action = np.asarray(actions[agent])
+            if raw_action.size != 1:
+                raise ValueError(
+                    f"[STB3] Expected scalar action per agent, got shape {raw_action.shape} for {agent}"
+                )
+            scalar_action = float(raw_action.reshape(-1)[0])
+            actions[agent] = scalar_action
+            ctrl_value[agent] = scalar_action
         
         
         # Linear mapping of the actions if the range differs

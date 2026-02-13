@@ -1,0 +1,61 @@
+# nek parameter file
+[GENERAL]
+stopAt = numSteps   
+numSteps = 500000 
+dt = -1.000e-02           
+timeStepper = bdf3  
+variableDt = no   
+
+writeControl = timeStep 
+writeInterval = 100000
+
+dealiasing = yes   
+filtering = none    
+filterWeight = 0.010000 
+filterCutoffRatio = 0.900000 
+
+#------DRL SETUP-------
+userParam01 = 1 
+userParam02 = 0 
+userParam03 = 15.0 
+userParam04 = 180.0 
+userParam05 = 20.0 
+userParam06 = 5.0 
+userParam07 = 207.0 
+#---------------------
+
+[PROBLEMTYPE]
+stressFormulation = no
+variableProperties = no
+
+[PRESSURE]
+residualTol = 1.000000e-08
+residualProj = no
+
+[VELOCITY]
+residualTol = 1.000000e-08
+residualProj = no
+density = 1.000000
+viscosity = -2800.000000
+advection = yes
+
+[_RUNPAR]
+PARFWRITE = no
+outparfile = outparfile
+
+[_MONITOR]
+LOGLEVEL = 1
+WALLTIME = 23:45
+
+[_CHKPOINT]
+READCHKPT = yes
+CHKPFNUMBER = 1
+CHKPINTERVAL = 10000000
+
+[_STAT]
+AVSTEP = 10
+IOSTEP = 300000000
+
+[_TSRS]
+SMPSTEP = 23
+

@@ -30,19 +30,19 @@ cd third_party && tar -xvf KTH_DRL_Framework.tar.gz && cd ../
 Get the docker image: 
 
 ```
-docker pull yuninw/hydrogym-nek:custom
+docker pull clagemann/maia-cuda-12.8.1:latest
 ```
 
 Run the docker image:
 
 ```
-docker run --cpus=12  -it --user root -v $PWD:/workspace yuninw/hydrogym-nek:custom
+docker run --cpus=12  -it --user $(id -u):$(id -g) -v $PWD:/workspace clagemann/maia-cuda-12.8.1:latest
 ```
 
-Inside the docker image, install the hydrogym: 
+Inside the docker image, install the environment via: 
 
 ```
-pip install -e . 
+bashe test/install_env 
 ```
 
 
@@ -50,7 +50,7 @@ Do a small test on the Nek case
 
 ```
 cd ./examples/nek/
-./exec-script --compile --step 100
+./exec-script --compile --steps 100
 ```
 
 The results can be checked in the log files. 
