@@ -36,13 +36,13 @@ docker pull clagemann/maia-cuda-12.8.1:latest
 Run the docker image:
 
 ```
-docker run --cpus=12  -it --user $(id -u):$(id -g) -v $PWD:/workspace clagemann/maia-cuda-12.8.1:latest
+docker run --cpus=12  -it -u root -v $PWD:/workspace clagemann/maia-cuda-12.8.1:latest
 ```
 
 Inside the docker image, install the environment via: 
 
 ```
-bashe test/install_env 
+bash test/install_env 
 ```
 
 
