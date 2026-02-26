@@ -20,8 +20,6 @@ echo "Environment activated"
 echo "Python version: $(python --version)"
 echo "MPI version: $(mpirun --version)"
 echo "MPI4PY version: $(python -c 'import mpi4py; print(mpi4py.__version__)')"
-echo "Nek version: $(nek5000 --version)"
-echo "Nek version: $(nek5000 --version)"
 
 # -- OPENMPI UCX SETUP --
 unset OMPI_MCA_pml OMPI_MCA_osc UCX_TLS UCX_NET_DEVICES
@@ -120,6 +118,7 @@ initialize_run_folder() {
     fi
     mpirun --allow-run-as-root -n 1 python3 "${INIT_CMD[@]}" \
       > "${LOG_DIR}/log.initial.${CONFIG_NAME}" 2>&1
+    # mpirun --allow-run-as-root -n 1 python3 "${INIT_CMD[@]}" 
 
     # -- Tracking the run folder --
     AGENT_RUN_NAME=$(grep -ri 'agent_run_name' "${CONFIG_PATH}" | awk -F':' '{gsub(/ /,"",$2); print $2}')

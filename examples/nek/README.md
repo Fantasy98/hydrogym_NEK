@@ -230,6 +230,15 @@ rewards = data['agent_0']['rew_rec']
 - `--script`: Python script name (default: `run-transient.py`)
 - `--overrides`: Config overrides (space-separated)
 
+
+### Recover the ownership of the run folder
+
+After the run, the ownership of the run folder is changed to root. So you need to recover the ownership to the user.
+```
+sudo chown -R "$(id -u)":"$(id -g)"
+```
+
+
 ## Examples
 
 ### Example 1: Run Opposition Control

@@ -39,7 +39,13 @@ Run the docker image:
 docker run --cpus=12  -it -u root -v $PWD:/workspace clagemann/maia-cuda-12.8.1:latest
 ```
 
-Inside the docker image, install the environment via: 
+Inside the docker image, go to the workspace: 
+
+```
+cd /workspace 
+```
+
+install the environment via: 
 
 ```
 bash test/install_env 
