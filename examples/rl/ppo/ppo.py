@@ -1,9 +1,9 @@
-import gym
+import gymnasium as gym
 import numpy as np
 import scipy.signal
 import torch
 import torch.nn as nn
-from gym.spaces import Box, Discrete
+from gymnasium.spaces import Box, Discrete
 from torch.distributions.categorical import Categorical
 from torch.distributions.normal import Normal
 from torch.optim import Adam
@@ -447,7 +447,8 @@ def ppo(
 
   # Prepare for interaction with environment
   # start_time = time.time()
-  o, ep_ret, ep_len = env.reset(), 0, 0
+  o, _ = env.reset()
+  ep_ret, ep_len = 0, 0
 
   print("Setup complete. Beginning training")
 
@@ -456,7 +457,7 @@ def ppo(
     for t in range(steps_per_epoch):
       a, v, logp = ac.step(torch.as_tensor(o, dtype=torch.float32))
 
-      next_o, r, d, _ = env.step(a)
+      next_o, r, terminated, truncated, _ = env.step(a)
       ep_ret += r
       ep_len += 1
 
@@ -468,7 +469,7 @@ def ppo(
       o = next_o
 
       timeout = ep_len == max_ep_len
-      terminal = d or timeout
+      terminal = terminated or truncated or timeout
       epoch_ended = t == steps_per_epoch - 1
 
       if terminal or epoch_ended:
@@ -486,7 +487,8 @@ def ppo(
         # if terminal:
         #     # only save EpRet / EpLen if trajectory finished
         #     logger.store(EpRet=ep_ret, EpLen=ep_len)
-        o, ep_ret, ep_len = env.reset(), 0, 0
+        o, _ = env.reset()
+        ep_ret, ep_len = 0, 0
 
     # Save model
     # if (epoch % save_freq == 0) or (epoch == epochs-1):
