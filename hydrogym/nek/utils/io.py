@@ -64,4 +64,7 @@ class GenericCallback(CallbackBase):
   def __call__(self, iter: int, t: float, env):
     if super().__call__(iter, t, env):
       self.cb(iter, t, env)
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/cl/hydrogym_v1.0-OptSolverDeps

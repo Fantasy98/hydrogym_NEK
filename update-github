@@ -4,7 +4,9 @@ repo="fork_hgym"
 
 # repo="julich"
 
-branchName="dev_yw_fxb"
+#branchName="dev_yw_fxb" ## This is for original 
+
+branchName="dev_yw_fxb_fork_cl" ## This is updated at Mar-9
 
 # repo='juwels'
 # branchName='yw_local_dev'
