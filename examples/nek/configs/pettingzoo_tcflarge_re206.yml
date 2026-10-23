@@ -51,7 +51,7 @@ simulation:
   znmf_avg: 1 
   target_cfl: 2.0
   y_sensing: 15.0
-  retau: 207.0
+  retau: 206.0
   # --- We are not using body-force method in this case ---
   ys_bdf: 0.0
   amp_bdf: 0.0
@@ -63,7 +63,7 @@ simulation:
   Ly: 1.0
   Lz: 3.14
   Nx: 10
-  Ny: 9
+  Ny: 8
   Nz: 9
   # -- Size of the actuator patch --
   nxs: 1
