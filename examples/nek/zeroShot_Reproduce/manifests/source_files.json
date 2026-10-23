@@ -1,0 +1,201 @@
+{
+  "upstream_commit": "4ab9854dea3d84e38a59c25e0f5835a00cf8225f",
+  "note": "Hashes identify original sources before portability edits; original files remain unchanged.",
+  "files": [
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/00_settings.sh",
+      "destination": "1_tcf_train/00_settings.sh",
+      "sha256": "e88cab7495bbb69a359bd9dbd6b27f0db9e684b3a4b324f3784892f183790cdb"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/01_prepare_tcf.sh",
+      "destination": "1_tcf_train/01_prepare_tcf.sh",
+      "sha256": "5713b8b66ed9c6c26a74443919eb562d8fa184a32c575e4da11e2015592284a4"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/02_rank_wrapper.sh",
+      "destination": "1_tcf_train/02_rank_wrapper.sh",
+      "sha256": "f8f5102d25ea52203077e928c46dd802b235d2782e9169d3f4fb8382d38f92fc"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/02_stage_solver.py",
+      "destination": "1_tcf_train/02_stage_solver.py",
+      "sha256": "445c03b37feb229aae7c4c6282532bccf0d530ab1c42a1ab4e54ba9a0251a3c0"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/02_train_resumable.py",
+      "destination": "1_tcf_train/02_train_resumable.py",
+      "sha256": "2862b9e363b6ade5e275f851fd24957ce654120eb5b8bc27c131eeaae7e12f87"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/03_tcf_train.slurm",
+      "destination": "1_tcf_train/03_tcf_train.slurm",
+      "sha256": "e50cacdbf8dbfb4d6fe98c5759a61101618142c12339f4f092fa42bb02248d86"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/04_submit_chain.sh",
+      "destination": "1_tcf_train/04_submit_chain.sh",
+      "sha256": "28c35d93f12c28e8ccfa0494bb5f490acd69019c9ea1955bc5b1c8ae12246af9"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/05_status.sh",
+      "destination": "1_tcf_train/05_status.sh",
+      "sha256": "8f35c556d0310e503ec963ca3434d0d9e28c708ae0e1423c35f933560f86c7bf"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/06_plot_reward.py",
+      "destination": "1_tcf_train/06_plot_reward.py",
+      "sha256": "35e149ae46175ed58f9a5f2845ece490956b1943edbe59f6c3f7d8209400f4c4"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/07_evaluate_deterministic.py",
+      "destination": "1_tcf_train/07_evaluate_deterministic.py",
+      "sha256": "ab3de8647dcfeae54a67d4b5e1c115ac23c1887bdfef0d52f8f1bf7f06e3a0ea"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/08_eval_rank_wrapper.sh",
+      "destination": "1_tcf_train/08_eval_rank_wrapper.sh",
+      "sha256": "dc919f5c2544437a2851e5b1f5a40b92568ecf2725ccdcaa89532f258f979b29"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/09_tcf_evaluate.slurm",
+      "destination": "1_tcf_train/09_tcf_evaluate.slurm",
+      "sha256": "82cd3faa5a30366f33a3fcf4bbe902bad4371aade1a2ab4281df4b039bfdb772"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/10_postprocess_deterministic.py",
+      "destination": "1_tcf_train/10_postprocess_deterministic.py",
+      "sha256": "e64aa80c8a562f063607943bbd55b423ece37c2185987f7662e346d0a41e9f01"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/1_tcf_train/diagnostics/tcf_cpu_affinity.py",
+      "destination": "1_tcf_train/diagnostics/tcf_cpu_affinity.py",
+      "sha256": "65160256cd30dc017a5ec9a0d98017f6dd75cdb69693048ba82a27043baaac82"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/00_settings.sh",
+      "destination": "2_naca0012_deploy/00_settings.sh",
+      "sha256": "8459820c3b1fcae19fb615465973b9dba32a5428d4ab5861d6a572c0778fb39b"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/01_prepare_workspace.py",
+      "destination": "2_naca0012_deploy/01_prepare_workspace.py",
+      "sha256": "c6f5cc26553a598ed17f1faa952bb2eedacb2573816c970beb694b1862d9e9f7"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/01_prepare_workspace.sh",
+      "destination": "2_naca0012_deploy/01_prepare_workspace.sh",
+      "sha256": "042966d93d344dcdabcfe4b52641a7fe5faf6b23976933b2497e068459eb353f"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/02_stage_solver.py",
+      "destination": "2_naca0012_deploy/02_stage_solver.py",
+      "sha256": "de8e279893ff88f8f30d9b8edd2e3b75b29a0d60151c59a3467b38ecbd77125a"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/03_deploy.py",
+      "destination": "2_naca0012_deploy/03_deploy.py",
+      "sha256": "186e6f4dd2eedf1f4a7774d54bf269ded0193afda782f5328bbc614a3bf01aac"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/04_rank_wrapper.sh",
+      "destination": "2_naca0012_deploy/04_rank_wrapper.sh",
+      "sha256": "ee89e96eadf17c892b42476868d8bd3f42e7e98756c82852416092cb85156cdb"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/05_naca0012_deploy.slurm",
+      "destination": "2_naca0012_deploy/05_naca0012_deploy.slurm",
+      "sha256": "7ace2f8acfa942f610b41df38d585503a5d2cfa513c291f2df150f01e3307146"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/06_archive_nek_data.sh",
+      "destination": "2_naca0012_deploy/06_archive_nek_data.sh",
+      "sha256": "13d9a746a984a36feae8264e0545264a1d5fc17c4a922d8e1dad5ec09140faf7"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/07_submit_deploy.sh",
+      "destination": "2_naca0012_deploy/07_submit_deploy.sh",
+      "sha256": "efe04b463ab3190a011864a11ecc1006f91d5501345fc9d31d0a61372722bdc2"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/08_ucx_test.slurm",
+      "destination": "2_naca0012_deploy/diagnostics/08_ucx_test.slurm",
+      "sha256": "5c40e45f61bf5c0927a78e90562632b73fe748c5fbe2fbe61c934c4d36a2a09b"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/09_collective_test.slurm",
+      "destination": "2_naca0012_deploy/diagnostics/09_collective_test.slurm",
+      "sha256": "4aa27dc57f2742d958a2558dc5a405e9d293f1f55d59916b1450d97751a3f56a"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/meta_policy_naca_wing.py",
+      "destination": "2_naca0012_deploy/meta_policy_naca_wing.py",
+      "sha256": "7a0305a0617054c615ba209e689879f65ef2703a50737509329931d713c82c03"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/diagnostics/collective_bench.c",
+      "destination": "2_naca0012_deploy/diagnostics/collective_bench.c",
+      "sha256": "ff32192fcbec6c66a751cd1b98b252105639caa0b481d606394af48cbae77c77"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/diagnostics/collective_rank.sh",
+      "destination": "2_naca0012_deploy/diagnostics/collective_rank.sh",
+      "sha256": "da90e32ed34387d6202d4af374be5b8ced5c7b24cef08b2cb1081eee2653ca18"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/diagnostics/cpu_affinity.py",
+      "destination": "2_naca0012_deploy/diagnostics/cpu_affinity.py",
+      "sha256": "650d255cc97aafc8e7eb98cf2e593350e624a22ddf7c97d5a6339d3c6f9a8c5b"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/diagnostics/summarize_collectives.py",
+      "destination": "2_naca0012_deploy/diagnostics/summarize_collectives.py",
+      "sha256": "08833bfb176d5096871ad686a71a6ea1e356331eb138135ea835463819299a48"
+    },
+    {
+      "source": "examples/nek/zero_shot_reproduce/2_naca0012_deploy/tests/test_restart_lifecycle.py",
+      "destination": "2_naca0012_deploy/tests/test_restart_lifecycle.py",
+      "sha256": "49d6bf73bf11575e06da231de2ccf540b3e25037d02f8686ecbe3e50124ae62a"
+    },
+    {
+      "source": "scripts/00_nek_single_node_config.sh",
+      "destination": "0_setup/00_settings.sh",
+      "sha256": "790e5ac36ff53e4aad6ed48f28933195f8d63409f45cfbd9409b9ba111494840"
+    },
+    {
+      "source": "scripts/01_pull_hydrogym_image.sh",
+      "destination": "0_setup/01_pull_hydrogym_image.sh",
+      "sha256": "b3307e7859151f184b784ac5b949251223b13347b61b69d1bfe7ff51ed013d6f"
+    },
+    {
+      "source": "scripts/02_prepare_nek_workspace.sh",
+      "destination": "0_setup/02_prepare_nek_workspace.sh",
+      "sha256": "12ee1cf4d72c2516a63d91ff3ca1916011c7179981645047e44e3cdb924ae0d3"
+    },
+    {
+      "source": "scripts/03_hydrogym_nek_single_node.slurm",
+      "destination": "0_setup/03_hydrogym_nek_single_node.slurm",
+      "sha256": "0570234099fd950542188c1573a4f6339f584b398ffcd1085e4d3a4ec1b1d380"
+    },
+    {
+      "source": "examples/nek/getting_started/prepare_workspace.py",
+      "destination": "0_setup/prepare_workspace.py",
+      "sha256": "849b2404e565c6c0c1e6e2b00f8439933e3c5d960472736326551e341ba63241"
+    },
+    {
+      "source": "examples/nek/getting_started/1_nekenv_single/test_nek_direct.py",
+      "destination": "0_setup/test_nek_direct.py",
+      "sha256": "71c215f5a3e41ddccf21f6aba1119121020e494590821161de9d8442de980276"
+    },
+    {
+      "source": "examples/nek/configs/pettingzoo_tcflarge_re207.yml",
+      "destination": "1_tcf_train/config/pettingzoo_tcflarge_re207.yml",
+      "sha256": "583a8bbb6faf129301e0d7a69856531e00eaec0975a3ac599ba2bfdf6377e71a"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "LICENSE",
+      "sha256": "05eb4ebda9ab3aabcd89ab823111191dd3021429676e9ae8db6dda472d8c11da"
+    }
+  ]
+}

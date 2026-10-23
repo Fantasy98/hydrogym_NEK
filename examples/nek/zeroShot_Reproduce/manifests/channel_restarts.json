@@ -1,0 +1,191 @@
+{
+  "verified_at": "2026-10-22",
+  "source": "/p/scratch/deepwing/yuningw/marl_energy_cost/data/restarts/rs6_lc_noresize_reth365",
+  "relative_source_in_reference_workflow": "1_tcf_train/data/TCFlarge_3D_Re207/restart_files",
+  "note": "Exact six initial-condition sets used by the original channel workflow; do not substitute a similarly named HF dataset.",
+  "total_bytes": 530950176,
+  "file_count": 36,
+  "sha256sum_manifest_sha256": "0b894e9725d2ef90839a1285845c0b8bc2c428d521dc56ad700d6c4c0960dc4a",
+  "files": [
+    {
+      "path": "init_1/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "7a8136e49cbc03a1edc6966e333a51da6bbf12e457104ce7c4e3b92fd475ff86"
+    },
+    {
+      "path": "init_1/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "ccf6d91d446ffac236feefe1bc1794730390a2a54e830c681bb375bbb5fc8f45"
+    },
+    {
+      "path": "init_1/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "48345bb957022ef2443b5367f110d2a8dc0a2c8a9cec6ca50aff8a3bf20d8e37"
+    },
+    {
+      "path": "init_1/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "099f7092d9b4caab75a76f1b8eb772a198e5f7a5c20e2f8c1184b2ad127bd978"
+    },
+    {
+      "path": "init_1/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "1d947984d2af1b01448c9727e68cb6b628c517708ead9aafcfee54b66076bc9e"
+    },
+    {
+      "path": "init_1/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "388738eb68bc21ad819cb614f6660ae593abd87ff51be9b220bf4002befa26c8"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "d05fe3a4b1850d8d8881d19e9762a09646ee5f6efe847134d4f1313eeb87ddef"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "991c27d980c240e1e9e9b400eff25a3d2e264fb03ac858701a1ba34142203add"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "28f7096dc092fa6c6361bfd646839c2f74183819e5630fd7e36269e41dab908f"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "c79941283eb49284228bbe65445ac9e31f1c6ff7cff272fdceb8bc7ef93e5488"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "e9d754dea112b88e32cd94f12ad194cfaf73c93e12cb0e088ee7f81aa1c4e151"
+    },
+    {
+      "path": "init_2/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "b58ff598a37df10b0bb84ee9e70d8dcd5d1ef86e2e10caa8502d3731b97b89bf"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "b712146243b31ec58bf2893a1731954fe863140d038c7a237e9cd0c20c4ea09d"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "044441dc49b0ef11a00b5c978d0ba36fad8e503cc707f6540d039dce4de5ede3"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "8b72c298cc088390b4c8da488e9cc8606958ffb81d4dc752b60f974cc9603dc0"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "65bad2732a8d26c1477d0ad636a60aa5d3030b61cec571d6b26bd35d785b98b4"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "1b677fdbe641bf783fe876647c740844f98c724f3e714c2a8227025612f3992d"
+    },
+    {
+      "path": "init_3/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "77100f6a695e3a0920304dc3f4d00b6b35665e412df489dde13503b3b21fe5c8"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "ff62dab371efa18af5de0cce5c8d1f2096b44f42d38ed4877f56363a6396d7a8"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "787ad7510abd3649ff3fd74ac1318868bf48c497feecaa44d0372fec25337501"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "2233e78a2766f61e773c7b4574583d0e8e807d2c7d40c2597cabb3383e409e25"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "a5578b54a9b9b211bce877bd4b70631ee564bafe94d35db416061de230e7ad64"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "00691bad50622b5d7d451e1f0fe2857fd1de91b4b268fa089ffed2c0d1d0ca0c"
+    },
+    {
+      "path": "init_4/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "400d92c2ba075660080f0d0e95e2bdf78cb2076e7472d405f8848fb28865980e"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "ff2140ae4ae1cc09f07a80eb53355be89dee6f0957f83da80122ae00650bc1a8"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "e9d7a0a708c7875c3d804b383ec167503d8faf705343e47bbcc5f38fc4d55c1d"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "1b2ca5dc3f6abbba804e7af18ca34bb58b91fc2d0bab7e96c8f46c46f0f377ce"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "f7cc58f54504754db9fdc1d5a2bcd73638ddeb15cf194f1c746de150f10e69b3"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "320eab10c62030eda408dd1a5f9572a427d7c9c538a340015bdf23908dc710bd"
+    },
+    {
+      "path": "init_5/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "9e01c45564a3c2f29209c8763b6fe937b9ffb2738410d61eae37a62ea2fd1420"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00001",
+      "bytes": 20646856,
+      "sha256": "90bb634c7a3644899baf42f01ec77447f04cd4cd1202d08dc1c58b9627312698"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00002",
+      "bytes": 11799496,
+      "sha256": "bb243128c82e4f0dd7ec7943e36f67b392fe5a3472f8145dd22fad9df0022fd4"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00003",
+      "bytes": 11799496,
+      "sha256": "3fba8e9b6e9c4f3c5732f9fbe7dc04d27ffaa3eca4bd1cc8f492a66ac1b9836b"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00004",
+      "bytes": 20646856,
+      "sha256": "cb5147cd46b281fca17d28b19ef0bd7620c09a6f16219d29a2c61647e9c3c725"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00005",
+      "bytes": 11799496,
+      "sha256": "712672358c95963e1a60dd99842d4d1dcceeff43a488607e8ffc18fba5ccad69"
+    },
+    {
+      "path": "init_6/rs6tcf0.f00006",
+      "bytes": 11799496,
+      "sha256": "d6d830fa6da1fbbbc4e9d0058dc02822e808a5b7b8472ed6b1018b5fc32163a5"
+    }
+  ]
+}

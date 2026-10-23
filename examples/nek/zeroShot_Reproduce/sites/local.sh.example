@@ -1,0 +1,14 @@
+# Copy to sites/local.sh only in the workspace you intend to prepare.
+# Every path should belong to that workspace unless explicitly reusing an asset.
+# Prefer a local image copy for a completely independent sandbox.
+# ZS_IMAGE=/absolute/path/to/hydrogym-nvhpc-26.1.sif
+# ZS_ACCOUNT=my_project
+# ZS_PARTITION=batch
+# Host Python defaults to the system interpreter, independently of Conda.
+# ZS_HOST_PYTHON=/usr/bin/python3
+# ZS_EXTRA_BINDS=/optional/external/input:/optional/external/input:ro
+# TCF_RESTART_SOURCE defaults to ZS_ROOT/data/channel_restarts.
+# Import it with tools/channel_restarts.py --source SOURCE --install.
+# For explicit wing reuse via 01_prepare_workspace.sh --reuse-existing:
+# WING_LOCAL_SOURCE=/absolute/path/to/reference/data/NACA0012_3D_Re200000_AOA0
+# WING_SOURCE_PREPARED=/absolute/path/to/reference/w/PREPARED.json

@@ -1,0 +1,46 @@
+{
+  "upstream_repository": "https://github.com/dynamicslab/hydrogym.git",
+  "upstream_commit": "4ab9854dea3d84e38a59c25e0f5835a00cf8225f",
+  "container": {
+    "uri": "docker://clagemann/hydrogym-nvhpc-26.1_cuda-12.9_turing_ampere@sha256:60a752cef00fd8dc6b505ca6faae6c1bf02abf6e19551e5e6e12250305ae9b53",
+    "reference_sif_sha256": "b597c35ac1b9689e457a442c1aa95f4f4ebd98eb649b6ae81b11ad02d5fa22c9",
+    "sif_hash_provenance": "Recorded by the existing 2026-10-20 dependency audit; not rehashed during this source-only preparation. A fresh conversion from the same OCI digest may have different SIF bytes.",
+    "python_venv": "/home/easybuild/venvs/hydrogym_cpu",
+    "hydrogym_version_recorded_by_prior_audit": "0.1.2.3"
+  },
+  "hf": {
+    "repository": "dynamicslab/HydroGym-environments",
+    "revision": "cf5ef6748443ae72e9647f398487e98d421a7243",
+    "wing_environment": "NACA0012_3D_Re200000_AOA0",
+    "wing_bytes": 174525626413,
+    "revision_provenance": "Reference wing PREPARED.json; remote metadata on 2026-10-22 confirms both channel packages exist. All 36 large-channel restart sizes and SHA-256 values match the original manifest.",
+    "large_channel_environment": "TCFlarge_3D_Re207",
+    "large_channel_manifest": "manifests/channel_hf.json",
+    "large_channel_bytes": 531351133
+  },
+  "channel_restarts": {
+    "manifest": "manifests/channel_restarts.json",
+    "destination": "data/channel_restarts",
+    "bytes": 530950176,
+    "hf_source": "dynamicslab/HydroGym-environments/TCFlarge_3D_Re207/restart_files",
+    "hf_revision": "cf5ef6748443ae72e9647f398487e98d421a7243",
+    "hf_identity_verified_at": "2026-10-22"
+  },
+  "deployment_policy": {
+    "step": 576000000,
+    "destination": "1_tcf_train/run/checkpoints",
+    "files": [
+      {
+        "name": "model_576000000_steps.zip",
+        "bytes": 1104830,
+        "sha256": "0efb6d47d38cafadee3f66b4d3e4c28d46e053c84874d7a74a3697bfd432d00c"
+      },
+      {
+        "name": "vecnormalize_576000000_steps.pkl",
+        "bytes": 99631,
+        "sha256": "a446ce916feefd1fe8447627da54d80afbc7c39977fa440b05587395c66f4d7c"
+      }
+    ],
+    "note": "Historical reference pair; absent from the pinned HF environment dataset. Not needed to start channel training. A future training run must produce the policy/normalizer for deployment, or a verified pair must be obtained separately. Do not create latest.json or claim training-resume readiness without its replay buffer."
+  }
+}
